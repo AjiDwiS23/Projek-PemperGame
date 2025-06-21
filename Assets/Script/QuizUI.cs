@@ -17,6 +17,11 @@ public class QuizUI : MonoBehaviour
     public TextMeshProUGUI timerText;
     public float timePerQuestion = 10f;
 
+    public Image[] questionResultIcons; // Assign di Inspector, urut sesuai urutan soal
+    public Sprite correctSprite; // Sprite checklist
+    public Sprite wrongSprite; // Sprite silang
+    public Sprite defaultSprite; // Sprite default (kosong)
+
     public Question[] questions;
     private int currentQuestionIndex = 0;
     private float timer;
@@ -27,6 +32,9 @@ public class QuizUI : MonoBehaviour
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
+        // Reset semua indikator ke default
+        for (int i = 0; i < questionResultIcons.Length; i++)
+            questionResultIcons[i].sprite = defaultSprite;
         ShowQuestion();
     }
 
@@ -64,10 +72,37 @@ public class QuizUI : MonoBehaviour
 
     void OnAnswerSelected(int index)
     {
+        // Cegah error jika soal sudah habis atau index tidak valid
+        if (currentQuestionIndex >= questions.Length || index < 0 || index >= answerButtons.Length)
+            return;
+
         isAnswered = true;
-        if (index == questions[currentQuestionIndex].correctAnswerIndex)
+
+        int correctIndex = questions[currentQuestionIndex].correctAnswerIndex;
+        if (index == correctIndex)
         {
-            scoreManager.AddScore(1); // Tambah skor jika benar
+            scoreManager.AddScore(1);
+            questionResultIcons[currentQuestionIndex].sprite = correctSprite;
+        }
+        else
+        {
+            questionResultIcons[currentQuestionIndex].sprite = wrongSprite;
+        }
+
+        // Disable tombol agar tidak bisa klik lagi
+        foreach (var btn in answerButtons)
+            btn.interactable = false;
+
+        // Lanjut ke soal berikutnya setelah delay
+        Invoke(nameof(NextQuestionWithReset), 1.2f);
+    }
+
+    void NextQuestionWithReset()
+    {
+        // Aktifkan kembali tombol jawaban
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            answerButtons[i].interactable = true;
         }
         NextQuestion();
     }
@@ -81,7 +116,7 @@ public class QuizUI : MonoBehaviour
         }
         else
         {
-            // Quiz selesai, bisa tambahkan logika lain di sini
+            // Quiz selesai, disable semua tombol
             questionText.text = "Quiz Selesai!";
             foreach (var btn in answerButtons)
                 btn.gameObject.SetActive(false);
