@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      _07_huge_clouds_0: 5419582228185063260
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
