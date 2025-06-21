@@ -1,5 +1,15 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI; // Added this namespace for Image type
+
+[System.Serializable]
+public class Question
+{
+    public string questionText;
+    public string[] choices = new string[4];
+    public int correctAnswerIndex;
+    public int scoreValue = 1; // Nilai default 1, bisa diubah di Inspector
+}
 
 public class ScoreManager : MonoBehaviour
 {
@@ -35,7 +45,15 @@ public class ScoreManager : MonoBehaviour
     }
     public int CurrentScore
     {
-    get { return currentScore; }
-}
+        get { return currentScore; }
+    }
 
+    public void CheckAnswer(int index, int correctIndex, Image[] questionResultIcons, int currentQuestionIndex, Sprite correctSprite, Question[] questions)
+    {
+        if (index == correctIndex)
+        {
+            AddScore(questions[currentQuestionIndex].scoreValue);
+            questionResultIcons[currentQuestionIndex].sprite = correctSprite;
+        }
+    }
 }
