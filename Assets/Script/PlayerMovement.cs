@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 respawnPoint;
     public TextMeshProUGUI healthText;
 
+    [SerializeField] Image[] heartIcons;      // Assign di Inspector, urut dari kiri ke kanan
+    [SerializeField] Sprite heartActive;      // Sprite heart aktif
+    [SerializeField] Sprite heartInactive;    // Sprite heart non-aktif
+
     private Rigidbody2D rb;
     private Animator animator;
     private bool isGrounded = false;
@@ -173,5 +177,16 @@ public class PlayerMovement : MonoBehaviour
     void UpdateHealthText()
     {
         healthText.text = $"Health: {currentHealth}";
+    }
+
+    void UpdateHeartsUI()
+    {
+        for (int i = 0; i < heartIcons.Length; i++)
+        {
+            if (i < currentHealth)
+                heartIcons[i].sprite = heartActive;
+            else
+                heartIcons[i].sprite = heartInactive;
+        }
     }
 }
