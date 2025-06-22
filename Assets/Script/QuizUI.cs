@@ -28,9 +28,16 @@ public class QuizUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI scorePopupText; // Assign di Inspector
     [SerializeField] float scorePopupDuration = 1.0f; // Durasi tampil (detik)
 
-    [SerializeField] GameObject quizEndPanel; // Assign di Inspector
+    [SerializeField] GameObject scoreCalculationPanel; // Assign di Inspector
+
+    [SerializeField] TextMeshProUGUI finalScoreText; // Assign di Inspector (untuk skor akhir)
+    [SerializeField] Image[] starImages;             // Assign di Inspector (3 bintang)
+    [SerializeField] Sprite starOnSprite;            // Sprite bintang aktif
+    [SerializeField] Sprite starOffSprite;           // Sprite bintang non-aktif
 
     [SerializeField] Question[] questions;
+    private Question[] selectedQuestions; // Soal yang akan dimainkan (maksimal 3)
+    private int maxQuestions = 3;         // Jumlah soal yang harus dijawab
     private int currentQuestionIndex = 0;
     private float timer;
     private bool isAnswered = false;
@@ -40,15 +47,28 @@ public class QuizUI : MonoBehaviour
     void Start()
     {
         scoreManager = Object.FindFirstObjectByType<ScoreManager>();
+
+        // Pilih soal acak sebanyak maxQuestions
+        int total = Mathf.Min(maxQuestions, questions.Length);
+        selectedQuestions = new Question[total];
+        var indices = new System.Collections.Generic.List<int>();
+        for (int i = 0; i < questions.Length; i++) indices.Add(i);
+        for (int i = 0; i < total; i++)
+        {
+            int rand = Random.Range(0, indices.Count);
+            selectedQuestions[i] = questions[indices[rand]];
+            indices.RemoveAt(rand);
+        }
+
         // Reset semua indikator ke default  
         for (int i = 0; i < questionResultIcons.Length; i++)
             questionResultIcons[i].sprite = defaultSprite;
-        timer = timePerQuestion; // Timer hanya direset sekali di awal  
+        timer = timePerQuestion;
         ShowQuestion();
         if (scorePopupText != null)
             scorePopupText.gameObject.SetActive(false);
-        if (quizEndPanel != null)
-            quizEndPanel.SetActive(false);
+        if (scoreCalculationPanel != null)
+            scoreCalculationPanel.SetActive(false);
     }
 
     void Update()
@@ -84,17 +104,13 @@ public class QuizUI : MonoBehaviour
     void ShowQuestion()
     {
         isAnswered = false;
-        // timer = timePerQuestion; // HAPUS/COMMENT baris ini agar timer tidak direset  
-
-        // Update nomor soal (index mulai dari 0, jadi +1)  
         questionNumberText.text = $"Soal No {currentQuestionIndex + 1}";
-
-        Question q = questions[currentQuestionIndex];
+        Question q = selectedQuestions[currentQuestionIndex];
         questionText.text = q.questionText;
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int index = i; // Capture index for the lambda  
+            int index = i;
             answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = q.choices[i];
             answerButtons[i].onClick.RemoveAllListeners();
             answerButtons[i].onClick.AddListener(() => OnAnswerSelected(index));
@@ -103,16 +119,15 @@ public class QuizUI : MonoBehaviour
 
     void OnAnswerSelected(int index)
     {
-        // Cegah error jika soal sudah habis atau index tidak valid  
-        if (currentQuestionIndex >= questions.Length || index < 0 || index >= answerButtons.Length)
+        if (currentQuestionIndex >= selectedQuestions.Length || index < 0 || index >= answerButtons.Length)
             return;
 
         isAnswered = true;
 
-        int correctIndex = questions[currentQuestionIndex].correctAnswerIndex;
+        int correctIndex = selectedQuestions[currentQuestionIndex].correctAnswerIndex;
         if (index == correctIndex)
         {
-            int value = questions[currentQuestionIndex].scoreValue;
+            int value = selectedQuestions[currentQuestionIndex].scoreValue;
             scoreManager.AddScore(value);
             questionResultIcons[currentQuestionIndex].sprite = correctSprite;
             ShowScorePopup(value);
@@ -122,11 +137,9 @@ public class QuizUI : MonoBehaviour
             questionResultIcons[currentQuestionIndex].sprite = wrongSprite;
         }
 
-        // Disable tombol agar tidak bisa klik lagi  
         foreach (var btn in answerButtons)
             btn.interactable = false;
 
-        // Lanjut ke soal berikutnya setelah delay  
         Invoke(nameof(NextQuestionWithReset), 1.2f);
     }
 
@@ -143,21 +156,42 @@ public class QuizUI : MonoBehaviour
     void NextQuestion()
     {
         currentQuestionIndex++;
-        if (currentQuestionIndex < questions.Length)
+        if (currentQuestionIndex < selectedQuestions.Length)
         {
             ShowQuestion();
         }
         else
         {
-            // Quiz selesai, disable semua tombol  
+            // Quiz selesai, tampilkan hasil
             questionText.text = "Quiz Selesai!";
             foreach (var btn in answerButtons)
                 btn.gameObject.SetActive(false);
             timerText.gameObject.SetActive(false);
 
-            // Tampilkan panel/tombol selesai
-            if (quizEndPanel != null)
-                quizEndPanel.SetActive(true);
+            if (scoreCalculationPanel != null)
+                scoreCalculationPanel.SetActive(true);
+
+            if (finalScoreText != null)
+                finalScoreText.text = scoreManager.CurrentScore.ToString();
+
+            ShowStars(scoreManager.CurrentScore);
+        }
+    }
+
+    void ShowStars(int score)
+    {
+        int starCount = 0;
+        if (score >= 2000)
+            starCount = 3;
+        else if (score >= 1500)
+            starCount = 2;
+        else if (score >= 1000)
+            starCount = 1;
+
+        for (int i = 0; i < starImages.Length; i++)
+        {
+            if (starImages[i] != null)
+                starImages[i].sprite = (i < starCount) ? starOnSprite : starOffSprite;
         }
     }
 
@@ -176,5 +210,24 @@ public class QuizUI : MonoBehaviour
     {
         if (scorePopupText != null)
             scorePopupText.gameObject.SetActive(false);
+    }
+
+    public void SaveScoreAndStars()
+    {
+        int score = scoreManager.CurrentScore;
+        int starCount = 0;
+        if (score >= 2000)
+            starCount = 3;
+        else if (score >= 1500)
+            starCount = 2;
+        else if (score >= 1000)
+            starCount = 1;
+
+        PlayerPrefs.SetInt("LastQuizScore", score);
+        PlayerPrefs.SetInt("LastQuizStars", starCount);
+        PlayerPrefs.Save();
+        gameObject.SetActive(false); // Menyembunyikan QuizUI setelah menyimpan
+
+        Debug.Log($"Score ({score}) dan Bintang ({starCount}) telah disimpan.");
     }
 }
