@@ -14,9 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private int currentHealth;
 
     public Vector3 respawnPoint;
-    public TextMeshProUGUI healthText;
 
-    [SerializeField] Image[] heartIcons;      // Assign di Inspector, urut dari kiri ke kanan
+    [SerializeField] Image[] heartIcons;      // Assign di Inspector
     [SerializeField] Sprite heartActive;      // Sprite heart aktif
     [SerializeField] Sprite heartInactive;    // Sprite heart non-aktif
 
@@ -34,32 +33,23 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
         respawnPoint = transform.position;
         AudioManager.instance.PlayBGM();
-        UpdateHealthText();
+        UpdateHeartsUI();
     }
 
     void Update()
     {
-        // Horizontal movement
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
 
-        // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            //AudioManager.instance.Play("jump"); // Suara melompat (jika ada di AudioManager)
         }
 
-        // Flip character if needed
         FlipCharacter();
-
-        // Play footstep sound if walking and grounded
         PlayFootstepSound();
-
-        // Update animations
         UpdateAnimationState();
     }
 
@@ -153,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         FindObjectOfType<AudioManager>().Play("death");
         Debug.Log($"Player took damage. Current health: {currentHealth}");
-        UpdateHealthText();
+        UpdateHeartsUI();
 
         if (currentHealth <= 0)
         {
@@ -166,17 +156,12 @@ public class PlayerMovement : MonoBehaviour
         gameOverUI.ShowGameOverUI();
         currentHealth = maxHealth;
         Respawn();
-        UpdateHealthText();
+        UpdateHeartsUI();
     }
 
     public int GetCurrentHealth()
     {
         return currentHealth;
-    }
-
-    void UpdateHealthText()
-    {
-        healthText.text = $"Health: {currentHealth}";
     }
 
     void UpdateHeartsUI()
