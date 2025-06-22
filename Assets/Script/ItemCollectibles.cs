@@ -14,7 +14,7 @@ public class ItemCollectibles : MonoBehaviour
 
     private void CollectItem()
     {
-        ScoreManager.Instance.AddScore(scoreValue);
+        CurrencyManager.Instance.AddCurrency(1);
         Destroy(gameObject);
     }
 }

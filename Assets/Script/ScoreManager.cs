@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Diamond: " + currentScore;
+            scoreText.text = currentScore.ToString(); // Fixed the issue by using 'scoreText.text' instead of 'currentScore.text'  
         }
     }
     public int CurrentScore
