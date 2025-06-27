@@ -1369,6 +1369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currencyText: {fileID: 734544718}
   currentCurrency: 0
+  keyText: {fileID: 1533218827}
+  currentKeys: 0
 --- !u!4 &106284874
 Transform:
   m_ObjectHideFlags: 0
@@ -8128,6 +8130,7 @@ MonoBehaviour:
   - {fileID: 1622050453}
   starOnSprite: {fileID: 2411310853845870742, guid: 9ecc17f18a0353c40bd26e1d21363c81, type: 3}
   starOffSprite: {fileID: 8459368514239588404, guid: 9ecc17f18a0353c40bd26e1d21363c81, type: 3}
+  keyCountText: {fileID: 1533218827}
   questions:
   - questionText: awdwqd
     choices:
@@ -25517,7 +25520,7 @@ GameObject:
   - component: {fileID: 1533218828}
   - component: {fileID: 1533218827}
   m_Layer: 5
-  m_Name: CoinTxt (1)
+  m_Name: KeyTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30417,11 +30420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139899891219355424, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -227.8
+      value: -1035
       objectReference: {fileID: 0}
     - target: {fileID: 3139899891219355424, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 120.2
+      value: 713
       objectReference: {fileID: 0}
     - target: {fileID: 3222813199196065923, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_IsActive
@@ -30537,11 +30540,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417122639925937564, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -500
+      value: -1314
       objectReference: {fileID: 0}
     - target: {fileID: 8417122639925937564, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 97
+      value: 763
       objectReference: {fileID: 0}
     - target: {fileID: 8476456483160892438, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_text
@@ -30561,6 +30564,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8476456483160892438, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8850689797946238636, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

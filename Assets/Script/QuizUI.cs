@@ -35,6 +35,8 @@ public class QuizUI : MonoBehaviour
     [SerializeField] Sprite starOnSprite;            // Sprite bintang aktif
     [SerializeField] Sprite starOffSprite;           // Sprite bintang non-aktif
 
+    [SerializeField] TextMeshProUGUI keyCountText; // Tambahkan di field
+
     [SerializeField] Question[] questions;
     private Question[] selectedQuestions; // Soal yang akan dimainkan (maksimal 3)
     private int maxQuestions = 3;         // Jumlah soal yang harus dijawab
@@ -43,6 +45,7 @@ public class QuizUI : MonoBehaviour
     private bool isAnswered = false;
 
     private ScoreManager scoreManager;
+    private int correctAnswersCount = 0; // Tambahkan ini
 
     void Start()
     {
@@ -131,6 +134,8 @@ public class QuizUI : MonoBehaviour
             scoreManager.AddScore(value);
             questionResultIcons[currentQuestionIndex].sprite = correctSprite;
             ShowScorePopup(value);
+
+            correctAnswersCount++; // Tambahkan ini
         }
         else
         {
@@ -175,6 +180,21 @@ public class QuizUI : MonoBehaviour
                 finalScoreText.text = scoreManager.CurrentScore.ToString();
 
             ShowStars(scoreManager.CurrentScore);
+
+            // Tambahkan logika pemberian kunci di sini
+            if (correctAnswersCount >= 3)
+            {
+                // Contoh: simpan jumlah kunci di PlayerPrefs
+                int currentKeys = PlayerPrefs.GetInt("PlayerKeys", 0);
+                PlayerPrefs.SetInt("PlayerKeys", currentKeys + 1);
+                PlayerPrefs.Save();
+
+                Debug.Log("Selamat! Anda mendapatkan 1 kunci karena menjawab minimal 3 soal dengan benar.");
+
+                CurrencyManager.Instance.AddKey(1); // Tambahkan ini
+            }
+
+            UpdateKeyUI(); // Tambahkan ini untuk memperbarui UI kunci
         }
     }
 
@@ -229,5 +249,14 @@ public class QuizUI : MonoBehaviour
         gameObject.SetActive(false); // Menyembunyikan QuizUI setelah menyimpan
 
         Debug.Log($"Score ({score}) dan Bintang ({starCount}) telah disimpan.");
+    }
+
+    void UpdateKeyUI()
+    {
+        if (keyCountText != null)
+        {
+            int keyCount = PlayerPrefs.GetInt("PlayerKeys", 0);
+            keyCountText.text = keyCount.ToString();
+        }
     }
 }

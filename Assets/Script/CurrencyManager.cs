@@ -8,6 +8,10 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currencyText;
     [SerializeField] private int currentCurrency = 0;
 
+    [Header("Key Settings")]
+    [SerializeField] private TextMeshProUGUI keyText; // Assign di Inspector
+    [SerializeField] private int currentKeys = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +23,7 @@ public class CurrencyManager : MonoBehaviour
     private void Start()
     {
         UpdateCurrencyText();
+        UpdateKeyText();
     }
 
     public void AddCurrency(int value)
@@ -39,5 +44,24 @@ public class CurrencyManager : MonoBehaviour
             currencyText.text = currentCurrency.ToString();
     }
 
+    public void AddKey(int value)
+    {
+        currentKeys += value;
+        UpdateKeyText();
+    }
+
+    public void SpendKey(int value)
+    {
+        currentKeys = Mathf.Max(currentKeys - value, 0);
+        UpdateKeyText();
+    }
+
+    private void UpdateKeyText()
+    {
+        if (keyText != null)
+            keyText.text = currentKeys.ToString();
+    }
+
     public int CurrentCurrency => currentCurrency;
+    public int CurrentKeys => currentKeys;
 }
