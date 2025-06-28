@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isWalkingSoundPlaying = false;
     private bool canMove = true;
 
+    private Vector3 checkpointPosition;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +42,25 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
         AudioManager.instance.PlayBGM();
         UpdateHeartsUI();
+
+        // Cek apakah ada checkpoint tersimpan
+        if (PlayerPrefs.HasKey("CheckpointX"))
+        {
+            float x = PlayerPrefs.GetFloat("CheckpointX");
+            float y = PlayerPrefs.GetFloat("CheckpointY");
+            float z = PlayerPrefs.GetFloat("CheckpointZ");
+            checkpointPosition = new Vector3(x, y, z);
+            transform.position = checkpointPosition;
+        }
+        else
+        {
+            checkpointPosition = transform.position;
+        }
+
+        if (PermainanManager.Instance != null)
+        {
+            transform.position = PermainanManager.Instance.GetCheckpoint();
+        }
     }
 
     void Update()
@@ -169,6 +190,30 @@ public class PlayerMovement : MonoBehaviour
                 heartIcons[i].sprite = heartActive;
             else
                 heartIcons[i].sprite = heartInactive;
+        }
+    }
+
+    public void SetCheckpoint(Vector3 pos)
+    {
+        checkpointPosition = pos;
+        PlayerPrefs.SetFloat("CheckpointX", pos.x);
+        PlayerPrefs.SetFloat("CheckpointY", pos.y);
+        PlayerPrefs.SetFloat("CheckpointZ", pos.z);
+        PlayerPrefs.Save();
+    }
+
+    public void RespawnAtCheckpoint()
+    {
+        if (PermainanManager.Instance != null)
+        {
+            transform.position = PermainanManager.Instance.GetCheckpoint();
+            rb.velocity = Vector2.zero;
+            currentHealth = maxHealth;
+            UpdateHeartsUI();
+            canMove = true;
+            isInvincible = false;
+            if (spriteRenderer != null)
+                spriteRenderer.enabled = true;
         }
     }
 
