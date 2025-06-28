@@ -13,11 +13,16 @@ public class PlayerMovement : MonoBehaviour
     public int maxHealth = 2;
     private int currentHealth;
 
-    public Vector3 respawnPoint;
-
     [SerializeField] Image[] heartIcons;      // Assign di Inspector
     [SerializeField] Sprite heartActive;      // Sprite heart aktif
     [SerializeField] Sprite heartInactive;    // Sprite heart non-aktif
+
+    [SerializeField] private float knockbackForce = 10f;
+    [SerializeField] private float knockbackDuration = 0.2f; // Tambahkan ini
+    [SerializeField] private float invisibleDuration = 2f;
+
+    private bool isInvincible = false;
+    private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -25,13 +30,14 @@ public class PlayerMovement : MonoBehaviour
     private float moveHorizontal;
     private bool isFacingRight = true;
     private bool isWalkingSoundPlaying = false;
+    private bool canMove = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         currentHealth = maxHealth;
-        respawnPoint = transform.position;
         AudioManager.instance.PlayBGM();
         UpdateHeartsUI();
     }
@@ -39,13 +45,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
+
+        if (canMove)
+        {
+            rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
+        }
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && canMove)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
         FlipCharacter();
@@ -120,30 +130,20 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Player touched the death zone!");
             TakeDamage(1);
-
-            if (currentHealth > 0)
-            {
-                Respawn();
-            }
-            else
-            {
-                Die();
-            }
         }
-    }
-
-    void Respawn()
-    {
-        transform.position = respawnPoint;
-        rb.linearVelocity = Vector2.zero;
     }
 
     public void TakeDamage(int damage)
     {
+        if (isInvincible) return;
+
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         FindObjectOfType<AudioManager>().Play("death");
         Debug.Log($"Player took damage. Current health: {currentHealth}");
         UpdateHeartsUI();
+
+        StartCoroutine(FlashRed()); // Efek flash merah
+        StartCoroutine(Knockback());
 
         if (currentHealth <= 0)
         {
@@ -153,10 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
-        gameOverUI.ShowGameOverUI();
-        currentHealth = maxHealth;
-        Respawn();
-        UpdateHeartsUI();
+        StartCoroutine(KnockbackAndInvisible());
     }
 
     public int GetCurrentHealth()
@@ -172,6 +169,55 @@ public class PlayerMovement : MonoBehaviour
                 heartIcons[i].sprite = heartActive;
             else
                 heartIcons[i].sprite = heartInactive;
+        }
+    }
+
+    private System.Collections.IEnumerator KnockbackAndInvisible()
+    {
+        isInvincible = true;
+        canMove = false;
+
+        float direction = isFacingRight ? -1f : 1f;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(direction * knockbackForce, 0f), ForceMode2D.Impulse);
+
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = false;
+
+        yield return new WaitForSeconds(invisibleDuration);
+
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = true;
+
+        canMove = true;
+        isInvincible = false;
+
+        gameOverUI.ShowGameOverUI();
+    }
+
+    private System.Collections.IEnumerator Knockback()
+    {
+        isInvincible = true;
+        canMove = false;
+
+        float direction = isFacingRight ? -1f : 1f;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(direction * knockbackForce, 0f), ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(knockbackDuration); // Gunakan knockbackDuration
+
+        canMove = true;
+        isInvincible = false;
+    }
+
+    private System.Collections.IEnumerator FlashRed()
+    {
+        if (spriteRenderer != null)
+        {
+            Color originalColor = spriteRenderer.color;
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(0.4f); // Durasi flash merah diperpanjang
+            spriteRenderer.color = originalColor;
         }
     }
 }
