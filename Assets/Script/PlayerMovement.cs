@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 checkpointPosition;
 
+    // Untuk moving platform
+    private MovingPlatform currentPlatform;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,11 +70,6 @@ public class PlayerMovement : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-        if (canMove)
-        {
-            rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
-        }
-
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if (Input.GetButtonDown("Jump") && isGrounded && canMove)
@@ -82,6 +80,22 @@ public class PlayerMovement : MonoBehaviour
         FlipCharacter();
         PlayFootstepSound();
         UpdateAnimationState();
+    }
+
+    void FixedUpdate()
+    {
+        float horizontalVelocity = moveHorizontal * moveSpeed;
+        float platformVelocity = 0f;
+
+        if (currentPlatform != null)
+        {
+            platformVelocity = currentPlatform.GetPlatformVelocity().x;
+        }
+
+        if (canMove)
+        {
+            rb.velocity = new Vector2(horizontalVelocity + platformVelocity, rb.velocity.y);
+        }
     }
 
     void PlayFootstepSound()
@@ -263,6 +277,22 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(0.4f); // Durasi flash merah diperpanjang
             spriteRenderer.color = originalColor;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            currentPlatform = collision.gameObject.GetComponent<MovingPlatform>();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            currentPlatform = null;
         }
     }
 }
