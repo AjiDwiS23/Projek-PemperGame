@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         if (isInvincible) return;
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        FindObjectOfType<AudioManager>().Play("death");
+        FindObjectOfType<AudioManager>().Play("Hit");
         Debug.Log($"Player took damage. Current health: {currentHealth}");
         UpdateHeartsUI();
 

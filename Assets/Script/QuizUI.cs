@@ -136,10 +136,18 @@ public class QuizUI : MonoBehaviour
             ShowScorePopup(value);
 
             correctAnswersCount++; // Tambahkan ini
+
+            // Play correct answer sound
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Correct");
         }
         else
         {
             questionResultIcons[currentQuestionIndex].sprite = wrongSprite;
+
+            // Play wrong answer sound
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Wrong");
         }
 
         foreach (var btn in answerButtons)
@@ -195,6 +203,10 @@ public class QuizUI : MonoBehaviour
             }
 
             UpdateKeyUI(); // Tambahkan ini untuk memperbarui UI kunci
+
+            // Play quiz finish sound effect
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Quiz_Finish");
         }
     }
 
