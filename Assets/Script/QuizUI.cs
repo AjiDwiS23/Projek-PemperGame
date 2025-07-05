@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
+// Explicitly qualify 'Object' with 'UnityEngine.Object' to resolve ambiguity
 public class QuizUI : MonoBehaviour
 {
     [System.Serializable]
@@ -47,9 +49,12 @@ public class QuizUI : MonoBehaviour
     private ScoreManager scoreManager;
     private int correctAnswersCount = 0; // Tambahkan ini
 
+    public event Action OnQuizCompleted; // Tambahkan ini
+
     void Start()
     {
-        scoreManager = Object.FindFirstObjectByType<ScoreManager>();
+        // Explicitly qualify 'Object' with 'UnityEngine.Object'
+        scoreManager = UnityEngine.Object.FindFirstObjectByType<ScoreManager>();
 
         // Pilih soal acak sebanyak maxQuestions
         int total = Mathf.Min(maxQuestions, questions.Length);
@@ -58,7 +63,7 @@ public class QuizUI : MonoBehaviour
         for (int i = 0; i < questions.Length; i++) indices.Add(i);
         for (int i = 0; i < total; i++)
         {
-            int rand = Random.Range(0, indices.Count);
+            int rand = UnityEngine.Random.Range(0, indices.Count); // Explicitly qualify 'Random'
             selectedQuestions[i] = questions[indices[rand]];
             indices.RemoveAt(rand);
         }
@@ -207,6 +212,9 @@ public class QuizUI : MonoBehaviour
             // Play quiz finish sound effect
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Quiz_Finish");
+
+            // Tambahkan trigger event
+            OnQuizCompleted?.Invoke();
         }
     }
 
