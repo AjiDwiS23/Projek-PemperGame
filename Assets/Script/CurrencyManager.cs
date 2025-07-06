@@ -19,6 +19,9 @@ public class CurrencyManager : MonoBehaviour
 
     private HashSet<string> collectedCoinIds = new HashSet<string>();
 
+    private int lastCurrency = -1;
+    private int lastKeys = -1;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,6 +36,23 @@ public class CurrencyManager : MonoBehaviour
     {
         UpdateCurrencyText();
         UpdateKeyText();
+    }
+
+    private void Update()
+    {
+        if (Application.isPlaying)
+        {
+            if (currentCurrency != lastCurrency)
+            {
+                UpdateCurrencyText();
+                lastCurrency = currentCurrency;
+            }
+            if (currentKeys != lastKeys)
+            {
+                UpdateKeyText();
+                lastKeys = currentKeys;
+            }
+        }
     }
 
     public void AddCurrency(int value)
@@ -85,6 +105,7 @@ public class CurrencyManager : MonoBehaviour
         PlayerPrefs.SetInt(KeyKey, currentKeys);
         PlayerPrefs.SetString(CollectedCoinsKey, string.Join(",", collectedCoinIds));
         PlayerPrefs.Save();
+        Debug.Log($"[SaveData] Currency: {currentCurrency}, Keys: {currentKeys}");
     }
 
     private void LoadData()
@@ -94,6 +115,7 @@ public class CurrencyManager : MonoBehaviour
 
         string collected = PlayerPrefs.GetString(CollectedCoinsKey, "");
         collectedCoinIds = new HashSet<string>(collected.Split(new[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries));
+        Debug.Log($"[LoadData] Currency: {currentCurrency}, Keys: {currentKeys}");
     }
 
     // --- Untuk Coin Collectible ---
@@ -109,5 +131,12 @@ public class CurrencyManager : MonoBehaviour
     public bool IsCoinCollected(string coinId)
     {
         return collectedCoinIds.Contains(coinId);
+    }
+
+    private void OnValidate()
+    {
+        UpdateCurrencyText();
+        UpdateKeyText();
+        // Jangan panggil SaveData di sini!
     }
 }

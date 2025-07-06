@@ -48,6 +48,7 @@ public class QuizUI : MonoBehaviour
 
     private ScoreManager scoreManager;
     private int correctAnswersCount = 0; // Tambahkan ini
+    private int tempScore = 0; // Skor sementara
 
     public event Action OnQuizCompleted; // Tambahkan ini
 
@@ -136,13 +137,12 @@ public class QuizUI : MonoBehaviour
         if (index == correctIndex)
         {
             int value = selectedQuestions[currentQuestionIndex].scoreValue;
-            scoreManager.AddScore(value);
+            tempScore += value; // Skor sementara
             questionResultIcons[currentQuestionIndex].sprite = correctSprite;
             ShowScorePopup(value);
 
-            correctAnswersCount++; // Tambahkan ini
+            correctAnswersCount++;
 
-            // Play correct answer sound
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Correct");
         }
@@ -150,7 +150,6 @@ public class QuizUI : MonoBehaviour
         {
             questionResultIcons[currentQuestionIndex].sprite = wrongSprite;
 
-            // Play wrong answer sound
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Wrong");
         }
@@ -190,9 +189,9 @@ public class QuizUI : MonoBehaviour
                 scoreCalculationPanel.SetActive(true);
 
             if (finalScoreText != null)
-                finalScoreText.text = scoreManager.CurrentScore.ToString();
+                finalScoreText.text = tempScore.ToString();
 
-            ShowStars(scoreManager.CurrentScore);
+            ShowStars(tempScore);
 
             // Tambahkan logika pemberian kunci di sini
             if (correctAnswersCount >= 3)
@@ -212,6 +211,12 @@ public class QuizUI : MonoBehaviour
             // Play quiz finish sound effect
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Quiz_Finish");
+
+            // Gabungkan skor quiz ke skor utama
+            if (scoreManager != null)
+                scoreManager.AddScore(tempScore);
+
+            tempScore = 0; // Reset skor sementara
 
             // Tambahkan trigger event
             OnQuizCompleted?.Invoke();
@@ -278,5 +283,47 @@ public class QuizUI : MonoBehaviour
             int keyCount = PlayerPrefs.GetInt("PlayerKeys", 0);
             keyCountText.text = keyCount.ToString();
         }
+    }
+
+    public void ResetQuiz()
+    {
+        tempScore = 0;
+        correctAnswersCount = 0;
+        currentQuestionIndex = 0;
+        isAnswered = false;
+        timer = timePerQuestion;
+
+        // Pilih soal acak sebanyak maxQuestions
+        int total = Mathf.Min(maxQuestions, questions.Length);
+        selectedQuestions = new Question[total];
+        var indices = new System.Collections.Generic.List<int>();
+        for (int i = 0; i < questions.Length; i++) indices.Add(i);
+        for (int i = 0; i < total; i++)
+        {
+            int rand = UnityEngine.Random.Range(0, indices.Count);
+            selectedQuestions[i] = questions[indices[rand]];
+            indices.RemoveAt(rand);
+        }
+
+        // Reset indikator
+        for (int i = 0; i < questionResultIcons.Length; i++)
+            questionResultIcons[i].sprite = defaultSprite;
+
+        // Aktifkan kembali UI yang perlu
+        foreach (var btn in answerButtons)
+            btn.gameObject.SetActive(true);
+        if (timerText != null)
+            timerText.gameObject.SetActive(true);
+        if (scorePopupText != null)
+            scorePopupText.gameObject.SetActive(false);
+        if (scoreCalculationPanel != null)
+            scoreCalculationPanel.SetActive(false);
+
+        ShowQuestion();
+    }
+
+    void OnEnable()
+    {
+        ResetQuiz();
     }
 }

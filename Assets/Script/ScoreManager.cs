@@ -34,6 +34,8 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += value;
         UpdateScoreText();
+        PlayerPrefs.SetInt("LastQuizScore", currentScore); // Simpan ke PlayerPrefs
+        PlayerPrefs.Save();
     }
 
     private void UpdateScoreText()

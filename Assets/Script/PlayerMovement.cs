@@ -60,9 +60,11 @@ public class PlayerMovement : MonoBehaviour
             checkpointPosition = transform.position;
         }
 
+        // Cek apakah PermainanManager ada dan checkpoint valid
         if (PermainanManager.Instance != null)
         {
-            transform.position = PermainanManager.Instance.GetCheckpoint();
+            Vector3 checkpoint = PermainanManager.Instance.GetCheckpoint();
+            transform.position = checkpoint;
         }
     }
 
