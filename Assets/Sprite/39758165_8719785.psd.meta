@@ -189,6 +189,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -909,7 +935,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      39758165_8719785_0: -3215345426604315550
+      39758165_8719785_1: -4615854342046565901
+      39758165_8719785_10: 4035125963594552909
+      39758165_8719785_11: -7307501910818504600
+      39758165_8719785_12: 1436010083661671416
+      39758165_8719785_13: 8354978441530343141
+      39758165_8719785_14: -8397276071535295891
+      39758165_8719785_15: -6909190365329250835
+      39758165_8719785_16: 6897723602255905979
+      39758165_8719785_17: 3632930387116134185
+      39758165_8719785_18: -5443334899157666198
+      39758165_8719785_19: 5777045644601691727
+      39758165_8719785_2: -5988239359750476622
+      39758165_8719785_20: 6866900772096636746
+      39758165_8719785_21: 211585686392834486
+      39758165_8719785_22: 7753155466433380755
+      39758165_8719785_23: 2988253960603275085
+      39758165_8719785_24: 2022774724416546695
+      39758165_8719785_25: -7359026204607811172
+      39758165_8719785_26: 5187108263912399003
+      39758165_8719785_27: -5101093107715780709
+      39758165_8719785_28: 3906687714569788056
+      39758165_8719785_29: -1421170032344702312
+      39758165_8719785_3: 7706194498569598976
+      39758165_8719785_30: 2590669068819649520
+      39758165_8719785_31: -3937994270710062407
+      39758165_8719785_4: 4602648604469198103
+      39758165_8719785_5: 6337915786366518809
+      39758165_8719785_6: -6612808773548050763
+      39758165_8719785_7: -715597051557893994
+      39758165_8719785_8: -2816409068751865231
+      39758165_8719785_9: -8789219259141317551
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

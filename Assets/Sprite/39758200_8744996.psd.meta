@@ -168,6 +168,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -734,7 +760,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      39758200_8744996_0: 1720365317313030254
+      39758200_8744996_1: -7763834799953731982
+      39758200_8744996_10: -7062172487128858769
+      39758200_8744996_11: 5638895656664958812
+      39758200_8744996_12: -1594427123989303862
+      39758200_8744996_13: 9216720202383201706
+      39758200_8744996_14: -6487190354620288987
+      39758200_8744996_15: 6126317488877769868
+      39758200_8744996_16: -4672615103296746077
+      39758200_8744996_17: 8218795380267832526
+      39758200_8744996_18: 4922284017788254591
+      39758200_8744996_19: 3332706991704297691
+      39758200_8744996_2: -3666592258300992736
+      39758200_8744996_20: 7726284553390017936
+      39758200_8744996_21: 2836676667330381383
+      39758200_8744996_22: -4660949259476008700
+      39758200_8744996_23: -9198184066694446569
+      39758200_8744996_24: -4186716588576040701
+      39758200_8744996_3: -324240437091509165
+      39758200_8744996_4: -4526668231000086092
+      39758200_8744996_5: 8869643835391541486
+      39758200_8744996_6: -2976325336311221245
+      39758200_8744996_7: -904748789236250787
+      39758200_8744996_8: 8607742651605542796
+      39758200_8744996_9: -7646959051057878929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
