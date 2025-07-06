@@ -30853,6 +30853,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[5].scoreValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[6].scoreValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[7].scoreValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: questions.Array.data[0].questionText
       value: Segitiga dengan tiga sisi yang sama panjang disebut .
       objectReference: {fileID: 0}
@@ -30875,6 +30891,21 @@ PrefabInstance:
         adalah ...
       objectReference: {fileID: 0}
     - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[5].questionText
+      value: "Segitiga yang memiliki sudut yang runcing atau semua sudut lebih kecil
+        dari 90\xB0 disebut ..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[6].questionText
+      value: Sebuah segitiga memiliki alas 15 cm dan tinggi 12 cm. Berapakah luas
+        segitiga tersebut?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[7].questionText
+      value: Sebuah segitiga memiliki alas 18 cm dan tinggi 9 cm. Berapakah luas
+        segitiga tersebut?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: questions.Array.data[0].correctAnswerIndex
       value: 2
       objectReference: {fileID: 0}
@@ -30888,6 +30919,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: questions.Array.data[4].correctAnswerIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[5].choices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[5].correctAnswerIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[6].choices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[6].correctAnswerIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[7].choices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: questions.Array.data[7].correctAnswerIndex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
@@ -30969,6 +31024,54 @@ PrefabInstance:
     - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: 'questions.Array.data[4].choices.Array.data[3]'
       value: "80 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[5].choices.Array.data[0]'
+      value: Segitiga siku-siku
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[5].choices.Array.data[1]'
+      value: Segitiga tumpul
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[5].choices.Array.data[2]'
+      value: Segitiga lancip
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[5].choices.Array.data[3]'
+      value: Segitiga sembarang
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[6].choices.Array.data[0]'
+      value: "75 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[6].choices.Array.data[1]'
+      value: "80 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[6].choices.Array.data[2]'
+      value: "90 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[6].choices.Array.data[3]'
+      value: "100 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[7].choices.Array.data[0]'
+      value: "81 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[7].choices.Array.data[1]'
+      value: "90 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[7].choices.Array.data[2]'
+      value: "94 cm\xB2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900005363966001455, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: 'questions.Array.data[7].choices.Array.data[3]'
+      value: "100 cm\xB2"
       objectReference: {fileID: 0}
     - target: {fileID: 3020667387336287880, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_AnchorMax.y
