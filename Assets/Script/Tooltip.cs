@@ -64,9 +64,9 @@ public class Tooltip : MonoBehaviour
         if (descriptionText != null)
             descriptionText.text = description;
         if (starsText != null)
-            starsText.text = $"Stars: {stars}";
+            starsText.text = stars.ToString();
         if (scoreText != null)
-            scoreText.text = $"Score: {score}";
+            scoreText.text = score.ToString();
 
         isTooltipActive = true;
     }

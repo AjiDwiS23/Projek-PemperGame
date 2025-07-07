@@ -58,13 +58,37 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: win
-    clip: {fileID: 8300000, guid: 15f79018e8657e44e889c8cc109583ed, type: 3}
+    clip: {fileID: 8300000, guid: 15105148e39672444abca8fd0b2bea2c, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: death
-    clip: {fileID: 8300000, guid: 0eff1a7d7d3deb54faeb4bb01dd2a9f1, type: 3}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 600a99f0cc796634fb1acf437140a98e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: 8c8f024e88fcf5741b20ebaaa9c8886a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Correct
+    clip: {fileID: 8300000, guid: 2155d53b17e3d24419ff919424d745ac, type: 3}
+    volume: 0.379
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wrong
+    clip: {fileID: 8300000, guid: a13d37027e6a8244dafe3000ee073089, type: 3}
+    volume: 0.364
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Quiz_Finish
+    clip: {fileID: 8300000, guid: 98e00f91e8480d14ebdb5b8a23dd431d, type: 3}
     volume: 1
     pitch: 1
     loop: 0

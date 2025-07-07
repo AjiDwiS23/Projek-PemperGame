@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public void Start()
+    {
+        AudioManager.instance.PlayBGM();
+    }
     public void PlayBtn(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
