@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement; // Tambahkan di atas
 
 // Explicitly qualify 'Object' with 'UnityEngine.Object' to resolve ambiguity
 public class QuizUI : MonoBehaviour
@@ -191,36 +192,67 @@ public class QuizUI : MonoBehaviour
             if (finalScoreText != null)
                 finalScoreText.text = tempScore.ToString();
 
+            int stars = CalculateStars(tempScore);
             ShowStars(tempScore);
+
+            // Simpan skor dan bintang untuk level saat ini
+            string levelKey = SceneManager.GetActiveScene().name;
+            int prevStars = PlayerPrefs.GetInt(levelKey + "_Stars", 0);
+
+            // Akumulasi bintang hanya jika lebih besar dari sebelumnya
+            if (stars > prevStars)
+            {
+                AddStarsToTotal(stars - prevStars);
+                PlayerPrefs.SetInt(levelKey + "_Stars", stars);
+            }
+            // Jika ingin update skor walau bintang tidak bertambah
+            PlayerPrefs.SetInt(levelKey + "_Score", tempScore);
+            PlayerPrefs.Save();
 
             // Tambahkan logika pemberian kunci di sini
             if (correctAnswersCount >= 3)
             {
-                // Contoh: simpan jumlah kunci di PlayerPrefs
                 int currentKeys = PlayerPrefs.GetInt("PlayerKeys", 0);
                 PlayerPrefs.SetInt("PlayerKeys", currentKeys + 1);
                 PlayerPrefs.Save();
 
                 Debug.Log("Selamat! Anda mendapatkan 1 kunci karena menjawab minimal 3 soal dengan benar.");
 
-                CurrencyManager.Instance.AddKey(1); // Tambahkan ini
+                CurrencyManager.Instance.AddKey(1);
             }
 
-            UpdateKeyUI(); // Tambahkan ini untuk memperbarui UI kunci
+            UpdateKeyUI();
 
-            // Play quiz finish sound effect
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Quiz_Finish");
 
-            // Gabungkan skor quiz ke skor utama
             if (scoreManager != null)
                 scoreManager.AddScore(tempScore);
 
-            tempScore = 0; // Reset skor sementara
+            tempScore = 0;
 
-            // Tambahkan trigger event
             OnQuizCompleted?.Invoke();
         }
+    }
+
+    int CalculateStars(int score)
+    {
+        if (score >= 2000)
+            return 3;
+        else if (score >= 1500)
+            return 2;
+        else if (score >= 1000)
+            return 1;
+        else
+            return 0;
+    }
+
+    void AddStarsToTotal(int starsToAdd)
+    {
+        int totalStars = PlayerPrefs.GetInt("TotalStars", 0);
+        totalStars += starsToAdd;
+        PlayerPrefs.SetInt("TotalStars", totalStars);
+        PlayerPrefs.Save();
     }
 
     void ShowStars(int score)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; // Tambahkan ini
 
 public class CurrencyManager : MonoBehaviour
 {
@@ -12,10 +13,6 @@ public class CurrencyManager : MonoBehaviour
     [Header("Key Settings")]
     [SerializeField] private TextMeshProUGUI keyText; // Assign di Inspector
     [SerializeField] private int currentKeys = 0;
-
-    private const string CurrencyKey = "PlayerCurrency";
-    private const string KeyKey = "PlayerKeys";
-    private const string CollectedCoinsKey = "CollectedCoins";
 
     private HashSet<string> collectedCoinIds = new HashSet<string>();
 
@@ -99,21 +96,25 @@ public class CurrencyManager : MonoBehaviour
     public int CurrentKeys => currentKeys;
 
     // --- Penyimpanan Data ---
+    private string GetCurrencyKey() => SceneManager.GetActiveScene().name + "_PlayerCurrency";
+    private string GetKeyKey() => SceneManager.GetActiveScene().name + "_PlayerKeys";
+    private string GetCollectedCoinsKey() => SceneManager.GetActiveScene().name + "_CollectedCoins";
+
     private void SaveData()
     {
-        PlayerPrefs.SetInt(CurrencyKey, currentCurrency);
-        PlayerPrefs.SetInt(KeyKey, currentKeys);
-        PlayerPrefs.SetString(CollectedCoinsKey, string.Join(",", collectedCoinIds));
+        PlayerPrefs.SetInt(GetCurrencyKey(), currentCurrency);
+        PlayerPrefs.SetInt(GetKeyKey(), currentKeys);
+        PlayerPrefs.SetString(GetCollectedCoinsKey(), string.Join(",", collectedCoinIds));
         PlayerPrefs.Save();
         Debug.Log($"[SaveData] Currency: {currentCurrency}, Keys: {currentKeys}");
     }
 
     private void LoadData()
     {
-        currentCurrency = PlayerPrefs.GetInt(CurrencyKey, 0);
-        currentKeys = PlayerPrefs.GetInt(KeyKey, 0);
+        currentCurrency = PlayerPrefs.GetInt(GetCurrencyKey(), 0);
+        currentKeys = PlayerPrefs.GetInt(GetKeyKey(), 0);
 
-        string collected = PlayerPrefs.GetString(CollectedCoinsKey, "");
+        string collected = PlayerPrefs.GetString(GetCollectedCoinsKey(), "");
         collectedCoinIds = new HashSet<string>(collected.Split(new[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries));
         Debug.Log($"[LoadData] Currency: {currentCurrency}, Keys: {currentKeys}");
     }

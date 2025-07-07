@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI; // Added this namespace for Image type
+using UnityEngine.SceneManagement; // Tambahkan ini
 
 [System.Serializable]
 public class Question
@@ -34,7 +35,10 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += value;
         UpdateScoreText();
-        PlayerPrefs.SetInt("LastQuizScore", currentScore); // Simpan ke PlayerPrefs
+
+        // Simpan skor akhir berdasarkan nama stage/scene
+        string stageKey = SceneManager.GetActiveScene().name + "_FinalScore";
+        PlayerPrefs.SetInt(stageKey, currentScore);
         PlayerPrefs.Save();
     }
 
@@ -42,7 +46,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = currentScore.ToString(); // Fixed the issue by using 'scoreText.text' instead of 'currentScore.text'  
+            scoreText.text = currentScore.ToString();
         }
     }
     public int CurrentScore
