@@ -20,10 +20,10 @@ public class EnemyWeakSpot : MonoBehaviour
         {
             // Cek player benar-benar datang dari atas
             Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
-            if (playerRb != null && playerRb.velocity.y < 0)
+            if (playerRb != null && playerRb.linearVelocity.y < 0)
             {
                 enemy.TakeDamage(1);
-                playerRb.velocity = new Vector2(playerRb.velocity.x, 10f);
+                playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, 10f);
             }
         }
     }
