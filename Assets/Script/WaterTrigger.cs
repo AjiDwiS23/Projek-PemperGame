@@ -6,6 +6,7 @@ public class WaterTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.Play("Splash");
             PlayerMovement player = other.GetComponent<PlayerMovement>();
             if (player != null)
             {

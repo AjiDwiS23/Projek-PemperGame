@@ -22,6 +22,7 @@ public class FinishUI : MonoBehaviour
         if (finishCanvas != null)
             finishCanvas.SetActive(true);
 
+        AudioManager.instance.Play("Win");
         int finalScore = 0;
         ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
         if (scoreManager != null)
@@ -39,7 +40,6 @@ public class FinishUI : MonoBehaviour
             scoreCoroutine = StartCoroutine(AnimateScore(finalScore, 1f));
         }
     }
-
 
     private IEnumerator AnimateScore(int targetScore, float duration = 1f)
     {
@@ -61,6 +61,7 @@ public class FinishUI : MonoBehaviour
 
     public void NextLevelBtn()
     {
+        SaveCurrentLevelPrefs();
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextScene < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(nextScene);
@@ -70,6 +71,28 @@ public class FinishUI : MonoBehaviour
 
     public void HomeBtn()
     {
+        SaveCurrentLevelPrefs();
         SceneManager.LoadScene(homeSceneIndex);
+    }
+
+    private void SaveCurrentLevelPrefs()
+    {
+        string levelKey = SceneManager.GetActiveScene().name;
+
+        // Contoh: Ambil data dari ScoreManager, QuizUI, dsb
+        int score = PlayerPrefs.GetInt(levelKey + "_Score", 0);
+        int stars = PlayerPrefs.GetInt(levelKey + "_Stars", 0);
+        int keys = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
+
+        // Jika ada data terbaru dari manager, update di sini
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager != null)
+            score = scoreManager.CurrentScore;
+
+        // Simpan ulang ke PlayerPrefs
+        PlayerPrefs.SetInt(levelKey + "_Score", score);
+        PlayerPrefs.SetInt(levelKey + "_Stars", stars);
+        PlayerPrefs.SetInt(levelKey + "_PlayerKeys", keys);
+        PlayerPrefs.Save();
     }
 }

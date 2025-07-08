@@ -7,17 +7,23 @@ public class MainMenuUI : MonoBehaviour
     {
         AudioManager.instance.PlayBGM();
     }
+
     public void PlayBtn(string sceneName)
     {
+        AudioManager.instance.Play("Click");
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
     }
 
-    public void ExitBtn(){
+    public void ExitBtn()
+    {
+        AudioManager.instance.Play("Click");
         Application.Quit();
     }
 
-    public void BackBtn(string sceneName){
+    public void BackBtn(string sceneName)
+    {
+        AudioManager.instance.Play("Click");
         SceneManager.LoadScene(sceneName);
     }
 }

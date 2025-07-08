@@ -20,6 +20,7 @@ public class GameOverUI : MonoBehaviour
 
     public void ShowGameOverUI()
     {
+        AudioManager.instance.Play("GameOver");
         gameOverPanel.SetActive(true);
         Time.timeScale = 0; // Pause the game
     }

@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using UnityEngine;
 
 public class PlatformTrigger : MonoBehaviour
@@ -28,6 +29,7 @@ public class PlatformTrigger : MonoBehaviour
     {
         if (!triggered && other.CompareTag("Player"))
         {
+            AudioManager.instance.Play("Lever");
             platformToActivate.ActivatePlatform();
             triggered = true;
 
@@ -40,6 +42,7 @@ public class PlatformTrigger : MonoBehaviour
     private void OnPlatformReachedPointB()
     {
         triggered = false;
+        AudioManager.instance.Play("Lever");
         if (spriteRenderer != null && defaultSprite != null)
             spriteRenderer.sprite = defaultSprite;
     }

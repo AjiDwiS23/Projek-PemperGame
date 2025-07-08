@@ -210,6 +210,7 @@ namespace Bundos.WaterSystem
 
         void OnTriggerEnter2D(Collider2D other)
         {
+            
             if (!interactive)
                 return;
 

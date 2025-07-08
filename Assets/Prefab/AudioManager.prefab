@@ -52,12 +52,12 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: bgm1
-    clip: {fileID: 8300000, guid: 1aa5b18569588cc4a827ad975c448e02, type: 3}
+    clip: {fileID: 8300000, guid: 47d4c711ec1e7e3439d26ebe7fdf0d80, type: 3}
     volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: win
+  - name: Win
     clip: {fileID: 8300000, guid: 15105148e39672444abca8fd0b2bea2c, type: 3}
     volume: 1
     pitch: 1
@@ -90,6 +90,36 @@ MonoBehaviour:
   - name: Quiz_Finish
     clip: {fileID: 8300000, guid: 98e00f91e8480d14ebdb5b8a23dd431d, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: b04f597d1a4efa041bd9a4262a12df4f, type: 3}
+    volume: 0.554
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 4d455481819203f46bb4959a221d5add, type: 3}
+    volume: 0.554
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Checkpoint
+    clip: {fileID: 8300000, guid: e439db0f2756eb840bebd7f39d6aaf69, type: 3}
+    volume: 0.554
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lever
+    clip: {fileID: 8300000, guid: 0d76d32a602918b41b7e8297776860a9, type: 3}
+    volume: 0.554
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Splash
+    clip: {fileID: 8300000, guid: 8bd3fad8d94abf443b03e5c33a90f01e, type: 3}
+    volume: 0.554
     pitch: 1
     loop: 0
     source: {fileID: 0}

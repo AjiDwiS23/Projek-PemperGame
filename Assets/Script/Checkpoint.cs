@@ -1,6 +1,7 @@
+using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -75,6 +76,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.Play("Checkpoint");
             int lastCheckpointID = 0;
             if (PermainanManager.Instance != null)
                 lastCheckpointID = PermainanManager.Instance.GetLastCheckpointID();
