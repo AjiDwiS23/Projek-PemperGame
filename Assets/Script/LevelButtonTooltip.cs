@@ -9,10 +9,10 @@ public class LevelButtonTooltip : MonoBehaviour, IPointerEnterHandler, IPointerE
     // Tambahkan field untuk key PlayerPrefs
     public string starsKey = "Quiz_Stars";
     public string scoreKey = "Quiz_FinalScore";
-
+    public string keysKey = "Quiz_PlayerKeys";
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Tooltip.Instance.Show(levelName, levelDescription, starsKey, scoreKey);
+        Tooltip.Instance.Show(levelName, levelDescription, starsKey, scoreKey, keysKey);
     }
 
     public void OnPointerExit(PointerEventData eventData)

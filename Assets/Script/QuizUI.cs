@@ -199,26 +199,22 @@ public class QuizUI : MonoBehaviour
             string levelKey = SceneManager.GetActiveScene().name;
             int prevStars = PlayerPrefs.GetInt(levelKey + "_Stars", 0);
 
-            // Akumulasi bintang hanya jika lebih besar dari sebelumnya
             if (stars > prevStars)
             {
                 AddStarsToTotal(stars - prevStars);
                 PlayerPrefs.SetInt(levelKey + "_Stars", stars);
             }
-            // Jika ingin update skor walau bintang tidak bertambah
             PlayerPrefs.SetInt(levelKey + "_Score", tempScore);
             PlayerPrefs.Save();
 
-            // Tambahkan logika pemberian kunci di sini
+            // Kunci per level
             if (correctAnswersCount >= 3)
             {
-                int currentKeys = PlayerPrefs.GetInt("PlayerKeys", 0);
-                PlayerPrefs.SetInt("PlayerKeys", currentKeys + 1);
+                int currentKeys = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
+                PlayerPrefs.SetInt(levelKey + "_PlayerKeys", currentKeys + 1);
                 PlayerPrefs.Save();
 
                 Debug.Log("Selamat! Anda mendapatkan 1 kunci karena menjawab minimal 3 soal dengan benar.");
-
-                CurrencyManager.Instance.AddKey(1);
             }
 
             UpdateKeyUI();
@@ -312,7 +308,8 @@ public class QuizUI : MonoBehaviour
     {
         if (keyCountText != null)
         {
-            int keyCount = PlayerPrefs.GetInt("PlayerKeys", 0);
+            string levelKey = SceneManager.GetActiveScene().name;
+            int keyCount = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
             keyCountText.text = keyCount.ToString();
         }
     }

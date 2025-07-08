@@ -8933,6 +8933,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 24, y: 4, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 25, y: 5, z: 0}
     second:
       serializedVersion: 2
@@ -9075,17 +9085,17 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 269
+  - m_RefCount: 270
     m_Data: {fileID: 11400000, guid: ddc54ccb40b8f874bad949a52986986a, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 269
+  - m_RefCount: 270
     m_Data: {fileID: 1621359032, guid: f85becf80ae72484faca535be90a3b72, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 269
+  - m_RefCount: 270
     m_Data:
       e00: 1
       e01: 0
@@ -9104,7 +9114,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 269
+  - m_RefCount: 270
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -10895,7 +10905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd49a4b029db35743aac847a41ca7e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_QuizStarted: {fileID: 0}
+  UI_QuizStarted: {fileID: 920386407059845906}
   quizUI: {fileID: 920386407059845903}
   signRenderer: {fileID: 1601626097}
   completedSprite: {fileID: -81941113044527900, guid: 8621779cbf788eb4f9454d8cb82ed565, type: 3}
@@ -12677,7 +12687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd49a4b029db35743aac847a41ca7e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_QuizStarted: {fileID: 0}
+  UI_QuizStarted: {fileID: 920386407059845906}
   quizUI: {fileID: 920386407059845903}
   signRenderer: {fileID: 1218843218}
   completedSprite: {fileID: -81941113044527900, guid: 8621779cbf788eb4f9454d8cb82ed565, type: 3}
@@ -13067,7 +13077,7 @@ Transform:
   m_GameObject: {fileID: 1615886199}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.3, y: 10.18, z: 0}
+  m_LocalPosition: {x: 24.6, y: 9.08, z: 0}
   m_LocalScale: {x: 0.20708786, y: 0.2070879, z: 0.2070879}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15271,7 +15281,7 @@ Transform:
   m_GameObject: {fileID: 1836600213}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.4, y: 10.18, z: 0}
+  m_LocalPosition: {x: 23.7, y: 9.08, z: 0}
   m_LocalScale: {x: 0.20708786, y: 0.2070879, z: 0.2070879}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36812,6 +36822,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 960183508687807514, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1232453740096292529, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -37452,6 +37466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &920386407059845906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 960183508687807514, guid: b2520f2b577bd0b4bb685abf8cce40c6, type: 3}
+  m_PrefabInstance: {fileID: 920386407059845902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1915654058895950244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37759,7 +37778,7 @@ Transform:
   m_GameObject: {fileID: 5851165042216909425}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.38, y: 10.18, z: 0}
+  m_LocalPosition: {x: 22.68, y: 9.08, z: 0}
   m_LocalScale: {x: 0.20708786, y: 0.2070879, z: 0.2070879}
   m_ConstrainProportionsScale: 0
   m_Children: []
