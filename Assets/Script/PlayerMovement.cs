@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded && canMove)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
         FlipCharacter();
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (canMove)
         {
-            rb.velocity = new Vector2(horizontalVelocity + platformVelocity, rb.velocity.y);
+            rb.linearVelocity = new Vector2(horizontalVelocity + platformVelocity, rb.linearVelocity.y);
         }
     }
 
@@ -223,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
         if (PermainanManager.Instance != null)
         {
             transform.position = PermainanManager.Instance.GetCheckpoint();
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             currentHealth = maxHealth;
             UpdateHeartsUI();
             canMove = true;
@@ -239,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
         canMove = false;
 
         float direction = isFacingRight ? -1f : 1f;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(new Vector2(direction * knockbackForce, 0f), ForceMode2D.Impulse);
 
         if (spriteRenderer != null)
@@ -262,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         canMove = false;
 
         float direction = isFacingRight ? -1f : 1f;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(new Vector2(direction * knockbackForce, 0f), ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(knockbackDuration); // Gunakan knockbackDuration

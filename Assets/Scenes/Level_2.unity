@@ -12847,7 +12847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939b3b4ddca6bed4f9f8fc85b9953294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredKeys: 1
+  requiredKeys: 0
   doorRenderer: {fileID: 1504755289}
   lockedSprite: {fileID: 6621874816408859787, guid: 8387a8354855e764d97ea1ddbdb38356, type: 3}
   unlockedSprite: {fileID: -417287804819472149, guid: f4fe0b1aade5f10499912eb5c83a3dd1, type: 3}

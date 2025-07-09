@@ -26,4 +26,12 @@ public class MainMenuUI : MonoBehaviour
         AudioManager.instance.Play("Click");
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ResetAllDataBtn()
+    {
+        AudioManager.instance.Play("Click");
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Debug.Log("Semua data PlayerPrefs telah dihapus.");
+    }
 }

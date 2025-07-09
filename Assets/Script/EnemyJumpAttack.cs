@@ -135,7 +135,7 @@ public class EnemyJumpAttack : MonoBehaviour
 
         // Jatuh lurus ke bawah dari posisi di atas player
         rb.gravityScale = 1;
-        rb.velocity = new Vector2(0f, -fallSpeed);
+        rb.linearVelocity = new Vector2(0f, -fallSpeed);
 
         // Tunggu sampai enemy menyentuh tanah (atau bisa pakai OnCollisionEnter2D)
         yield return new WaitForSeconds(1.5f);
