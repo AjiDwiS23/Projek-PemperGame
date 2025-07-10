@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.SceneManagement; // Tambahkan di atas
 
+// Explicitly qualify 'Object' with 'UnityEngine.Object' to resolve ambiguity
 public class QuizUI : MonoBehaviour
 {
     [System.Serializable]
@@ -35,6 +38,8 @@ public class QuizUI : MonoBehaviour
     [SerializeField] Sprite starOnSprite;            // Sprite bintang aktif
     [SerializeField] Sprite starOffSprite;           // Sprite bintang non-aktif
 
+    [SerializeField] TextMeshProUGUI keyCountText; // Tambahkan di field
+
     [SerializeField] Question[] questions;
     private Question[] selectedQuestions; // Soal yang akan dimainkan (maksimal 3)
     private int maxQuestions = 3;         // Jumlah soal yang harus dijawab
@@ -43,10 +48,15 @@ public class QuizUI : MonoBehaviour
     private bool isAnswered = false;
 
     private ScoreManager scoreManager;
+    private int correctAnswersCount = 0; // Tambahkan ini
+    private int tempScore = 0; // Skor sementara
+
+    public event Action OnQuizCompleted; // Tambahkan ini
 
     void Start()
     {
-        scoreManager = Object.FindFirstObjectByType<ScoreManager>();
+        // Explicitly qualify 'Object' with 'UnityEngine.Object'
+        scoreManager = UnityEngine.Object.FindFirstObjectByType<ScoreManager>();
 
         // Pilih soal acak sebanyak maxQuestions
         int total = Mathf.Min(maxQuestions, questions.Length);
@@ -55,7 +65,7 @@ public class QuizUI : MonoBehaviour
         for (int i = 0; i < questions.Length; i++) indices.Add(i);
         for (int i = 0; i < total; i++)
         {
-            int rand = Random.Range(0, indices.Count);
+            int rand = UnityEngine.Random.Range(0, indices.Count); // Explicitly qualify 'Random'
             selectedQuestions[i] = questions[indices[rand]];
             indices.RemoveAt(rand);
         }
@@ -128,13 +138,21 @@ public class QuizUI : MonoBehaviour
         if (index == correctIndex)
         {
             int value = selectedQuestions[currentQuestionIndex].scoreValue;
-            scoreManager.AddScore(value);
+            tempScore += value; // Skor sementara
             questionResultIcons[currentQuestionIndex].sprite = correctSprite;
             ShowScorePopup(value);
+
+            correctAnswersCount++;
+
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Correct");
         }
         else
         {
             questionResultIcons[currentQuestionIndex].sprite = wrongSprite;
+
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Wrong");
         }
 
         foreach (var btn in answerButtons)
@@ -172,10 +190,65 @@ public class QuizUI : MonoBehaviour
                 scoreCalculationPanel.SetActive(true);
 
             if (finalScoreText != null)
-                finalScoreText.text = scoreManager.CurrentScore.ToString();
+                finalScoreText.text = tempScore.ToString();
 
-            ShowStars(scoreManager.CurrentScore);
+            int stars = CalculateStars(tempScore);
+            ShowStars(tempScore);
+
+            // Simpan skor dan bintang untuk level saat ini
+            string levelKey = SceneManager.GetActiveScene().name;
+            int prevStars = PlayerPrefs.GetInt(levelKey + "_Stars", 0);
+
+            if (stars > prevStars)
+            {
+                AddStarsToTotal(stars - prevStars);
+                PlayerPrefs.SetInt(levelKey + "_Stars", stars);
+            }
+            PlayerPrefs.SetInt(levelKey + "_Score", tempScore);
+            PlayerPrefs.Save();
+
+            // Kunci per level
+            if (correctAnswersCount >= 3)
+            {
+                int currentKeys = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
+                PlayerPrefs.SetInt(levelKey + "_PlayerKeys", currentKeys + 1);
+                PlayerPrefs.Save();
+
+                Debug.Log("Selamat! Anda mendapatkan 1 kunci karena menjawab minimal 3 soal dengan benar.");
+            }
+
+            UpdateKeyUI();
+
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Quiz_Finish");
+
+            if (scoreManager != null)
+                scoreManager.AddScore(tempScore);
+
+            tempScore = 0;
+
+            OnQuizCompleted?.Invoke();
         }
+    }
+
+    int CalculateStars(int score)
+    {
+        if (score >= 2000)
+            return 3;
+        else if (score >= 1500)
+            return 2;
+        else if (score >= 1000)
+            return 1;
+        else
+            return 0;
+    }
+
+    void AddStarsToTotal(int starsToAdd)
+    {
+        int totalStars = PlayerPrefs.GetInt("TotalStars", 0);
+        totalStars += starsToAdd;
+        PlayerPrefs.SetInt("TotalStars", totalStars);
+        PlayerPrefs.Save();
     }
 
     void ShowStars(int score)
@@ -229,5 +302,57 @@ public class QuizUI : MonoBehaviour
         gameObject.SetActive(false); // Menyembunyikan QuizUI setelah menyimpan
 
         Debug.Log($"Score ({score}) dan Bintang ({starCount}) telah disimpan.");
+    }
+
+    void UpdateKeyUI()
+    {
+        if (keyCountText != null)
+        {
+            string levelKey = SceneManager.GetActiveScene().name;
+            int keyCount = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
+            keyCountText.text = keyCount.ToString();
+        }
+    }
+
+    public void ResetQuiz()
+    {
+        tempScore = 0;
+        correctAnswersCount = 0;
+        currentQuestionIndex = 0;
+        isAnswered = false;
+        timer = timePerQuestion;
+
+        // Pilih soal acak sebanyak maxQuestions
+        int total = Mathf.Min(maxQuestions, questions.Length);
+        selectedQuestions = new Question[total];
+        var indices = new System.Collections.Generic.List<int>();
+        for (int i = 0; i < questions.Length; i++) indices.Add(i);
+        for (int i = 0; i < total; i++)
+        {
+            int rand = UnityEngine.Random.Range(0, indices.Count);
+            selectedQuestions[i] = questions[indices[rand]];
+            indices.RemoveAt(rand);
+        }
+
+        // Reset indikator
+        for (int i = 0; i < questionResultIcons.Length; i++)
+            questionResultIcons[i].sprite = defaultSprite;
+
+        // Aktifkan kembali UI yang perlu
+        foreach (var btn in answerButtons)
+            btn.gameObject.SetActive(true);
+        if (timerText != null)
+            timerText.gameObject.SetActive(true);
+        if (scorePopupText != null)
+            scorePopupText.gameObject.SetActive(false);
+        if (scoreCalculationPanel != null)
+            scoreCalculationPanel.SetActive(false);
+
+        ShowQuestion();
+    }
+
+    void OnEnable()
+    {
+        ResetQuiz();
     }
 }

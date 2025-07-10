@@ -60,5 +60,37 @@ public class AudioManager : MonoBehaviour
     public void PlayBGM()
     {
         Play("bgm1"); // pastikan nama "bgm" sama dengan nama BGM di daftar sounds di inspector
-    }   
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        Sound s = System.Array.Find(sounds, sound => sound.name == "bgm1");
+        if (s != null)
+            s.source.volume = volume;
+    }
+
+    public bool IsBGMMuted()
+    {
+        Sound s = System.Array.Find(sounds, sound => sound.name == "bgm1");
+        return s != null && s.source.volume == 0f;
+    }
+
+    public void SetAllVolume(float volume)
+    {
+        foreach (var s in sounds)
+        {
+            s.source.volume = volume;
+        }
+    }
+
+    public bool IsAllMuted()
+    {
+        // Asumsi: jika semua volume 0, berarti mute
+        foreach (var s in sounds)
+        {
+            if (s.source.volume > 0f)
+                return false;
+        }
+        return true;
+    }
 }

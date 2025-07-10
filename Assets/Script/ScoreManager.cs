@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI; // Added this namespace for Image type
+using UnityEngine.SceneManagement; // Tambahkan ini
 
 [System.Serializable]
 public class Question
@@ -34,13 +35,18 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += value;
         UpdateScoreText();
+
+        // Simpan skor akhir berdasarkan nama stage/scene
+        string stageKey = SceneManager.GetActiveScene().name + "_FinalScore";
+        PlayerPrefs.SetInt(stageKey, currentScore);
+        PlayerPrefs.Save();
     }
 
     private void UpdateScoreText()
     {
         if (scoreText != null)
         {
-            scoreText.text = "Diamond: " + currentScore;
+            scoreText.text = currentScore.ToString();
         }
     }
     public int CurrentScore

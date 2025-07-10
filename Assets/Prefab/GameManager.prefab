@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4421480230810631350}
   - component: {fileID: 694580155361768500}
+  - component: {fileID: 3699758185568156866}
+  - component: {fileID: 7139893422416646644}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,3 +48,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
   bestTimeText: {fileID: 0}
+--- !u!114 &3699758185568156866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541749150547738808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce59fe1e8cb34941aa72a0cabd77208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7139893422416646644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541749150547738808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702351f172a6d234e93e1e40338bf28e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  resumeButton: {fileID: 0}
+  restartButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  muteButton: {fileID: 0}
+  muteIcon: {fileID: 0}
+  mutedSprite: {fileID: -1636184890572648060, guid: 9a8f0bd7e88d78847adcbceb7d91ada2, type: 3}
+  unmutedSprite: {fileID: -1948581134413295436, guid: ee103d68115e11c40b2ce2c475a76f3d, type: 3}
