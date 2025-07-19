@@ -96,7 +96,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512512505461777227}
-  - component: {fileID: 7341663021363920819}
   - component: {fileID: 2306563691095884996}
   m_Layer: 0
   m_Name: Sign_1
@@ -121,23 +120,6 @@ Transform:
   - {fileID: 8524917478164438766}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7341663021363920819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8809946409954540147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd49a4b029db35743aac847a41ca7e71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_QuizStarted: {fileID: 0}
-  quizUI: {fileID: 0}
-  signRenderer: {fileID: 8026703501628401991}
-  completedSprite: {fileID: -81941113044527900, guid: 8621779cbf788eb4f9454d8cb82ed565, type: 3}
-  signId: 1
 --- !u!61 &2306563691095884996
 BoxCollider2D:
   m_ObjectHideFlags: 0

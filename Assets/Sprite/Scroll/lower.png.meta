@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 25b0f906c5db30d41a07e94978e7c93f
+guid: 0e2c0d48be3e19749a79e7154f3af043
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3994009985225415512
-    second: WideSlider_Blue_Scroller_0
+      213: 923358823725082795
+    second: lower_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,53 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WideSlider_Blue_Scroller_0
+      name: lower_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 155
-        height: 335
+        width: 1102
+        height: 255
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 20, y: 17, z: 21, w: 19}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a4a641641d6298c0800000000000000
-      internalID: -3994009985225415512
+      spriteID: ba82b5045fd60dc00800000000000000
+      internalID: 923358823725082795
       vertices: []
       indices: 
       edges: []
@@ -151,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 03544c7644a31b142b4413eb0eacd139
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      WideSlider_Blue_Scroller_0: -3994009985225415512
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
