@@ -7,6 +7,8 @@ public class PlatformTrigger : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer; // Assign di Inspector
     [SerializeField] private Sprite defaultSprite;          // Assign di Inspector
     [SerializeField] private Sprite triggeredSprite;        // Assign di Inspector
+    [SerializeField] private Quiz quizUI;         // Drag komponen Quiz di Inspector
+    [SerializeField] private QuizData quizData;   // Drag asset QuizData di Inspector
 
     private bool triggered = false;
 
@@ -27,23 +29,46 @@ public class PlatformTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!triggered && other.CompareTag("Player"))
+        if (other.CompareTag("Player") && quizUI != null && quizData != null)
         {
-            AudioManager.instance.Play("Lever");
-            platformToActivate.ActivatePlatform();
-            triggered = true;
+            if (!quizUI.IsQuizCompleted)
+            {
+                quizUI.SetQuiz(quizData);
+                quizUI.ShowQuiz();
+                quizUI.onCorrectAnswer = ActivateLeverFromQuiz;
+                quizUI.onWrongAnswer = () =>
+                {
+                    // Quiz bisa diulang, tidak perlu lakukan apa-apa di sini
+                };
+                return;
+            }
 
-            // Ganti sprite jika sudah di-trigger
-            if (spriteRenderer != null && triggeredSprite != null)
-                spriteRenderer.sprite = triggeredSprite;
+            // Jika quiz sudah benar, lever bisa diaktifkan terus
+            if (platformToActivate != null && quizUI.IsQuizCompleted)
+            {
+                ActivateLeverFromQuiz();
+            }
         }
     }
 
     private void OnPlatformReachedPointB()
     {
-        triggered = false;
+        // Jangan reset triggered di sini!
         AudioManager.instance.Play("Lever");
         if (spriteRenderer != null && defaultSprite != null)
             spriteRenderer.sprite = defaultSprite;
+    }
+
+    public void ActivateLeverFromQuiz()
+    {
+        if (platformToActivate != null)
+        {
+            AudioManager.instance.Play("Lever");
+            platformToActivate.ActivatePlatform();
+            triggered = true;
+
+            if (spriteRenderer != null && triggeredSprite != null)
+                spriteRenderer.sprite = triggeredSprite;
+        }
     }
 }

@@ -91,14 +91,14 @@ public class Checkpoint : MonoBehaviour
                 UpdateAllCheckpointSprites();
 
                 // Tampilkan notifikasi checkpoint baru
-                var notif = FindObjectOfType<CheckpointNotificationUI>();
+                var notif = Object.FindFirstObjectByType<CheckpointNotificationUI>();
                 if (notif != null)
                     notif.ShowNotification("Checkpoint tersimpan!");
             }
             else if (checkpointID < lastCheckpointID)
             {
                 // Tampilkan notifikasi checkpoint lama
-                var notif = FindObjectOfType<CheckpointNotificationUI>();
+                var notif = Object.FindFirstObjectByType<CheckpointNotificationUI>();
                 if (notif != null)
                     notif.ShowNotification("Ini bukan checkpoint terakhirmu!");
             }

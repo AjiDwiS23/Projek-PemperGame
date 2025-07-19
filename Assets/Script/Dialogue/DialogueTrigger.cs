@@ -14,6 +14,7 @@ public class DialogueLine
     public DialogueCharacter character;
     [TextArea(3, 10)]
     public string line;
+    public bool isLeftAvatar = true; // Tambahkan ini: true = kiri, false = kanan
 }
 
 [System.Serializable]

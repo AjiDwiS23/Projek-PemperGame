@@ -24,7 +24,7 @@ public class FinishUI : MonoBehaviour
 
         AudioManager.instance.Play("Win");
         int finalScore = 0;
-        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        ScoreManager scoreManager = Object.FindFirstObjectByType<ScoreManager>();
         if (scoreManager != null)
             finalScore = scoreManager.CurrentScore;
         else
@@ -85,7 +85,7 @@ public class FinishUI : MonoBehaviour
         int keys = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
 
         // Jika ada data terbaru dari manager, update di sini
-        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        ScoreManager scoreManager = Object.FindFirstObjectByType<ScoreManager>();
         if (scoreManager != null)
             score = scoreManager.CurrentScore;
 

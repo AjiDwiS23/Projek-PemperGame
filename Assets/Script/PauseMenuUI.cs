@@ -14,7 +14,7 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField] private Sprite unmutedSprite; // (Optional) icon unmute
 
     private bool isPaused = false;
-    private bool isBGMMuted = false;
+   //rivate bool isBGMMuted = false;
 
     private void Start()
     {

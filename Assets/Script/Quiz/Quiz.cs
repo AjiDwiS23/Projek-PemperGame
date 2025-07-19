@@ -1,0 +1,169 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class Quiz : MonoBehaviour
+{
+    [Header("UI References")]
+    public Image quizImage;
+    public TMP_Text questionText;
+    public Button[] answerButtons;
+    public TMP_Text[] answerTexts;
+    public GameObject[] feedbackIcons; // 0: correct, 1: incorrect for each button
+    public TMP_Text scoreText;
+    public GameObject quizPanel;
+    public GameObject resultPanel;
+    public Image resultImage;
+    public TMP_Text resultText;
+    public Button closeResultButton;
+
+    [Header("Quiz Data")]
+    public QuizData quiz;
+
+    private int score = 0;
+    private bool answered = false;
+
+    public bool IsQuizCompleted { get; private set; } = false;
+
+    public System.Action onResultClosed;
+    public System.Action onCorrectAnswer;
+    public System.Action onWrongAnswer;
+
+    void Start()
+    {
+        SetupQuiz();
+    }
+
+    void SetupQuiz()
+    {
+        // Handle image
+        if (quiz.questionImage != null)
+        {
+            quizImage.sprite = quiz.questionImage;
+            quizImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            quizImage.gameObject.SetActive(false);
+        }
+
+        // Set question and answers
+        questionText.text = quiz.question;
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            answerTexts[i].text = quiz.answers[i];
+            int idx = i; // Capture index for listener
+            answerButtons[i].onClick.RemoveAllListeners();
+            answerButtons[i].onClick.AddListener(() => OnAnswerSelected(idx));
+            feedbackIcons[i * 2].SetActive(false);     // correct icon
+            feedbackIcons[i * 2 + 1].SetActive(false); // incorrect icon
+            answerButtons[i].interactable = true;
+        }
+
+        answered = false;
+        UpdateScore();
+    }
+
+    public void SetQuiz(QuizData newQuiz)
+    {
+        quiz = newQuiz;
+        IsQuizCompleted = false;
+        SetupQuiz();
+    }
+
+    void OnAnswerSelected(int index)
+    {
+        if (answered) return;
+        answered = true;
+
+        // Show feedback
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            answerButtons[i].interactable = false;
+            if (i == quiz.correctAnswerIndex)
+                feedbackIcons[i * 2].SetActive(true); // correct
+            else if (i == index)
+                feedbackIcons[i * 2 + 1].SetActive(true); // incorrect
+        }
+
+        bool isCorrect = index == quiz.correctAnswerIndex;
+        if (isCorrect)
+            score += 100;
+
+        UpdateScore();
+        IsQuizCompleted = isCorrect; // hanya true jika benar
+
+        // Callback ke luar
+        if (isCorrect)
+            onCorrectAnswer?.Invoke();
+        else
+            onWrongAnswer?.Invoke();
+
+        // Delay sebelum tampilkan result (hanya jika benar)
+        StartCoroutine(ShowResultWithDelay(isCorrect));
+    }
+
+    public IEnumerator ShowResultWithDelay(bool isCorrect)
+    {
+        yield return new WaitForSeconds(1.5f); // Jeda 1.5 detik
+
+        if (isCorrect)
+        {
+            ShowResult(
+                quiz.questionImage,
+                quiz.explanation,
+                OnResultPanelClosed
+            );
+        }
+        else
+        {
+            // Jika salah, langsung tutup quiz panel
+            HideQuiz();
+        }
+    }
+
+    void UpdateScore()
+    {
+        scoreText.text = "+" + score.ToString();
+    }
+
+    public void ShowQuiz()
+    {
+        quizPanel.SetActive(true);
+    }
+
+    public void HideQuiz()
+    {
+        quizPanel.SetActive(false);
+    }
+
+    public void ShowResult(Sprite image, string text, System.Action onClose = null)
+    {
+        if (resultPanel != null)
+            resultPanel.SetActive(true);
+
+        if (resultImage != null)
+            resultImage.sprite = image;
+
+        if (resultText != null)
+            resultText.text = text;
+
+        if (closeResultButton != null)
+        {
+            closeResultButton.onClick.RemoveAllListeners();
+            closeResultButton.onClick.AddListener(() => {
+                resultPanel.SetActive(false);
+                HideQuiz(); // Tutup quiz panel juga
+                onClose?.Invoke();
+                onResultClosed?.Invoke();
+            });
+        }
+    }
+
+    private void OnResultPanelClosed()
+    {
+        if (onResultClosed != null)
+            onResultClosed.Invoke();
+    }
+}

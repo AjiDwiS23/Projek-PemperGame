@@ -8,7 +8,9 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-    public Image characterIcon;
+    public Image leftCharacterIcon;
+    public Image rightCharacterIcon;
+
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
 
@@ -19,6 +21,10 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.2f;
 
     public Animator animator;
+
+    private bool isTyping = false;
+    private string currentFullLine = "";
+    private Coroutine typingCoroutine;
 
     private void Awake()
     {
@@ -54,21 +60,59 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine currentLine = lines.Dequeue();
 
-        characterIcon.sprite = currentLine.character.icon;
+        // Show avatar based on isLeftAvatar property
+        if (currentLine.isLeftAvatar)
+        {
+            leftCharacterIcon.gameObject.SetActive(true);
+            rightCharacterIcon.gameObject.SetActive(false);
+
+            leftCharacterIcon.sprite = currentLine.character.icon;
+        }
+        else
+        {
+            leftCharacterIcon.gameObject.SetActive(false);
+            rightCharacterIcon.gameObject.SetActive(true);
+
+            rightCharacterIcon.sprite = currentLine.character.icon;
+        }
+
         characterName.text = currentLine.character.name;
 
         StopAllCoroutines();
 
-        StartCoroutine(TypeSentence(currentLine));
+        currentFullLine = currentLine.line;
+        typingCoroutine = StartCoroutine(TypeSentence(currentLine.line));
     }
 
-    IEnumerator TypeSentence(DialogueLine dialogueLine)
+    IEnumerator TypeSentence(string sentence)
     {
+        isTyping = true;
         dialogueArea.text = "";
-        foreach (char letter in dialogueLine.line.ToCharArray())
+        foreach (char letter in sentence.ToCharArray())
         {
             dialogueArea.text += letter;
             yield return new WaitForSeconds(typingSpeed);
+        }
+        isTyping = false;
+    }
+
+    public void OnNextButtonPressed()
+    {
+        if (!isDialogueActive)
+            return;
+
+        if (isTyping)
+        {
+            // Finish typing instantly
+            if (typingCoroutine != null)
+                StopCoroutine(typingCoroutine);
+
+            dialogueArea.text = currentFullLine;
+            isTyping = false;
+        }
+        else
+        {
+            DisplayNextDialogueLine();
         }
     }
 
@@ -76,5 +120,7 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         animator.Play("hide");
+        leftCharacterIcon.gameObject.SetActive(false);
+        rightCharacterIcon.gameObject.SetActive(false);
     }
 }

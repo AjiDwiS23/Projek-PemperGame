@@ -70,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.Instance.isDialogueActive)
+        {
+            moveHorizontal = 0f; // Stop movement during dialogue
+            return;
+        }
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -106,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!isWalkingSoundPlaying)
             {
-                FindObjectOfType<AudioManager>().Play("footstep");
+                Object.FindFirstObjectByType<AudioManager>().Play("footstep");
                 isWalkingSoundPlaying = true;
             }
         }
@@ -114,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isWalkingSoundPlaying)
             {
-                FindObjectOfType<AudioManager>().Stop("footstep");
+                Object.FindFirstObjectByType<AudioManager>().Stop("footstep");
                 isWalkingSoundPlaying = false;
             }
         }
@@ -175,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
         if (isInvincible) return;
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        FindObjectOfType<AudioManager>().Play("Hit");
+        Object.FindFirstObjectByType<AudioManager>().Play("Hit");
         Debug.Log($"Player took damage. Current health: {currentHealth}");
         UpdateHeartsUI();
 
