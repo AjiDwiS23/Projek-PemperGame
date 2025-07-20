@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51eacb560736e5c4089cf78a5294b438, type: 3}
   m_Name: Materi_1
   m_EditorClassIdentifier: 
+  materiId: 1
   materiImage: {fileID: 21300000, guid: 9d1a3e0bc36dfc9468a738d92b6e92d4, type: 3}
   materiText: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
