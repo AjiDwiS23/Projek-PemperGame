@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PermainanManager : MonoBehaviour
 {
@@ -85,4 +86,19 @@ public class PermainanManager : MonoBehaviour
         PlayerPrefs.DeleteKey(CheckpointYKey);
         PlayerPrefs.DeleteKey(CheckpointZKey);
     }
+
+    public void OnFinishButtonClicked()
+    {
+        // Simpan skor akhir ke PlayerPrefs (ScoreManager sudah menyimpan, tapi bisa dipastikan di sini)
+        if (ScoreManager.Instance != null)
+        {
+            string stageKey = SceneManager.GetActiveScene().name + "_FinalScore";
+            PlayerPrefs.SetInt(stageKey, ScoreManager.Instance.CurrentScore);
+            PlayerPrefs.Save();
+        }
+
+        // Lakukan aksi lain, misal kembali ke menu, lanjut ke scene berikutnya, dsb.
+        Debug.Log("Score saved and finish button pressed!");
+    }
+
 }

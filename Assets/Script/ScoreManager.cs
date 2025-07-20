@@ -31,6 +31,21 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Ambil skor terakhir dari PlayerPrefs jika ada
+        string stageKey = SceneManager.GetActiveScene().name + "_FinalScore";
+        if (PlayerPrefs.HasKey(stageKey))
+        {
+            currentScore = PlayerPrefs.GetInt(stageKey);
+        }
+        else
+        {
+            currentScore = 0;
+        }
+        UpdateScoreText();
+    }
+
     public void AddScore(int value)
     {
         currentScore += value;
