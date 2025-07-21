@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0c2634007ac2c4a9539a6ba4496e14, type: 3}
   m_Name: MiniGameQuestionData
   m_EditorClassIdentifier: 
+  miniGameID: 1
   questionImages:
   - {fileID: 21300000, guid: 773452e82e7475b41a978b0247812159, type: 3}
   - {fileID: 21300000, guid: 5f7ed2e17d08bc7499828961fe1ba0d7, type: 3}

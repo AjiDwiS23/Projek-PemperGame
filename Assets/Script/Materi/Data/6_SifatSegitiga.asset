@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51eacb560736e5c4089cf78a5294b438, type: 3}
+  m_Name: 6_SifatSegitiga
+  m_EditorClassIdentifier: 
+  materiId: 4d7a156e-b6f6-4efb-883c-8c9d40222028
+  materiImage: {fileID: -3284109297845823569, guid: a3045caca624b3b42b62bcf2876e7df0, type: 3}
+  materiText: "Segitiga memiliki tiga sisi dan tiga sudut, dengan jumlah besar sudut
+    dalam selalu 180\xB0. Pada segitiga sama kaki, dua sisi dan dua sudutnya sama
+    panjang dan sama besar. Selain itu, sudut terbesar selalu berhadapan dengan sisi
+    yang paling panjang."

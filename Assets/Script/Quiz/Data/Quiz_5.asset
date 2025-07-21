@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9054831bd747ba344b75df6c3450aeef, type: 3}
+  m_Name: Quiz_5
+  m_EditorClassIdentifier: 
+  quizID: 5
+  questionImage: {fileID: 0}
+  question: Segitiga yang memiliki semua sisi sama panjang disebut...?
+  answers:
+  - Sama kaki
+  - Sama sisi
+  - Siku-siku
+  - Tumpul
+  correctAnswerIndex: 1
+  explanation: "Segitiga yang memiliki semua sisi sama panjang disebut segitiga sama
+    sisi. Selain itu, sudut-sudutnya juga sama besar, masing-masing 60\xB0. Berbeda
+    dengan segitiga sama kaki yang hanya punya dua sisi sama panjang, segitiga siku-siku
+    yang memiliki satu sudut 90\xB0, atau segitiga tumpul yang punya satu sudut lebih
+    dari 90\xB0."
+  scoreValue: 300

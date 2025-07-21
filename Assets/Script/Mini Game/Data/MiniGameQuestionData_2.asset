@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0c2634007ac2c4a9539a6ba4496e14, type: 3}
   m_Name: MiniGameQuestionData_2
   m_EditorClassIdentifier: 
+  miniGameID: 2
   questionImages:
   - {fileID: 21300000, guid: 429517ea1b1287a47952cd5cd8261d74, type: 3}
   - {fileID: 21300000, guid: 367fef7c7a0cf8b4e8fc2020259965e9, type: 3}
@@ -21,3 +22,4 @@ MonoBehaviour:
   - Kotak
   - Jajargenjang
   correctAnswerIndices: 020000000100000000000000
+  scorePerCorrect: 1

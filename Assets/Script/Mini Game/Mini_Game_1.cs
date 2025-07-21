@@ -17,6 +17,8 @@ public class Mini_Game_1 : MonoBehaviour
     public TMP_Text[] answerOptionTexts; // Assign di Inspector, urutkan sesuai button jawaban
     public TMP_Text nextUIScoreText; // Assign di Inspector ke Text Score di Next UI
 
+    public event System.Action OnMiniGameCompleted;
+
     void Awake()
     {
         Instance = this;
@@ -116,7 +118,9 @@ public class Mini_Game_1 : MonoBehaviour
 
         StartCoroutine(HideIconsAfterDelay(iconShowDuration));
         if (allCorrect)
+        {
             StartCoroutine(ShowNextUIAfterDelay(iconShowDuration, score));
+        }
     }
 
     void ResetUI()
@@ -154,5 +158,7 @@ public class Mini_Game_1 : MonoBehaviour
             if (nextUIScoreText != null)
                 nextUIScoreText.text = score.ToString();
         }
+        // Panggil event di sini
+        OnMiniGameCompleted?.Invoke();
     }
 }
