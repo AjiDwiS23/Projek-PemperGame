@@ -93,6 +93,13 @@ public class FinishUI : MonoBehaviour
     public void NextLevelBtn()
     {
         SaveCurrentLevelPrefs();
+
+        // Hapus checkpoint untuk scene saat ini
+        string levelKey = SceneManager.GetActiveScene().name;
+        PlayerPrefs.DeleteKey(levelKey + "_Checkpoint");
+
+        PlayerPrefs.Save();
+
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextScene < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(nextScene);

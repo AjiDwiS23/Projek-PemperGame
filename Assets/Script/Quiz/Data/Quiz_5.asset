@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quiz_5
   m_EditorClassIdentifier: 
   quizID: 5
-  questionImage: {fileID: 0}
-  question: Segitiga yang memiliki semua sisi sama panjang disebut...?
+  questionImage: {fileID: -5114963565230620664, guid: 39cccae377a0b6848a8cbcddaef92c3b, type: 3}
+  question: Gambar tersebut adalah Segitiga?
   answers:
   - Sama kaki
   - Sama sisi

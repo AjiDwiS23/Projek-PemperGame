@@ -66,7 +66,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void RestartGame()
     {
-        PlayerPrefs.DeleteAll(); // Hapus semua PlayerPrefs
+        DeleteCurrentScenePlayerPrefs();
         PlayerPrefs.Save();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -74,9 +74,20 @@ public class PauseMenuUI : MonoBehaviour
 
     public void ExitGame()
     {
-        PlayerPrefs.DeleteAll(); // Hapus semua PlayerPrefs
+        DeleteCurrentScenePlayerPrefs();
+        PlayerPrefs.Save();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu"); // Ganti "Menu" jika nama scene utama berbeda
+    }
+
+    // Fungsi untuk menghapus PlayerPrefs sesuai scene aktif
+    private void DeleteCurrentScenePlayerPrefs()
+    {
+        string levelKey = SceneManager.GetActiveScene().name;
+        PlayerPrefs.DeleteKey(levelKey + "_Score");
+        PlayerPrefs.DeleteKey(levelKey + "_Stars");
+        PlayerPrefs.DeleteKey(levelKey + "_PlayerKeys");
+        // Tambahkan key lain jika ada data lain yang ingin dihapus per scene
     }
 
     private void ToggleMuteBGM()
