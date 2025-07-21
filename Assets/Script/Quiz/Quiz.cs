@@ -21,6 +21,8 @@ public class Quiz : MonoBehaviour
     [Header("Quiz Data")]
     public QuizData quiz;
 
+    public int scoreValue = 100;
+
     private int score = 0;
     private bool answered = false;
 
@@ -29,11 +31,6 @@ public class Quiz : MonoBehaviour
     public System.Action onResultClosed;
     public System.Action onCorrectAnswer;
     public System.Action onWrongAnswer;
-
-    void Start()
-    {
-        SetupQuiz();
-    }
 
     void SetupQuiz()
     {
@@ -89,18 +86,20 @@ public class Quiz : MonoBehaviour
 
         bool isCorrect = index == quiz.correctAnswerIndex;
         if (isCorrect)
-            score += 100;
+        {
+            score += quiz.scoreValue; // Gunakan variabel dari QuizData
+            if (ScoreManager.Instance != null)
+                ScoreManager.Instance.AddScore(quiz.scoreValue); // Gunakan variabel dari QuizData
+        }
 
         UpdateScore();
-        IsQuizCompleted = isCorrect; // hanya true jika benar
+        IsQuizCompleted = isCorrect;
 
-        // Callback ke luar
         if (isCorrect)
             onCorrectAnswer?.Invoke();
         else
             onWrongAnswer?.Invoke();
 
-        // Delay sebelum tampilkan result (hanya jika benar)
         StartCoroutine(ShowResultWithDelay(isCorrect));
     }
 

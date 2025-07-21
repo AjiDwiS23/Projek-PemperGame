@@ -66,14 +66,18 @@ public class PauseMenuUI : MonoBehaviour
 
     public void RestartGame()
     {
+        PlayerPrefs.DeleteAll(); // Hapus semua PlayerPrefs
+        PlayerPrefs.Save();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ExitGame()
     {
+        PlayerPrefs.DeleteAll(); // Hapus semua PlayerPrefs
+        PlayerPrefs.Save();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu"); // Ganti "MainMenu" dengan nama scene menu utama Anda
+        SceneManager.LoadScene("Menu"); // Ganti "Menu" jika nama scene utama berbeda
     }
 
     private void ToggleMuteBGM()

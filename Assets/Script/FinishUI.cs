@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI; // Add this for Image
 
 public class FinishUI : MonoBehaviour
 {
@@ -9,12 +10,20 @@ public class FinishUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalScoreText;
     [SerializeField] private int homeSceneIndex = 0;
 
+    [Header("Star UI")]
+    [SerializeField] private Image[] starImages; // Assign 3 star Image objects in Inspector
+    [SerializeField] private Sprite starClosedSprite; // Sprite for closed star
+    [SerializeField] private Sprite starOpenSprite;   // Sprite for open star
+
     private Coroutine scoreCoroutine;
 
     private void Start()
     {
         if (finishCanvas != null)
             finishCanvas.SetActive(false);
+
+        // Optional: Ensure all stars are closed at start
+        SetStars(0);
     }
 
     public void ShowFinishUI()
@@ -30,14 +39,34 @@ public class FinishUI : MonoBehaviour
         else
             finalScore = PlayerPrefs.GetInt("LastQuizScore", 0);
 
-        // Debugging line to check the value retrieved from PlayerPrefs
         Debug.Log("Final Score from PlayerPrefs: " + finalScore);
+
+        // Set stars based on score
+        int starCount = CalculateStars(finalScore);
+        SetStars(starCount);
 
         if (finalScoreText != null)
         {
             if (scoreCoroutine != null)
                 StopCoroutine(scoreCoroutine);
             scoreCoroutine = StartCoroutine(AnimateScore(finalScore, 1f));
+        }
+    }
+
+    private int CalculateStars(int score)
+    {
+        if (score >= 1500) return 3;
+        if (score >= 1000) return 2;
+        if (score >= 500) return 1;
+        return 0;
+    }
+
+    private void SetStars(int count)
+    {
+        for (int i = 0; i < starImages.Length; i++)
+        {
+            if (starImages[i] != null)
+                starImages[i].sprite = (i < count) ? starOpenSprite : starClosedSprite;
         }
     }
 

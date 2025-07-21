@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9054831bd747ba344b75df6c3450aeef, type: 3}
+  m_Name: Quiz_3
+  m_EditorClassIdentifier: 
+  quizID: 3
+  questionImage: {fileID: -855298285791758126, guid: e2fa45449ff42d24b8c4991a474bae55, type: 3}
+  question: Berapa sudut dari Segitiga sama sisi?
+  answers:
+  - "60\xB0"
+  - "90\xB0"
+  - "120\xB0"
+  - "180\xB0"
+  correctAnswerIndex: 0
+  explanation: "Segitiga sama sisi memiliki tiga sisi yang sama panjang, sehingga
+    sudut-sudutnya juga sama besar. Karena jumlah sudut dalam segitiga selalu 180\xB0,
+    maka masing-masing sudut adalah 180\xB0 \xF7 3 = 60\xB0."
+  scoreValue: 100

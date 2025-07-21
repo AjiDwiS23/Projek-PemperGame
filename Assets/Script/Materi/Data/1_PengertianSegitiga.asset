@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51eacb560736e5c4089cf78a5294b438, type: 3}
-  m_Name: MateriData
+  m_Name: 1_PengertianSegitiga
   m_EditorClassIdentifier: 
-  materiId: 48d28ad6-cf70-4458-b2ac-8225420e92c0
-  materiImage: {fileID: 21300000, guid: 367fef7c7a0cf8b4e8fc2020259965e9, type: 3}
-  materiText: SDSDSDSDSD
+  materiId: 1
+  materiImage: {fileID: 2273355883471236594, guid: 9af5fe72fb83b2d48a28400ec0386dea, type: 3}
+  materiText: Segitiga adalah bangun datar dua dimensi yang dibentuk oleh tiga buah
+    garis lurus yang saling berpotongan di ujung-ujungnya. Segitiga memiliki tiga
+    sisi, tiga titik sudut, dan tiga sudut.

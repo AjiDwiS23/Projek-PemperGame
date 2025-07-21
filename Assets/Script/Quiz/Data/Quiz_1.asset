@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9054831bd747ba344b75df6c3450aeef, type: 3}
+  m_Name: Quiz_1
+  m_EditorClassIdentifier: 
+  quizID: 1
+  questionImage: {fileID: 8124679595312009736, guid: 0beed40a0cd12424c9e0d9eb8dd3f213, type: 3}
+  question: Gambar tersebut merupakan segitiga?
+  answers:
+  - Segitiga sembarang
+  - Segitiga siku-siku
+  - Segitiga sama kaki
+  - Segitiga sama sisi
+  correctAnswerIndex: 2
+  explanation: Segitiga sama kaki adalah segitiga yang memiliki dua sisi yang sama
+    panjang dan dua sudut yang berhadapan dengan sisi tersebut juga memiliki besar
+    yang sama.
+  scoreValue: 100
