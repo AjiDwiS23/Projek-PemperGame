@@ -16,6 +16,7 @@ public class FinishUI : MonoBehaviour
     [SerializeField] private Sprite starOpenSprite;   // Sprite for open star
 
     private Coroutine scoreCoroutine;
+    private int lastStarCount = 0;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class FinishUI : MonoBehaviour
 
         // Set stars based on score
         int starCount = CalculateStars(finalScore);
+        lastStarCount = starCount; // <-- simpan di variabel
         SetStars(starCount);
 
         if (finalScoreText != null)
@@ -55,7 +57,7 @@ public class FinishUI : MonoBehaviour
 
     private int CalculateStars(int score)
     {
-        if (score >= 1500) return 3;
+        if (score >= 1200) return 3;
         if (score >= 1000) return 2;
         if (score >= 500) return 1;
         return 0;
@@ -108,20 +110,23 @@ public class FinishUI : MonoBehaviour
     {
         string levelKey = SceneManager.GetActiveScene().name;
 
-        // Contoh: Ambil data dari ScoreManager, QuizUI, dsb
+        // Ambil score terbaru
         int score = PlayerPrefs.GetInt(levelKey + "_Score", 0);
-        int stars = PlayerPrefs.GetInt(levelKey + "_Stars", 0);
         int keys = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
 
-        // Jika ada data terbaru dari manager, update di sini
+        // Ambil score dari ScoreManager jika ada
         ScoreManager scoreManager = Object.FindFirstObjectByType<ScoreManager>();
         if (scoreManager != null)
             score = scoreManager.CurrentScore;
 
-        // Simpan ulang ke PlayerPrefs
+        // Gunakan lastStarCount yang sudah dihitung di ShowFinishUI
+        int stars = lastStarCount;
+
         PlayerPrefs.SetInt(levelKey + "_Score", score);
         PlayerPrefs.SetInt(levelKey + "_Stars", stars);
         PlayerPrefs.SetInt(levelKey + "_PlayerKeys", keys);
         PlayerPrefs.Save();
+
+        Debug.Log($"Saved: {levelKey}_Score={score}, {levelKey}_Stars={stars}, {levelKey}_PlayerKeys={keys}");
     }
 }

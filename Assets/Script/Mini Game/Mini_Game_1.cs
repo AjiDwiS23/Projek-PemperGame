@@ -151,6 +151,7 @@ public class Mini_Game_1 : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (nextUI != null)
         {
+            AudioManager.instance.Play("Quiz_Finish");
             nextUI.SetActive(true);
             miniGame_Panel.SetActive(false);
 

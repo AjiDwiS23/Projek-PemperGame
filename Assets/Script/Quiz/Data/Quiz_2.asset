@@ -24,4 +24,4 @@ MonoBehaviour:
   explanation: Segitiga adalah bangun datar yang memiliki tiga sisi dan tiga sudut,
     dibentuk dari tiga titik yang tidak segaris. Meskipun sederhana, segitiga punya
     berbagai jenis dan selalu memiliki jumlah sudut total 180 derajat.
-  scoreValue: 100
+  scoreValue: 300

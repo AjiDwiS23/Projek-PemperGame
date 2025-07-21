@@ -34,4 +34,12 @@ public class MainMenuUI : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("Semua data PlayerPrefs telah dihapus.");
     }
+
+    public void PlayBtnStage(string sceneName)
+    {
+        PlayerPrefs.DeleteAll(); // Hapus semua data PlayerPrefs sebelum memulai permainan baru 
+        AudioManager.instance.Play("Click");
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
+    }
 }

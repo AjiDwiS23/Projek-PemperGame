@@ -46,6 +46,7 @@ public class Materi_Trigger : MonoBehaviour
             
             if (materiUI != null)
             {
+                AudioManager.instance.Play("Checkpoint");
                 materiUI.ShowMateri(materiIndex);
                 materiUI.UnlockMateri(materiIndex);
             }

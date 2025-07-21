@@ -139,6 +139,7 @@ public class Quiz : MonoBehaviour
 
     public void ShowResult(Sprite image, string text, System.Action onClose = null)
     {
+        AudioManager.instance.Play("Checkpoint");
         if (resultPanel != null)
             resultPanel.SetActive(true);
 

@@ -3622,9 +3622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25130a2cee43dc44185ae57eb6f28d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Forest
-  levelDescription: tempat hutan yang indah berwarna hijau namun sangat berbahaya
-    untuk di eksplorasi
+  levelName: Pengenalan
+  levelDescription: "Segitiga punya 3 sisi dan 3 sudut, dengan total sudut selalu
+    180\xB0. Yuk kenali bentuk dan jenis-jenis segitiga bersama Segi!"
   starsKey: Level_1_Stars
   scoreKey: Level_1_FinalScore
   keysKey: Level_1_PlayerKeys
@@ -4314,7 +4314,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 79372917}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PlayBtn
+        m_MethodName: PlayBtnStage
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5191,7 +5191,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 79372917}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PlayBtn
+        m_MethodName: PlayBtnStage
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5341,10 +5341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25130a2cee43dc44185ae57eb6f28d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Mountain
-  levelDescription: Sebuah pegunungan megah yang memukau dengan hamparan batu dan
-    kabut tipis, indah dipandang namun menyimpan bahaya yang tak terduga bagi siapa
-    pun yang mencoba menaklukkannya.
+  levelName: Rumus Segitiga
+  levelDescription: "Pelajari rumus \xBD \xD7 alas \xD7 tinggi untuk menghitung luas
+    segitiga. Bantu Segi mencari alas dan tinggi yang tepat, lalu hitung luasnya!"
   starsKey: Level_2_Stars
   scoreKey: Level_2_FinalScore
   keysKey: Level_2_PlayerKeys
