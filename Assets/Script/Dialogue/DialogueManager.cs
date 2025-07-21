@@ -11,6 +11,9 @@ public class DialogueManager : MonoBehaviour
     public Image leftCharacterIcon;
     public Image rightCharacterIcon;
 
+    public GameObject extraImageBody; // <-- Tambahkan ini, drag GameObject "Body" di Inspector
+    public Image extraImageUI;        // <-- Drag child Image ("Gambar_Source") di Inspector
+
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
 
@@ -42,6 +45,12 @@ public class DialogueManager : MonoBehaviour
 
         lines.Clear();
 
+        // Nonaktifkan body dan gambar di awal dialog
+        if (extraImageBody != null)
+            extraImageBody.SetActive(false);
+        if (extraImageUI != null)
+            extraImageUI.gameObject.SetActive(false);
+
         foreach (DialogueLine dialogueLine in dialogue.dialogueLines)
         {
             lines.Enqueue(dialogueLine);
@@ -60,26 +69,40 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine currentLine = lines.Dequeue();
 
-        // Show avatar based on isLeftAvatar property
+        // Avatar kiri/kanan
         if (currentLine.isLeftAvatar)
         {
             leftCharacterIcon.gameObject.SetActive(true);
             rightCharacterIcon.gameObject.SetActive(false);
-
             leftCharacterIcon.sprite = currentLine.character.icon;
         }
         else
         {
             leftCharacterIcon.gameObject.SetActive(false);
             rightCharacterIcon.gameObject.SetActive(true);
-
             rightCharacterIcon.sprite = currentLine.character.icon;
         }
 
         characterName.text = currentLine.character.name;
 
-        StopAllCoroutines();
+        // Body dan gambar: aktif hanya jika ada gambar
+        if (extraImageBody != null)
+            extraImageBody.SetActive(currentLine.extraImage != null);
 
+        if (extraImageUI != null)
+        {
+            if (currentLine.extraImage != null)
+            {
+                extraImageUI.gameObject.SetActive(true);
+                extraImageUI.sprite = currentLine.extraImage;
+            }
+            else
+            {
+                extraImageUI.gameObject.SetActive(false);
+            }
+        }
+
+        StopAllCoroutines();
         currentFullLine = currentLine.line;
         typingCoroutine = StartCoroutine(TypeSentence(currentLine.line));
     }
@@ -103,7 +126,6 @@ public class DialogueManager : MonoBehaviour
 
         if (isTyping)
         {
-            // Finish typing instantly
             if (typingCoroutine != null)
                 StopCoroutine(typingCoroutine);
 
@@ -122,5 +144,9 @@ public class DialogueManager : MonoBehaviour
         animator.Play("hide");
         leftCharacterIcon.gameObject.SetActive(false);
         rightCharacterIcon.gameObject.SetActive(false);
+        if (extraImageUI != null)
+            extraImageUI.gameObject.SetActive(false);
+        if (extraImageBody != null)
+            extraImageBody.SetActive(false);
     }
 }
