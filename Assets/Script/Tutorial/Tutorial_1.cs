@@ -5,90 +5,73 @@ using UnityEngine.UI;
 
 public class Tutorial_1 : MonoBehaviour
 {
-    [Header("Tutorial ID")]
-    public string tutorialID = "Tutorial_1"; // Set unique ID for this tutorial
+    [Header("Tutorial Data List")]
+    public TutorialData[] tutorialDataList; // Drag multiple ScriptableObjects here
 
     [Header("UI References")]
-    public TMP_Text tutorialText;         // Drag Text UI here
-    public Button nextButton;         // Drag Next Button UI here
-    public Animator panelAnimator;    // (Optional) Drag Animator for panel animation
-
-    [Header("Tutorial Content")]
-    [TextArea]
-    public string[] tutorialSentences;
-
-    [Header("Animation Clips")]
-    public string[] animationClipNames = { "Tutorial_1", "Tutorial_1_2", "Tutorial_1_3", "Tutorial_1_4" };
-    public int[] animationStartSentenceIndexes = { 0, 2, 3, 5 }; // Contoh: animasi ke-1 mulai di sentence 0, ke-2 di 2, dst
-
-    [Header("Typewriter Settings")]
-    public float typeSpeed = 0.05f;
+    public TMP_Text tutorialText;
+    public Button nextButton;
+    public Animator panelAnimator;
 
     [Header("Voice Over")]
-    public AudioClip[] voiceOvers; // Drag audio clips here, urut sesuai sentences
-    public AudioSource audioSource; // Drag AudioSource component here
+    public AudioSource audioSource;
 
     private int currentSentence = 0;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private int currentAnimationIndex = 0;
+    private int currentTutorialIndex = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Cek apakah tutorial sudah pernah selesai
+        if (tutorialDataList == null || tutorialDataList.Length == 0)
+            return;
+
         if (PlayerPrefs.GetInt(GetPlayerPrefKey(), 0) == 1)
         {
-            // Jika sudah, nonaktifkan panel/tutorial
             if (panelAnimator != null)
                 panelAnimator.SetTrigger("Hide");
             if (nextButton != null)
                 nextButton.interactable = false;
-            gameObject.SetActive(false);
+            // Hapus atau komentari baris di bawah ini agar GameObject tidak dinonaktifkan:
+            // gameObject.SetActive(false);
             return;
         }
 
         nextButton.onClick.AddListener(OnNextClicked);
-        ShowSentence(currentSentence);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // ShowSentence(currentSentence); // Tetap dikomen jika ingin tutorial hanya muncul lewat trigger
     }
 
     void ShowSentence(int index)
     {
-        // Cek apakah perlu ganti animasi berdasarkan index sentence
-        if (panelAnimator != null && animationClipNames.Length > 0 && animationStartSentenceIndexes.Length > 0)
+        var tutorialData = tutorialDataList[currentTutorialIndex];
+
+        if (panelAnimator != null && tutorialData.animationClipNames.Length > 0 && tutorialData.animationStartSentenceIndexes.Length > 0)
         {
-            // Jika index sentence >= index start animasi berikutnya, pindah ke animasi berikutnya
-            if (currentAnimationIndex < animationStartSentenceIndexes.Length - 1 &&
-                index >= animationStartSentenceIndexes[currentAnimationIndex + 1])
+            if (currentAnimationIndex < tutorialData.animationStartSentenceIndexes.Length - 1 &&
+                index >= tutorialData.animationStartSentenceIndexes[currentAnimationIndex + 1])
             {
                 currentAnimationIndex++;
             }
 
-            if (currentAnimationIndex < animationClipNames.Length)
-                panelAnimator.Play(animationClipNames[currentAnimationIndex]);
+            if (currentAnimationIndex < tutorialData.animationClipNames.Length)
+                panelAnimator.Play(tutorialData.animationClipNames[currentAnimationIndex]);
         }
 
-        // Play voice over if available
-        if (audioSource != null && voiceOvers != null && index < voiceOvers.Length && voiceOvers[index] != null)
+        if (audioSource != null && tutorialData.voiceOvers != null && index < tutorialData.voiceOvers.Length && tutorialData.voiceOvers[index] != null)
         {
             audioSource.Stop();
-            audioSource.clip = voiceOvers[index];
+            audioSource.clip = tutorialData.voiceOvers[index];
             audioSource.Play();
         }
 
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeSentence(tutorialSentences[index]));
+        typingCoroutine = StartCoroutine(TypeSentence(tutorialData.tutorialSentences[index], tutorialData.typeSpeed));
     }
 
-    IEnumerator TypeSentence(string sentence)
+    IEnumerator TypeSentence(string sentence, float typeSpeed)
     {
         isTyping = true;
         tutorialText.text = "";
@@ -102,40 +85,74 @@ public class Tutorial_1 : MonoBehaviour
 
     void OnNextClicked()
     {
+        var tutorialData = tutorialDataList[currentTutorialIndex];
+
         if (isTyping)
         {
-            // Selesaikan typing langsung jika user klik Next saat animasi
             StopCoroutine(typingCoroutine);
-            tutorialText.text = tutorialSentences[currentSentence];
+            tutorialText.text = tutorialData.tutorialSentences[currentSentence];
             isTyping = false;
             return;
         }
 
         currentSentence++;
-        if (currentSentence < tutorialSentences.Length)
+        if (currentSentence < tutorialData.tutorialSentences.Length)
         {
             ShowSentence(currentSentence);
         }
         else
         {
-            // Tutorial selesai, bisa sembunyikan panel atau lanjut ke scene berikutnya
             if (panelAnimator != null)
-                panelAnimator.SetTrigger("Hide"); // Pastikan ada trigger "Hide" di Animator
+                panelAnimator.SetTrigger("Hide");
             nextButton.interactable = false;
             if (audioSource != null)
                 audioSource.Stop();
 
-            // Simpan status tutorial selesai di PlayerPrefs
             PlayerPrefs.SetInt(GetPlayerPrefKey(), 1);
             PlayerPrefs.Save();
 
-            // Optional: Nonaktifkan GameObject setelah selesai
-            gameObject.SetActive(false);
+            // Hapus atau komentari baris di bawah ini:
+            // gameObject.SetActive(false);
+            return;
         }
     }
 
     private string GetPlayerPrefKey()
     {
-        return $"Tutorial_{tutorialID}_Completed";
+        return $"Tutorial_{tutorialDataList[currentTutorialIndex].tutorialID}_Completed";
+    }
+
+    [ContextMenu("Start Animation From Index 0")]
+    public void TriggerStartAnimation()
+    {
+        currentAnimationIndex = 0;
+        var tutorialData = tutorialDataList[currentTutorialIndex];
+        if (panelAnimator != null && tutorialData.animationClipNames.Length > 0)
+        {
+            panelAnimator.Play(tutorialData.animationClipNames[0]);
+        }
+    }
+
+    // Trigger tutorial by index (which tutorial SO, and which sentence)
+    public void TriggerTutorialAtIndex(int tutorialIndex, int sentenceIndex)
+    {
+        if (tutorialIndex < 0 || tutorialIndex >= tutorialDataList.Length)
+            return;
+
+        var tutorialData = tutorialDataList[tutorialIndex];
+        if (sentenceIndex < 0 || sentenceIndex >= tutorialData.tutorialSentences.Length)
+            return;
+
+        currentTutorialIndex = tutorialIndex;
+        currentSentence = sentenceIndex;
+        currentAnimationIndex = 0;
+        for (int i = 0; i < tutorialData.animationStartSentenceIndexes.Length; i++)
+        {
+            if (sentenceIndex >= tutorialData.animationStartSentenceIndexes[i])
+                currentAnimationIndex = i;
+            else
+                break;
+        }
+        ShowSentence(currentSentence);
     }
 }

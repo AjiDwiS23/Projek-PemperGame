@@ -13,8 +13,6 @@ public class PermainanManager : MonoBehaviour
     private const string LastCheckpointIDKey = "LastCheckpointID";
 
     //ui
-    public GameObject materiPanel;
-
 
     void Awake()
     {
@@ -49,13 +47,7 @@ public class PermainanManager : MonoBehaviour
             lastCheckpointID = 0;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            materiPanel.SetActive(true);
-        }
-    }
+
     public void SetCheckpoint(Vector3 pos, int id)
     {
         if (id > lastCheckpointID)

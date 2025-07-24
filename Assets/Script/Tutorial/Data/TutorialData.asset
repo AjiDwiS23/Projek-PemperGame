@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9426ddc4785e2946bd378ae5d2ef486, type: 3}
+  m_Name: TutorialData
+  m_EditorClassIdentifier: 
+  tutorialID: Tutorial_1
+  tutorialSentences:
+  - asdasda
+  - qwqweqwe
+  - qqqqqqqqqqqqqqqq
+  - qweqweqwe
+  animationClipNames:
+  - Tutorial_1
+  - Tutorial_1_2
+  - Tutorial_1_3
+  - Tutorial_1_4
+  animationStartSentenceIndexes: 00000000010000000200000003000000
+  typeSpeed: 0.05
+  voiceOvers:
+  - {fileID: 8300000, guid: 4d455481819203f46bb4959a221d5add, type: 3}
+  - {fileID: 8300000, guid: b04f597d1a4efa041bd9a4262a12df4f, type: 3}
+  - {fileID: 8300000, guid: 600a99f0cc796634fb1acf437140a98e, type: 3}
+  - {fileID: 8300000, guid: e439db0f2756eb840bebd7f39d6aaf69, type: 3}
