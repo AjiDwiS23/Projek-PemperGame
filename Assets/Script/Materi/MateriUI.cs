@@ -11,7 +11,6 @@ public class MateriUI : MonoBehaviour
     public GameObject materiUI;
     public Image materiImage;
     public TMP_Text materiText;
-    public Animator materiAnimator;
     public Dialogue_Materi dialogueMateri;
 
     [Header("Materi Data")]
@@ -50,10 +49,10 @@ public class MateriUI : MonoBehaviour
             if (!isPanelActive)
             {
                 ShowMateriPanelWithDialog();
-            }
-            else
-            {
-                HideMateriPanelWithAnimator();
+                if (dialogueMateri != null)
+                {
+                    dialogueMateri.ShowDialogByIndex(0);
+                }
             }
         }
     }
@@ -87,8 +86,6 @@ public class MateriUI : MonoBehaviour
     public void HideMateri()
     {
         if (materiPanel != null) materiPanel.SetActive(false);
-        if (materiAnimator != null)
-            materiAnimator.SetTrigger("Hide");
     }
 
     // Fungsi untuk menampilkan panel dan trigger animator Show serta dialog
@@ -96,24 +93,12 @@ public class MateriUI : MonoBehaviour
     {
         if (materiUI != null){
             materiUI.SetActive(true); // Tambahan: aktifkan container UI
-
-            if (materiAnimator != null)
-                materiAnimator.SetTrigger("Show");
         }
         // Tampilkan dialog menggunakan Dialogue_Materi
         if (dialogueMateri != null)
         {
             dialogueMateri.ShowDialog();
         }
-    }
-
-    // Fungsi untuk menyembunyikan panel dengan animator Hide
-    private void HideMateriPanelWithAnimator()
-    {
-        if (materiUI != null) materiUI.SetActive(false); // Tambahan: nonaktifkan container UI
-        if (materiAnimator != null)
-            materiAnimator.SetTrigger("Hide");
-        // Panel akan diset nonaktif setelah animasi selesai, bisa menggunakan event di animator
     }
 
     // --- PlayerPrefs Save/Load ---

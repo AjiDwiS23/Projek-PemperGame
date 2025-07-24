@@ -2775,7 +2775,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2707301815311848840, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
   m_PrefabInstance: {fileID: 6916600231998035446}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1996295661}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f85cbcefe2dde54a9cb7218ef2bda83, type: 3}
@@ -20880,6 +20880,128 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c1f16ffbf0e032468507fd41e012718, type: 3}
+--- !u!1 &1996295661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3679687606109166967, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
+  m_PrefabInstance: {fileID: 6916600231998035446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1996295662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996295661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bae4d1e60c9d54c95e8fd004c3d985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBoxText: {fileID: 722429859555422193}
+  dialogBoxAnimator: {fileID: 3758169224429908407}
+  audioSource: {fileID: 1996295663}
+  typeSpeed: 0.05
+  idleDelay: 0.5
+  dialogueDataArray:
+  - {fileID: 11400000, guid: e09f373e3cf831b4593ee64d550a0d3d, type: 2}
+  dialogueData: {fileID: 0}
+--- !u!82 &1996295663
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996295661}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1996370214
 GameObject:
   m_ObjectHideFlags: 0
@@ -24498,7 +24620,6 @@ GameObject:
   - component: {fileID: 3758169224429908406}
   - component: {fileID: 2594344763479721298}
   - component: {fileID: 3758169224429908407}
-  - component: {fileID: 3758169224429908408}
   m_Layer: 5
   m_Name: DialogueBox_WithoudBtn
   m_TagString: Untagged
@@ -25486,24 +25607,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3758169224429908408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2250519326671477323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bae4d1e60c9d54c95e8fd004c3d985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogBoxText: {fileID: 722429859555422193}
-  dialogBoxAnimator: {fileID: 3758169224429908407}
-  typeSpeed: 0.05
-  hideDelay: 1.5
-  idleDelay: 0.5
-  inspectorDialogText: Teks dialog default yang bisa diubah di Inspector.
 --- !u!1 &3766672008463925353
 GameObject:
   m_ObjectHideFlags: 0
@@ -27025,7 +27128,7 @@ PrefabInstance:
     - target: {fileID: 2707301815311848840, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
       propertyPath: dialogueMateri
       value: 
-      objectReference: {fileID: 3758169224429908408}
+      objectReference: {fileID: 1996295662}
     - target: {fileID: 2707301815311848840, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
       propertyPath: materiAnimator
       value: 
@@ -27266,6 +27369,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3679687606109166967, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1996295662}
+    - targetCorrespondingSourceObject: {fileID: 3679687606109166967, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1996295663}
     - targetCorrespondingSourceObject: {fileID: 4270348174253104101, guid: 49e3214f18ea8854ab7d6c6d19369f00, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6916600231998035456}

@@ -10,48 +10,75 @@ public class Dialogue_Materi : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip voiceOverClip; // Isi di Inspector sesuai kebutuhan
 
     [Header("Dialog Settings")]
     public float typeSpeed = 0.05f;
-    public float hideDelay = 1.5f;
-    public float idleDelay = 0.5f; // Tambahan: delay sebelum kembali ke Idle
+    public float idleDelay = 0.5f;
 
     [Header("Dialog Content")]
-    [TextArea]
-    public string inspectorDialogText = "Teks dialog default yang bisa diubah di Inspector.";
+    public DialogueData[] dialogueDataArray;
+    public DialogueData dialogueData;
 
     public System.Action onDialogComplete;
 
     private Coroutine dialogCoroutine;
 
-    public void ShowDialog(string text = null)
+    // Fungsi trigger dialog berdasarkan index
+    public void ShowDialogByIndex(int index)
     {
+        DialogueData dataToShow = null;
+        if (dialogueDataArray != null && index >= 0 && index < dialogueDataArray.Length)
+            dataToShow = dialogueDataArray[index];
+        else
+            dataToShow = dialogueData;
+
+        ShowDialog(dataToShow);
+    }
+
+    // Method agar bisa dipanggil dari Inspector (UI Button)
+    public void TriggerDialogByIndex(int index)
+    {
+        ShowDialogByIndex(index);
+    }
+
+    public void ShowDialog(DialogueData data = null)
+    {
+        DialogueData usedData = data != null ? data : dialogueData;
+        if (usedData == null) return;
+
+        // Cek apakah dialog sudah pernah muncul
+        if (!string.IsNullOrEmpty(usedData.dialogId) && PlayerPrefs.GetInt(GetDialogKey(usedData.dialogId), 0) == 1)
+            return;
+
         if (dialogCoroutine != null)
             StopCoroutine(dialogCoroutine);
 
-        // Reset semua trigger sebelum mengatur ulang animasi
         dialogBoxAnimator.ResetTrigger("Hide");
         dialogBoxAnimator.ResetTrigger("Idle");
         dialogBoxAnimator.SetTrigger("Show");
 
         dialogBoxText.text = "";
-        string dialogText = string.IsNullOrEmpty(text) ? inspectorDialogText : text;
-        dialogCoroutine = StartCoroutine(TypeAndHideDialog(dialogText));
 
-        // Mainkan audio voice-over jika ada
+        string dialogText = usedData.dialogText;
+        AudioClip voiceClip = usedData.voiceOverClip;
+        float hideDelayValue = usedData.hideDelay;
+
+        dialogCoroutine = StartCoroutine(TypeAndHideDialog(dialogText, voiceClip, hideDelayValue));
+
+        // Simpan status dialog sudah tampil
+        if (!string.IsNullOrEmpty(usedData.dialogId))
+            PlayerPrefs.SetInt(GetDialogKey(usedData.dialogId), 1);
+    }
+
+    private IEnumerator TypeAndHideDialog(string text, AudioClip voiceOverClip, float hideDelay)
+    {
         if (audioSource != null && voiceOverClip != null)
         {
             audioSource.Stop();
             audioSource.clip = voiceOverClip;
             audioSource.Play();
         }
-    }
 
-
-    private IEnumerator TypeAndHideDialog(string text)
-    {
-        // Typewriter effect
         for (int i = 0; i <= text.Length; i++)
         {
             if (dialogBoxText != null)
@@ -59,29 +86,30 @@ public class Dialogue_Materi : MonoBehaviour
             yield return new WaitForSeconds(typeSpeed);
         }
 
-        // Wait before hiding
         yield return new WaitForSeconds(hideDelay);
 
         if (dialogBoxAnimator != null)
             dialogBoxAnimator.SetTrigger("Hide");
 
-        // Callback ke MateriUI
         if (onDialogComplete != null)
             onDialogComplete.Invoke();
 
-        // Tunggu sebelum kembali ke Idle
         yield return new WaitForSeconds(idleDelay);
         SetIdle();
 
-        // (Opsional) Hentikan audio setelah dialog selesai
         if (audioSource != null && audioSource.isPlaying)
             audioSource.Stop();
     }
 
-    // Method untuk trigger Idle
     public void SetIdle()
     {
         if (dialogBoxAnimator != null)
             dialogBoxAnimator.SetTrigger("Idle");
+    }
+
+    // Helper untuk key PlayerPrefs
+    private string GetDialogKey(string dialogId)
+    {
+        return "Dialogue_Materi_Shown_" + dialogId;
     }
 }
