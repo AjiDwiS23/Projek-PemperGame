@@ -21003,6 +21003,7 @@ MonoBehaviour:
   idleDelay: 0.5
   dialogueDataArray:
   - {fileID: 11400000, guid: e09f373e3cf831b4593ee64d550a0d3d, type: 2}
+  - {fileID: 11400000, guid: d26305ddb4cd60d44af1ce4e11aa0da4, type: 2}
   dialogueData: {fileID: 0}
 --- !u!82 &1996295663
 AudioSource:
@@ -26709,6 +26710,14 @@ PrefabInstance:
       propertyPath: quiz
       value: 
       objectReference: {fileID: 11400000, guid: c5e9bf2dae8772043ad84d26fbbcfdad, type: 2}
+    - target: {fileID: 2319831978501973100, guid: cb0419db18204124f9dc48baf39b9a8b, type: 3}
+      propertyPath: dialogIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319831978501973100, guid: cb0419db18204124f9dc48baf39b9a8b, type: 3}
+      propertyPath: dialogueMateri
+      value: 
+      objectReference: {fileID: 1996295662}
     - target: {fileID: 7934016993249972149, guid: cb0419db18204124f9dc48baf39b9a8b, type: 3}
       propertyPath: m_Name
       value: QuizUI

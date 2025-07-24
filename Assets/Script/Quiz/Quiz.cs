@@ -32,6 +32,11 @@ public class Quiz : MonoBehaviour
     public System.Action onCorrectAnswer;
     public System.Action onWrongAnswer;
 
+    // Tambahkan reference ke Dialogue_Materi
+    [Header("Dialogue")]
+    public Dialogue_Materi dialogueMateri;
+    public int dialogIndex = 1; // Index dialog yang ingin ditampilkan saat quiz muncul
+
     void SetupQuiz()
     {
         // Handle image
@@ -130,6 +135,12 @@ public class Quiz : MonoBehaviour
     public void ShowQuiz()
     {
         quizPanel.SetActive(true);
+
+        // Tampilkan dialog saat quiz pertama kali muncul
+        if (dialogueMateri != null)
+        {
+            dialogueMateri.ShowDialogByIndex(dialogIndex);
+        }
     }
 
     public void HideQuiz()
