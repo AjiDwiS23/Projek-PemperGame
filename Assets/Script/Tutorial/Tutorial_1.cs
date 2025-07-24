@@ -143,6 +143,19 @@ public class Tutorial_1 : MonoBehaviour
         if (sentenceIndex < 0 || sentenceIndex >= tutorialData.tutorialSentences.Length)
             return;
 
+        // Reset PlayerPrefs agar tutorial bisa diulang
+        PlayerPrefs.SetInt($"Tutorial_{tutorialData.tutorialID}_Completed", 0);
+        PlayerPrefs.Save();
+
+        // Aktifkan panel dan tombol next jika perlu
+        if (nextButton != null)
+            nextButton.interactable = true;
+
+        // Reset typing state
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+        isTyping = false;
+
         currentTutorialIndex = tutorialIndex;
         currentSentence = sentenceIndex;
         currentAnimationIndex = 0;
@@ -153,9 +166,6 @@ public class Tutorial_1 : MonoBehaviour
             else
                 break;
         }
-        // Aktifkan kembali tombol next setiap kali tutorial di-trigger
-        if (nextButton != null)
-            nextButton.interactable = true;
 
         ShowSentence(currentSentence);
     }

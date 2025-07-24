@@ -29,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     private string currentFullLine = "";
     private Coroutine typingCoroutine;
 
+    // Tambahkan AudioSource untuk voice over
+    public AudioSource audioSource;
+
     private void Awake()
     {
         if (Instance == null)
@@ -102,6 +105,17 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        // === Tambahkan pemutaran voice over di sini ===
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+            if (currentLine.voiceOver != null)
+            {
+                audioSource.clip = currentLine.voiceOver;
+                audioSource.Play();
+            }
+        }
+
         StopAllCoroutines();
         currentFullLine = currentLine.line;
         typingCoroutine = StartCoroutine(TypeSentence(currentLine.line));
@@ -148,5 +162,9 @@ public class DialogueManager : MonoBehaviour
             extraImageUI.gameObject.SetActive(false);
         if (extraImageBody != null)
             extraImageBody.SetActive(false);
+
+        // Stop voice over saat dialog selesai
+        if (audioSource != null)
+            audioSource.Stop();
     }
 }

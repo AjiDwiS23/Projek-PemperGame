@@ -16,6 +16,7 @@ public class DialogueLine
     public string line;
     public bool isLeftAvatar = true;
     public Sprite extraImage;
+    public AudioClip voiceOver; // Tambahkan ini
 }
 
 [System.Serializable]
@@ -52,7 +53,7 @@ public class DialogueTrigger : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogue);
         dialogueStarted = true;
         if (interactIcon != null)
-            interactIcon.SetActive(false); // Sembunyikan icon saat dialog mulai
+            interactIcon.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
