@@ -153,6 +153,10 @@ public class Tutorial_1 : MonoBehaviour
             else
                 break;
         }
+        // Aktifkan kembali tombol next setiap kali tutorial di-trigger
+        if (nextButton != null)
+            nextButton.interactable = true;
+
         ShowSentence(currentSentence);
     }
 }

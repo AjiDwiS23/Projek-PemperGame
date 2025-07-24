@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DialogueData
   m_EditorClassIdentifier: 
   dialogId: 1
-  dialogText: EOKFPOEKFPEOKFPEOKFPEOKFOPEKFEOPK
-  voiceOverClip: {fileID: 8300000, guid: e439db0f2756eb840bebd7f39d6aaf69, type: 3}
-  hideDelay: 1.5
+  dialogText: Haii! Di menu Materi ini kamu bisa belajar segitiga mulai dari pengertian,
+    jenis-jenis, sampai cara ngitung luas dan kelilingnya, tinggal klik aja tombolnya,
+    santai aja ya!
+  voiceOverClip: {fileID: 8300000, guid: 6672903f227cf714590332b41d2b2569, type: 3}
+  hideDelay: 5

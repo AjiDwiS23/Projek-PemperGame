@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9426ddc4785e2946bd378ae5d2ef486, type: 3}
+  m_Name: Tutorial_2
+  m_EditorClassIdentifier: 
+  tutorialID: Tutorial_2
+  tutorialSentences:
+  - Ah lihatlah disana ada Segitiga warna kuning!
+  - jika kamu ingin berinteraksi dengan Segitiga kamu bisa menekan tombol pada keyboard
+    E di dekat karakter Segitiga
+  - Coba kamu temui mereka lalu apa yang segitiga bicarakan kepadamu
+  - 
+  animationClipNames:
+  - Tutorial_1
+  - Tutorial_1
+  - Tutorial_1
+  - Hide_2
+  animationStartSentenceIndexes: 00000000010000000200000003000000
+  typeSpeed: 0.05
+  voiceOvers:
+  - {fileID: 8300000, guid: 629309da4f0852142a55cf4c3941cb20, type: 3}
+  - {fileID: 8300000, guid: 2809ee00598f19246a0af5fd6622f4c9, type: 3}
+  - {fileID: 8300000, guid: ac6007e819ec9da4991fe77b9a1230dc, type: 3}

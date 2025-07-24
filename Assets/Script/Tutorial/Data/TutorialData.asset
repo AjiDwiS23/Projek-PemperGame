@@ -14,19 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialID: Tutorial_1
   tutorialSentences:
-  - asdasda
-  - qwqweqwe
-  - qqqqqqqqqqqqqqqq
-  - qweqweqwe
+  - Halo, Selamat datang di game Triangle!
+  - saya ingin memperkenalkan dulu disini terdapat beberapa elemen yang kamu harus
+    ketahui
+  - Pertama kamu terdapat tiga hati yang dimana jika tiga hati kamu kosong maka kamu
+    akan kalah di permainan ini jadi tolong berhati-hati ya!
+  - Kedua kamu memiliki coin dan kunci yang digunakan untuk membuka pintu menuju
+    level selanjutnya
+  - yang terakhir terdapat skor kamu, skor tersebut digunakan hasil akhir untuk mendapatkan
+    bintang
+  - jadi apakah kamu sudah mengerti? kalau begitu langsung saja bermain!
   animationClipNames:
+  - Tutorial_1
   - Tutorial_1
   - Tutorial_1_2
   - Tutorial_1_3
   - Tutorial_1_4
-  animationStartSentenceIndexes: 00000000010000000200000003000000
+  - Tutorial_1_4
+  animationStartSentenceIndexes: 000000000100000001000000020000000300000005000000
   typeSpeed: 0.05
   voiceOvers:
-  - {fileID: 8300000, guid: 4d455481819203f46bb4959a221d5add, type: 3}
-  - {fileID: 8300000, guid: b04f597d1a4efa041bd9a4262a12df4f, type: 3}
-  - {fileID: 8300000, guid: 600a99f0cc796634fb1acf437140a98e, type: 3}
-  - {fileID: 8300000, guid: e439db0f2756eb840bebd7f39d6aaf69, type: 3}
+  - {fileID: 8300000, guid: 7aa62c9491df7654e94e6ed948a8d544, type: 3}
+  - {fileID: 8300000, guid: 2058dddd20446044d8dbcddb6e17c7c4, type: 3}
+  - {fileID: 8300000, guid: a0b35a4b2ba167b4b9d2e6a8b4737d6c, type: 3}
+  - {fileID: 8300000, guid: b359949878b60db4a987f8b73ac3502c, type: 3}
+  - {fileID: 8300000, guid: 386efc22e3b0bf34ca7a19bea1321f8e, type: 3}
+  - {fileID: 8300000, guid: ccea48300f76afc49885d8a5e4f6b1bb, type: 3}
