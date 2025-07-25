@@ -46,10 +46,6 @@ public class Dialogue_Materi : MonoBehaviour
         DialogueData usedData = data != null ? data : dialogueData;
         if (usedData == null) return;
 
-        // Cek apakah dialog sudah pernah muncul
-        if (!string.IsNullOrEmpty(usedData.dialogId) && PlayerPrefs.GetInt(GetDialogKey(usedData.dialogId), 0) == 1)
-            return;
-
         if (dialogCoroutine != null)
             StopCoroutine(dialogCoroutine);
 
@@ -64,10 +60,6 @@ public class Dialogue_Materi : MonoBehaviour
         float hideDelayValue = usedData.hideDelay;
 
         dialogCoroutine = StartCoroutine(TypeAndHideDialog(dialogText, voiceClip, hideDelayValue));
-
-        // Simpan status dialog sudah tampil
-        if (!string.IsNullOrEmpty(usedData.dialogId))
-            PlayerPrefs.SetInt(GetDialogKey(usedData.dialogId), 1);
     }
 
     private IEnumerator TypeAndHideDialog(string text, AudioClip voiceOverClip, float hideDelay)

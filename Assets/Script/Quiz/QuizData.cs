@@ -11,5 +11,8 @@ public class QuizData : ScriptableObject
     [TextArea]
     public string explanation;
     public int scoreValue = 100; // Skor untuk quiz ini
+
+    // Tambahkan field untuk voice over
+    public AudioClip voiceOverClip;
 }
 

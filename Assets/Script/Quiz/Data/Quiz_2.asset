@@ -25,3 +25,4 @@ MonoBehaviour:
     dibentuk dari tiga titik yang tidak segaris. Meskipun sederhana, segitiga punya
     berbagai jenis dan selalu memiliki jumlah sudut total 180 derajat.
   scoreValue: 300
+  voiceOverClip: {fileID: 8300000, guid: cd120375485dfea4ab3927f179f3a999, type: 3}

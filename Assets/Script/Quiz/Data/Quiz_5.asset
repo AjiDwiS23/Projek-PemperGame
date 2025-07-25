@@ -27,3 +27,4 @@ MonoBehaviour:
     yang memiliki satu sudut 90\xB0, atau segitiga tumpul yang punya satu sudut lebih
     dari 90\xB0."
   scoreValue: 300
+  voiceOverClip: {fileID: 8300000, guid: 74f62b54e2553eb40a04b123e85eb005, type: 3}

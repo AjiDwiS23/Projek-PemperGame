@@ -25,3 +25,4 @@ MonoBehaviour:
     panjang dan dua sudut yang berhadapan dengan sisi tersebut juga memiliki besar
     yang sama.
   scoreValue: 100
+  voiceOverClip: {fileID: 8300000, guid: 74f62b54e2553eb40a04b123e85eb005, type: 3}

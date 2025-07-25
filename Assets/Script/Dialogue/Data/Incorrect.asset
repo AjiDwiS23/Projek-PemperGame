@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b381812e78f00874596bb7e2e2846c21, type: 3}
+  m_Name: Incorrect
+  m_EditorClassIdentifier: 
+  dialogId: 3
+  dialogText: Ups, belum tepat nih~ tapi tenang, coba lagi yuk!
+  voiceOverClip: {fileID: 8300000, guid: 43be25591d68d8d4c88e5d6799c0b33d, type: 3}
+  hideDelay: 2

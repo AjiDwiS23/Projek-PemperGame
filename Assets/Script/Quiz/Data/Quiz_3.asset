@@ -25,3 +25,4 @@ MonoBehaviour:
     sudut-sudutnya juga sama besar. Karena jumlah sudut dalam segitiga selalu 180\xB0,
     maka masing-masing sudut adalah 180\xB0 \xF7 3 = 60\xB0."
   scoreValue: 100
+  voiceOverClip: {fileID: 8300000, guid: 945ba7d81022a5c45940ed1e304b9b08, type: 3}

@@ -25,3 +25,4 @@ MonoBehaviour:
   explanation: "Luas = \xBD \xD7 alas \xD7 tinggi\n= \xBD \xD7 8 \xD7 5\n= 4 \xD7
     5 = 20 cm\xB2"
   scoreValue: 300
+  voiceOverClip: {fileID: 8300000, guid: e2a0d0ff109fb19448c56ad4df8bb3e2, type: 3}

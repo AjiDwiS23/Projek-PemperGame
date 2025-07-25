@@ -35,7 +35,12 @@ public class Quiz : MonoBehaviour
     // Tambahkan reference ke Dialogue_Materi
     [Header("Dialogue")]
     public Dialogue_Materi dialogueMateri;
-    public int dialogIndex = 1; // Index dialog yang ingin ditampilkan saat quiz muncul
+    public int dialogIndexCorrect = 2; // Index dialog untuk jawaban benar
+    public int dialogIndexWrong = 3;   // Index dialog untuk jawaban salah
+
+    // Tambahkan AudioSource untuk voice over quiz
+    [Header("Audio")]
+    public AudioSource audioSource;
 
     void SetupQuiz()
     {
@@ -95,6 +100,16 @@ public class Quiz : MonoBehaviour
             score += quiz.scoreValue; // Gunakan variabel dari QuizData
             if (ScoreManager.Instance != null)
                 ScoreManager.Instance.AddScore(quiz.scoreValue); // Gunakan variabel dari QuizData
+
+            // Trigger dialog untuk jawaban benar
+            if (dialogueMateri != null)
+                dialogueMateri.ShowDialogByIndex(dialogIndexCorrect);
+        }
+        else
+        {
+            // Trigger dialog untuk jawaban salah
+            if (dialogueMateri != null)
+                dialogueMateri.ShowDialogByIndex(dialogIndexWrong);
         }
 
         UpdateScore();
@@ -136,16 +151,29 @@ public class Quiz : MonoBehaviour
     {
         quizPanel.SetActive(true);
 
-        // Tampilkan dialog saat quiz pertama kali muncul
-        if (dialogueMateri != null)
+        // Mainkan voice over quiz jika ada
+        if (audioSource != null)
         {
-            dialogueMateri.ShowDialogByIndex(dialogIndex);
+            audioSource.Stop();
+            if (quiz != null && quiz.voiceOverClip != null)
+            {
+                audioSource.clip = quiz.voiceOverClip;
+                audioSource.Play();
+            }
         }
+
+        // Tidak ada lagi pemanggilan ShowDialogByIndex(dialogIndex)
     }
 
     public void HideQuiz()
     {
         quizPanel.SetActive(false);
+
+        // Stop voice over jika quiz ditutup
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     public void ShowResult(Sprite image, string text, System.Action onClose = null)
