@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Incorrect
   m_EditorClassIdentifier: 
   dialogId: 3
-  dialogText: Ups, belum tepat nih~ tapi tenang, coba lagi yuk!
+  dialogText: ah belum tepat nih tapi tenang coba lagi yuk
   voiceOverClip: {fileID: 8300000, guid: 43be25591d68d8d4c88e5d6799c0b33d, type: 3}
   hideDelay: 2

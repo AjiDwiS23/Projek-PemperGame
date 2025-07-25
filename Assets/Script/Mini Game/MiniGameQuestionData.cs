@@ -10,4 +10,7 @@ public class MiniGameQuestionData : ScriptableObject
     public string[] answerOptions;  // Pilihan jawaban (3)
     public int[] correctAnswerIndices; // Index jawaban benar untuk setiap gambar
     public int scorePerCorrect = 1; // Skor per jawaban benar, bisa diatur di Inspector
+
+    [Header("Voice Over")]
+    public AudioClip questionVoiceOver; // Voice over untuk soal
 }

@@ -137,8 +137,8 @@ public class Quiz : MonoBehaviour
         }
         else
         {
-            // Jika salah, langsung tutup quiz panel
-            HideQuiz();
+            // Reset quiz UI agar bisa dicoba ulang
+            ResetQuizUI();
         }
     }
 
@@ -204,5 +204,16 @@ public class Quiz : MonoBehaviour
     {
         if (onResultClosed != null)
             onResultClosed.Invoke();
+    }
+
+    void ResetQuizUI()
+    {
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            answerButtons[i].interactable = true;
+            feedbackIcons[i * 2].SetActive(false);     // correct icon
+            feedbackIcons[i * 2 + 1].SetActive(false); // incorrect icon
+        }
+        answered = false;
     }
 }

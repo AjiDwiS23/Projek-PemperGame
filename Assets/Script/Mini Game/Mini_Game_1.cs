@@ -19,6 +19,16 @@ public class Mini_Game_1 : MonoBehaviour
 
     public event System.Action OnMiniGameCompleted;
 
+    // Tambahkan AudioSource untuk voice over
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    // Tambahkan reference ke Dialogue_Materi
+    [Header("Dialogue")]
+    public Dialogue_Materi dialogueMateri;
+    public int dialogIndexCorrect = 1;   // Index dialog untuk jawaban benar
+    public int dialogIndexWrong = 2;     // Index dialog untuk jawaban salah
+
     void Awake()
     {
         Instance = this;
@@ -28,7 +38,6 @@ public class Mini_Game_1 : MonoBehaviour
 
     void Start()
     {
-        SetupQuestion();
         foreach (var slot in answerSlots)
             slot.HideResult();
     }
@@ -48,6 +57,19 @@ public class Mini_Game_1 : MonoBehaviour
         {
             answerOptionTexts[i].text = questionData.answerOptions[i];
         }
+
+        // Mainkan voice over soal (hanya satu, bukan array)
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+            if (questionData.questionVoiceOver != null)
+            {
+                audioSource.clip = questionData.questionVoiceOver;
+                audioSource.Play();
+            }
+        }
+
+        // Kode dialogIndexSoal dihapus
     }
 
     public void SetQuestion(MiniGameQuestionData newData)
@@ -87,7 +109,7 @@ public class Mini_Game_1 : MonoBehaviour
     void CheckAnswers()
     {
         int score = 0;
-        bool allCorrect = true;
+        int correctCount = 0;
         for (int i = 0; i < answerSlots.Length; i++)
         {
             bool isCorrect = false;
@@ -98,26 +120,35 @@ public class Mini_Game_1 : MonoBehaviour
                 {
                     score += questionData.scorePerCorrect;
                     isCorrect = true;
+                    correctCount++;
                 }
-                else
-                {
-                    allCorrect = false;
-                }
-            }
-            else
-            {
-                allCorrect = false;
             }
             answerSlots[i].ShowResult(isCorrect);
         }
         Debug.Log("Score: " + score);
 
+        // Mainkan voice over benar/salah
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+            // Tidak ada voice over correct/wrong di data, hanya stop audio
+        }
+
+        // Tampilkan dialog materi untuk benar/salah
+        if (dialogueMateri != null)
+        {
+            if (correctCount == 3)
+                dialogueMateri.ShowDialogByIndex(dialogIndexCorrect);
+            else
+                dialogueMateri.ShowDialogByIndex(dialogIndexWrong);
+        }
+
         // Skor hanya bertambah jika semua benar
-        if (allCorrect && ScoreManager.Instance != null)
+        if (correctCount == 3 && ScoreManager.Instance != null)
             ScoreManager.Instance.AddScore(score);
 
         StartCoroutine(HideIconsAfterDelay(iconShowDuration));
-        if (allCorrect)
+        if (correctCount == 3)
         {
             StartCoroutine(ShowNextUIAfterDelay(iconShowDuration, score));
         }

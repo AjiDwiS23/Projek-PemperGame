@@ -22,4 +22,5 @@ MonoBehaviour:
   - Segitiga sama sisi
   - Segitiga sembarang
   correctAnswerIndices: 000000000100000002000000
-  scorePerCorrect: 100
+  scorePerCorrect: 300
+  questionVoiceOver: {fileID: 8300000, guid: eafe8220870fc9f4da75c669c061a402, type: 3}
