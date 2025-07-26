@@ -5,7 +5,7 @@ using TMPro;
 
 public class Mini_Game_1 : MonoBehaviour
 {
-    [SerializeField] private GameObject miniGame_Panel; // Assign di Inspector jika perlu
+    [SerializeField] public GameObject miniGame_Panel; // Assign di Inspector jika perlu
     public static Mini_Game_1 Instance;
     public MiniGameQuestionData questionData; // Assign di Inspector
     public Image[] questionImageUIs; // Assign UI Image untuk gambar soal
@@ -88,8 +88,10 @@ public class Mini_Game_1 : MonoBehaviour
     public void ShowMiniGame(MiniGameQuestionData newData)
     {
         if (miniGame_Panel != null)
-            miniGame_Panel.SetActive(true); // Tampilkan panel UI mini game
+            miniGame_Panel.SetActive(true);
+        gameObject.SetActive(true);
 
+        ResetUI(); // <--- Tambahkan ini
         SetQuestion(newData); // Set soal & reset UI
     }
 
@@ -154,7 +156,7 @@ public class Mini_Game_1 : MonoBehaviour
         }
     }
 
-    void ResetUI()
+    public void ResetUI()
     {
         // Reset slot dan jawaban
         foreach (var slot in answerSlots)
@@ -168,6 +170,14 @@ public class Mini_Game_1 : MonoBehaviour
             slot.HideResult();
         }
         jawabButton.gameObject.SetActive(false);
+
+        // Sembunyikan nextUI jika ada
+        if (nextUI != null)
+            nextUI.SetActive(false);
+
+        // Reset score text jika perlu
+        if (nextUIScoreText != null)
+            nextUIScoreText.text = "";
     }
 
     IEnumerator HideIconsAfterDelay(float delay)
@@ -192,5 +202,9 @@ public class Mini_Game_1 : MonoBehaviour
         }
         // Panggil event di sini
         OnMiniGameCompleted?.Invoke();
+
+        if (miniGame_Panel != null)
+            miniGame_Panel.SetActive(false);
+        gameObject.SetActive(false); // jika panel utama
     }
 }

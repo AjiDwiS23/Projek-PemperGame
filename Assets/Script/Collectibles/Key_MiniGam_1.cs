@@ -21,14 +21,9 @@ public class Key_MiniGam_1 : MonoBehaviour
 
                 if (!isMiniGameCompleted)
                 {
+                    miniGameUI.OnMiniGameCompleted -= HandleMiniGameCompleted;
                     miniGameUI.ShowMiniGame(questionData);
-                    miniGameUI.OnMiniGameCompleted += () =>
-                    {
-                        CurrencyManager.Instance.AddKey(1);
-                        PlayerPrefs.SetInt(miniGameKey, 1);
-                        PlayerPrefs.Save();
-                        Destroy(gameObject); // Hancurkan collectible setelah selesai
-                    };
+                    miniGameUI.OnMiniGameCompleted += HandleMiniGameCompleted;
                 }
                 else
                 {
@@ -36,5 +31,15 @@ public class Key_MiniGam_1 : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void HandleMiniGameCompleted()
+    {
+        string miniGameKey = "MiniGameCompleted_" + questionData.miniGameID;
+        CurrencyManager.Instance.AddKey(1);
+        PlayerPrefs.SetInt(miniGameKey, 1);
+        PlayerPrefs.Save();
+        miniGameUI.OnMiniGameCompleted -= HandleMiniGameCompleted;
+        Destroy(gameObject); // Hancurkan collectible setelah selesai
     }
 }

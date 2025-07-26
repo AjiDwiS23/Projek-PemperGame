@@ -38,22 +38,39 @@ public class PlatformTrigger : MonoBehaviour
 
             if (!isMiniGameCompleted)
             {
+                // Unsubscribe any existing handlers to avoid duplicates
+                miniGameUI.OnMiniGameCompleted -= HandleMiniGameCompleted;
+
+                // Reset UI before showing the mini-game
+                miniGameUI.ResetUI();
+
                 miniGameUI.ShowMiniGame(questionData);
                 miniGameUI.OnMiniGameCompleted += () =>
                 {
-                    PlayerPrefs.SetInt(miniGameKey, 1); // Tandai mini game ini sudah selesai
-                    PlayerPrefs.Save();
-                    ActivateLeverFromMiniGame();
+                    // ... your completion logic ...
+                    miniGameUI.OnMiniGameCompleted -= HandleMiniGameCompleted;
                 };
                 return;
             }
 
-            // Jika mini game sudah benar, lever bisa diaktifkan terus
             if (platformToActivate != null && isMiniGameCompleted)
             {
                 ActivateLeverFromMiniGame();
             }
         }
+    }
+
+    private void HandleMiniGameCompleted()
+    {
+        string miniGameKey = "MiniGameCompleted_" + questionData.miniGameID;
+        PlayerPrefs.SetInt(miniGameKey, 1);
+        PlayerPrefs.Save();
+
+        if (miniGameUI.miniGame_Panel != null)
+            miniGameUI.miniGame_Panel.SetActive(false);
+
+        miniGameUI.gameObject.SetActive(false);
+        ActivateLeverFromMiniGame();
     }
 
     private void OnPlatformReachedPointB()
