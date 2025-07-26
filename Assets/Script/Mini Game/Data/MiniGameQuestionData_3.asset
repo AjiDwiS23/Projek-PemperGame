@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0c2634007ac2c4a9539a6ba4496e14, type: 3}
+  m_Name: MiniGameQuestionData_3
+  m_EditorClassIdentifier: 
+  miniGameID: 3
+  questionImages:
+  - {fileID: 21300000, guid: 59ca91da6ec9c0c4e882670931aa8e45, type: 3}
+  - {fileID: 21300000, guid: 773452e82e7475b41a978b0247812159, type: 3}
+  - {fileID: 21300000, guid: 6824cbcc32a47f1499970824861d7599, type: 3}
+  answerOptions:
+  - Segitiga Tumpul
+  - Segitiga Sama Sisi
+  - Segitiga Siku-Siku
+  correctAnswerIndices: 000000000100000002000000
+  scorePerCorrect: 500
+  questionVoiceOver: {fileID: 8300000, guid: dbc98eb8b9495844b99abfb09b3c29af, type: 3}

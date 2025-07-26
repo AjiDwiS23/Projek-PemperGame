@@ -25356,6 +25356,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7b46facfdac592e4a8644f0b5e6d2359, type: 2}
     - target: {fileID: 7793206534367321268, guid: 7ed825e2f6b576f47baf0ad7e3747310, type: 3}
+      propertyPath: miniGameUI
+      value: 
+      objectReference: {fileID: 6474920287502883085}
+    - target: {fileID: 7793206534367321268, guid: 7ed825e2f6b576f47baf0ad7e3747310, type: 3}
+      propertyPath: questionData
+      value: 
+      objectReference: {fileID: 11400000, guid: f63d3e8e42c551c439c9eb605d1df232, type: 2}
+    - target: {fileID: 7793206534367321268, guid: 7ed825e2f6b576f47baf0ad7e3747310, type: 3}
       propertyPath: platformToActivate
       value: 
       objectReference: {fileID: 1373036431}

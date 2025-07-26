@@ -7,8 +7,10 @@ public class PlatformTrigger : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer; // Assign di Inspector
     [SerializeField] private Sprite defaultSprite;          // Assign di Inspector
     [SerializeField] private Sprite triggeredSprite;        // Assign di Inspector
-    [SerializeField] private Quiz quizUI;         // Drag komponen Quiz di Inspector
-    [SerializeField] private QuizData quizData;   // Drag asset QuizData di Inspector
+
+    [Header("Mini Game Integration")]
+    [SerializeField] private Mini_Game_1 miniGameUI; // Drag Mini_Game_1 di Inspector
+    [SerializeField] private MiniGameQuestionData questionData; // Drag asset MiniGameQuestionData di Inspector
 
     private bool triggered = false;
 
@@ -29,45 +31,39 @@ public class PlatformTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && quizUI != null && quizData != null)
+        if (other.CompareTag("Player") && miniGameUI != null && questionData != null)
         {
-            string quizKey = "QuizCompleted_" + quizData.quizID;
-            bool isQuizCompleted = PlayerPrefs.GetInt(quizKey, 0) == 1;
+            string miniGameKey = "MiniGameCompleted_" + questionData.miniGameID;
+            bool isMiniGameCompleted = PlayerPrefs.GetInt(miniGameKey, 0) == 1;
 
-            if (!isQuizCompleted)
+            if (!isMiniGameCompleted)
             {
-                quizUI.SetQuiz(quizData);
-                quizUI.ShowQuiz();
-                quizUI.onCorrectAnswer = () =>
+                miniGameUI.ShowMiniGame(questionData);
+                miniGameUI.OnMiniGameCompleted += () =>
                 {
-                    PlayerPrefs.SetInt(quizKey, 1); // Tandai quiz ini sudah selesai
+                    PlayerPrefs.SetInt(miniGameKey, 1); // Tandai mini game ini sudah selesai
                     PlayerPrefs.Save();
-                    ActivateLeverFromQuiz();
-                };
-                quizUI.onWrongAnswer = () =>
-                {
-                    // Quiz bisa diulang, tidak perlu lakukan apa-apa di sini
+                    ActivateLeverFromMiniGame();
                 };
                 return;
             }
 
-            // Jika quiz sudah benar, lever bisa diaktifkan terus
-            if (platformToActivate != null && isQuizCompleted)
+            // Jika mini game sudah benar, lever bisa diaktifkan terus
+            if (platformToActivate != null && isMiniGameCompleted)
             {
-                ActivateLeverFromQuiz();
+                ActivateLeverFromMiniGame();
             }
         }
     }
 
     private void OnPlatformReachedPointB()
     {
-        // Jangan reset triggered di sini!
         AudioManager.instance.Play("Lever");
         if (spriteRenderer != null && defaultSprite != null)
             spriteRenderer.sprite = defaultSprite;
     }
 
-    public void ActivateLeverFromQuiz()
+    public void ActivateLeverFromMiniGame()
     {
         if (platformToActivate != null)
         {
