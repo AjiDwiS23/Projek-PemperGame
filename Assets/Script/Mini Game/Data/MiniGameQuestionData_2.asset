@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniGameID: 2
   questionImages:
-  - {fileID: 21300000, guid: 429517ea1b1287a47952cd5cd8261d74, type: 3}
-  - {fileID: 21300000, guid: 367fef7c7a0cf8b4e8fc2020259965e9, type: 3}
-  - {fileID: 21300000, guid: 9d1a3e0bc36dfc9468a738d92b6e92d4, type: 3}
+  - {fileID: 21300000, guid: 6824cbcc32a47f1499970824861d7599, type: 3}
+  - {fileID: 21300000, guid: 59ca91da6ec9c0c4e882670931aa8e45, type: 3}
+  - {fileID: 21300000, guid: 178d534c0bb77d640884f25afb8aadc2, type: 3}
   answerOptions:
-  - Segitiga
-  - Kotak
-  - Jajargenjang
-  correctAnswerIndices: 020000000100000000000000
-  scorePerCorrect: 1
+  - Segitiga Siku-Siku
+  - Segitiga Tumpul
+  - Segitiga Sembarang
+  correctAnswerIndices: 000000000100000002000000
+  scorePerCorrect: 500
+  questionVoiceOver: {fileID: 8300000, guid: dbc98eb8b9495844b99abfb09b3c29af, type: 3}
