@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5e9198a0a2cc1040afa5f0a11d7d5a7, type: 3}
-  m_Name: DragDropQuestionData
+  m_Name: DragDropQuestionData_2
   m_EditorClassIdentifier: 
-  sentenceTemplate: "Luas segitiga 6cm \xD7 4cm dibagi 2 {0} Keliling segitiga 5
-    cm+6 cm+7cm {1} "
+  sentenceTemplate: "Luas segitiga 8cm \xD7 3cm dibagi 2 {0} Keliling segitiga 4cm+5cm+6cm
+    {1} "
   correctAnswers:
   - "12 cm\xB2"
-  - 18 cm
+  - 15 cm
   answerChoices:
-  - "12 cm\xB2"
-  - 18 cm
+  - 15 cm
   - "24 cm\xB2"
-  - 10 cm
-  voiceOverClip: {fileID: 8300000, guid: 418744f288f2ae542bde0085ae046498, type: 3}
+  - 20 cm
+  - "12 cm\xB2"
+  voiceOverClip: {fileID: 8300000, guid: 56cfee2e76dd5e14e98fe84ff6f00592, type: 3}

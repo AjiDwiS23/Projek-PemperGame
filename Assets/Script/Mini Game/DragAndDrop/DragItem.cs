@@ -13,7 +13,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Transform originalParent;
 
     // Simpan ukuran default untuk AnswerPanel
-    private float defaultWidth = 180f;
+    private float defaultWidth = 300f;
     private float defaultHeight = 50f;
 
     void Awake()
@@ -36,6 +36,10 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         canvasGroup.blocksRaycasts = false;
         originalParent = transform.parent;
         transform.SetParent(transform.root); // Agar di atas UI lain
+
+        // Play SFX Click saat mulai drag
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Click");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -47,6 +51,10 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         canvasGroup.blocksRaycasts = true;
         LayoutElement le = GetComponent<LayoutElement>();
+
+        // Play SFX Click saat drop
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Click");
 
         // Jika tidak di-drop ke slot, kembalikan ke AnswerPanel dan reset ukuran
         if (transform.parent == transform.root)

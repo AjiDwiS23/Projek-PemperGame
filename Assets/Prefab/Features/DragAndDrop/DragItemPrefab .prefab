@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerText: {fileID: 6971489146771678363}
+  answerPanel: {fileID: 0}
 --- !u!114 &4184818438368538688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 180
-  m_PreferredHeight: 50
+  m_PreferredWidth: 300
+  m_PreferredHeight: -1
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
