@@ -285,6 +285,312 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &4703700
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 873164974053484081}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line
+      value: Aku adalah Segi, si segitiga cerdas!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line
+      value: Hai Segi! Kamu lucu banget~
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line
+      value: Terima kasih! Aku punya tiga sisi dan tiga sudut. Itu sebabnya aku disebut
+        segitiga!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line
+      value: Wah, jadi semua segitiga punya tiga sisi ya?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].line
+      value: Betul! Nggak peduli besar atau kecil, asal punya tiga sisi, itu pasti
+        segitiga!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].line
+      value: 'Kalau begitu, kamu bisa berdiri ya karena punya kaki? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].line
+      value: Haha, tentu! Tapi kaki ini cuma untuk gaya aja. Aku tetap bangun datar,
+        bukan makhluk hidup!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].line
+      value: Ooh, paham! Kamu sering dipakai buat apa, Segi?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].line
+      value: Banyak hal! Atap rumah, rambu lalu lintas, bahkan seni origami! Aku
+        serba bisa~
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].line
+      value: Tapi ingat, ada banyak jenis segitiga juga, lho! Seperti segitiga sama
+        sisi, sama kaki, dan sembarang!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].line
+      value: Wah, seru banget! Yuk lanjut belajar bentuk lainnya!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 38198d256f692ba46964ca716fb3b857, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 32ee7eb978b864b40ba33f1b92ea9596, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 187fd4377ce7a174ab38cc6d4a38c291, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: a9d38ecabcf4e154ba1625196f6a8035, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: b0daeefdd1dd67c468101a74c59d34eb, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: d02090cc845ae064a812baf2e94defa9, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 619cbed3220d8b84a80f94acacc5be52, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: e61594ba7c257df42bef3c12484c6aa0, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 013b6cb64f293514f9fe54b8fc3c26cf, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 8cc752ca64b4af04a926cd044f35e524, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 1032997edb0355345b25b48a8e064622, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].extraImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].extraImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 07fbf3fc035e8e34b82cacc925d4ffb9, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].extraImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 44a4ea5d2a3b9fa40a0d2eabd7a37ba9, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].extraImage
+      value: 
+      objectReference: {fileID: -7151663220876981350, guid: 46547bdf0306e0c43b6912ccb9f44e37, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 016610be2874ff74a9e319cbbe6a716f, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 2920ceeb08d83c740b953eb555bd00e0, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 016610be2874ff74a9e319cbbe6a716f, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ddc3c05e7cd65a49b494e54bb8a7042, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 0068967b27b3fce4486ada7d733bd421, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9127fc0a9b0c06f40810bc914b742eef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141372898731928169, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Name
+      value: NPC_2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
 --- !u!114 &42757103 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6024547533915160692, guid: 275fe0d77a486154cbd89b391c1fe034, type: 3}
@@ -3235,7 +3541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniGameUI: {fileID: 6474920287502883085}
-  questionData: {fileID: 11400000, guid: 9bb7673f87b23ba47bde16064f333c75, type: 2}
+  questionData: {fileID: 11400000, guid: 4f48638f22030bd47872930e8f2f4fcf, type: 2}
 --- !u!1 &967238247
 GameObject:
   m_ObjectHideFlags: 0
@@ -23873,6 +24179,18 @@ PrefabInstance:
       propertyPath: finishUIScoreText
       value: 
       objectReference: {fileID: 1244300695}
+    - target: {fileID: 6774885899918474985, guid: a119566f81d02b1459273867eef88e91, type: 3}
+      propertyPath: questionDataArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774885899918474985, guid: a119566f81d02b1459273867eef88e91, type: 3}
+      propertyPath: 'questionDataArray.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ca1da8512bfdc64bbe1f703030574a9, type: 2}
+    - target: {fileID: 6774885899918474985, guid: a119566f81d02b1459273867eef88e91, type: 3}
+      propertyPath: 'questionDataArray.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ca1da8512bfdc64bbe1f703030574a9, type: 2}
     - target: {fileID: 7139893422416646644, guid: a119566f81d02b1459273867eef88e91, type: 3}
       propertyPath: muteIcon
       value: 
@@ -26183,9 +26501,77 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1915654058895950249}
+    - target: {fileID: 2188492515174785478, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188492515174785478, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188492515174785478, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 613.46594
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188492515174785478, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.0308
+      objectReference: {fileID: 0}
     - target: {fileID: 4481090281372516935, guid: 79145943054128c418f632931c014a80, type: 3}
       propertyPath: m_Name
       value: MiniGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016587329014452534, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016587329014452534, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016587329014452534, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 178.3367
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016587329014452534, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.0308
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191654250298463591, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191654250298463591, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191654250298463591, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 612.7312
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191654250298463591, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.0308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373224759442399996, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373224759442399996, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373224759442399996, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 178.3367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373224759442399996, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.0308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800134867734619314, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: questionData
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6800134867734619314, guid: 79145943054128c418f632931c014a80, type: 3}
       propertyPath: dialogueMateri
@@ -26199,6 +26585,26 @@ PrefabInstance:
       propertyPath: dialogIndexCorrect
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7116570092006569582, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116570092006569582, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116570092006569582, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1047.1256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116570092006569582, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.0308
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487020184165747689, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8149487941637160208, guid: 79145943054128c418f632931c014a80, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -26207,6 +26613,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1915654058895950249}
+    - target: {fileID: 8478337123353095156, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478337123353095156, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478337123353095156, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1048.5951
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478337123353095156, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -55.0308
+      objectReference: {fileID: 0}
     - target: {fileID: 9095444520285431915, guid: 79145943054128c418f632931c014a80, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -27662,6 +28084,7 @@ SceneRoots:
   - {fileID: 1981238684}
   - {fileID: 8397188355979413075}
   - {fileID: 4190030261425745568}
+  - {fileID: 4703700}
   - {fileID: 1907851821}
   - {fileID: 791853266}
   - {fileID: 426438610}
