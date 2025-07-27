@@ -295,11 +295,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.33
+      value: 59.46
       objectReference: {fileID: 0}
     - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.19
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -333,6 +333,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1591246672885170202, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
+    - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.89
+      objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: audioSource
       value: 
@@ -343,97 +351,99 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: Aku adalah Segi, si segitiga cerdas!
+      value: Halo teman! Aku Segi, dan hari ini kita akan belajar tentang jenis-jenis
+        segitiga.
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].line
-      value: Hai Segi! Kamu lucu banget~
+      value: Wah, serius? Aku pikir segitiga ya cuma kayak kamu aja!
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].line
-      value: Terima kasih! Aku punya tiga sisi dan tiga sudut. Itu sebabnya aku disebut
-        segitiga!
+      value: Tidak dong! Jadi Segitiga dibedakan berdasarkan panjang sisi dan besar
+        sudutnya.
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].line
-      value: Wah, jadi semua segitiga punya tiga sisi ya?
+      value: Oke, ayo jelaskan!
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].line
-      value: Betul! Nggak peduli besar atau kecil, asal punya tiga sisi, itu pasti
-        segitiga!
+      value: "Kalau dari sisi, ada tiga jenis segitiga. Segitiga sama sisi: tiga
+        sisi sama panjang, semua sudutnya 60\xB0. Segitiga sama kaki: dua sisi yang
+        sama panjang, dan dua sudutnya juga sama. Segitiga sembarang: semua sisi
+        dan sudutnya berbeda."
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].line
-      value: 'Kalau begitu, kamu bisa berdiri ya karena punya kaki? '
+      value: Jadi, gampang dibedain ya!
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].line
-      value: Haha, tentu! Tapi kaki ini cuma untuk gaya aja. Aku tetap bangun datar,
-        bukan makhluk hidup!
+      value: "Kalau dari sudut, juga ada tiga jenis yaitu Segitiga lancip: semua
+        sudut < 90\xB0.  Segitiga siku-siku: ada satu sudut 90\xB0. Segitiga tumpul:
+        ada satu sudut > 90\xB0."
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].line
-      value: Ooh, paham! Kamu sering dipakai buat apa, Segi?
+      value: Oke, aku mulai paham!
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].line
-      value: Banyak hal! Atap rumah, rambu lalu lintas, bahkan seni origami! Aku
-        serba bisa~
+      value: "Jangan lupa ya! Jumlah semua sudut segitiga selalu 180\xB0!"
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[9].line
-      value: Tapi ingat, ada banyak jenis segitiga juga, lho! Seperti segitiga sama
-        sisi, sama kaki, dan sembarang!
+      value: Dan ingat, sudut terbesar itu selalu berhadapan dengan sisi terpanjang.
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[10].line
-      value: Wah, seru banget! Yuk lanjut belajar bentuk lainnya!
+      value: Wah, seru banget! jadi aku ingin lanjut belajar bentuk segitiga!
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 38198d256f692ba46964ca716fb3b857, type: 3}
+      objectReference: {fileID: 8300000, guid: 19bccbc1941e84b408427325bd6e02d6, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 32ee7eb978b864b40ba33f1b92ea9596, type: 3}
+      objectReference: {fileID: 8300000, guid: 20210c6e4e8fb4a4d8358f908ff39930, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 187fd4377ce7a174ab38cc6d4a38c291, type: 3}
+      objectReference: {fileID: 8300000, guid: 3eb06cfd99475ad4ba4c4fea1225c6e7, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: a9d38ecabcf4e154ba1625196f6a8035, type: 3}
+      objectReference: {fileID: 8300000, guid: d74d463b90e77ce4eb6a4b8da8997fe3, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: b0daeefdd1dd67c468101a74c59d34eb, type: 3}
+      objectReference: {fileID: 8300000, guid: 1f75650b302e86b4aa634f32968ed2ed, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: d02090cc845ae064a812baf2e94defa9, type: 3}
+      objectReference: {fileID: 8300000, guid: f72214ae455889f43828f672fafd427f, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 619cbed3220d8b84a80f94acacc5be52, type: 3}
+      objectReference: {fileID: 8300000, guid: 6f97193f8b8e1f24b904d2e4e6455ea4, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: e61594ba7c257df42bef3c12484c6aa0, type: 3}
+      objectReference: {fileID: 8300000, guid: 2bb37cd85a35dfd47b4b144ff62f046f, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 013b6cb64f293514f9fe54b8fc3c26cf, type: 3}
+      objectReference: {fileID: 8300000, guid: fe4ac0a12f99dde45904675520c0dfae, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[9].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 8cc752ca64b4af04a926cd044f35e524, type: 3}
+      objectReference: {fileID: 8300000, guid: 07809a44ea02d38438885c06c10e2437, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[10].voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1032997edb0355345b25b48a8e064622, type: 3}
+      objectReference: {fileID: 8300000, guid: eea3277b62c2ae9458351d9a780d9e46, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].extraImage
       value: 
@@ -441,15 +451,23 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].extraImage
       value: 
-      objectReference: {fileID: 21300000, guid: 07fbf3fc035e8e34b82cacc925d4ffb9, type: 3}
+      objectReference: {fileID: -8239396693782294979, guid: 698e5e21ae35b174b9331204c1f9c6c5, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].extraImage
+      value: 
+      objectReference: {fileID: -3457912459859232840, guid: eb5fa5c5dca241445910becf87c9630e, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].extraImage
+      value: 
+      objectReference: {fileID: -6438624337766311655, guid: 5924451907fc3dd48bea0d816d7e9059, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].extraImage
       value: 
-      objectReference: {fileID: 21300000, guid: 44a4ea5d2a3b9fa40a0d2eabd7a37ba9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[9].extraImage
       value: 
-      objectReference: {fileID: -7151663220876981350, guid: 46547bdf0306e0c43b6912ccb9f44e37, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].isLeftAvatar
       value: 0
@@ -497,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: Segitiga Cerdas
@@ -513,7 +531,7 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
       value: Segitiga Cerdas
@@ -529,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].character.name
       value: Segitiga Cerdas
@@ -545,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].character.name
       value: Segitiga Cerdas
@@ -561,7 +579,7 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 559a2400b984ef148aeca16fad2119ef, type: 3}
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].character.name
       value: Segitiga Cerdas
@@ -569,7 +587,7 @@ PrefabInstance:
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[9].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 0068967b27b3fce4486ada7d733bd421, type: 3}
+      objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[9].character.name
       value: Segitiga Cerdas
@@ -585,6 +603,30 @@ PrefabInstance:
     - target: {fileID: 7141372898731928169, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Name
       value: NPC_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.36133558
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.40020677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.37280568
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2166,6 +2208,368 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &354473290
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 119.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591246672885170202, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Size.x
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591246672885170202, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Size.y
+      value: 3.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591246672885170202, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3944874373148951102, guid: ada6e9c0e2d4b5742add1212cc62c39a, type: 3}
+    - target: {fileID: 1591246672885170202, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 873164974053484081}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line
+      value: Hai teman! Sekarang kita kenalan sama Unsur - Unsur segitiga, yuk!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line
+      value: Unsur - Unsur? Maksudnya apa tuh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line
+      value: Jadi saya punya 3 sisi (garis di pinggir), 3 sudut (pertemuan dua sisi),
+        dan 3 titik sudut biasanya dinamai A, B, dan C.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line
+      value: Oh iya, huruf-huruf itu aku lihat sering muncul di soal!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].line
+      value: Betul! Ada juga tinggi segitiga, yaitu garis lurus dari sudut ke sisi
+        seberangnya. dan juga dengan simbol T yaitu tinggi
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].line
+      value: Kayak garis dari atas ke bawah gitu?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].line
+      value: 'Iya! Semua unsur ini penting buat ngitung luas Segitiga ada juga keliling
+        segitiga
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].line
+      value: Seru juga, aku jadi makin paham!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].line
+      value: Mantap! Yuk lanjut ke bagian berikutnya!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].line
+      value: Wah, seru banget! Yuk lanjut belajar bentuk lainnya!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].line
+      value: Wah, seru banget! Yuk lanjut belajar bentuk lainnya!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 859bde9cbe57a1140abe506d6eca0839, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: c36d6653e8c7bd743b52d2e386273202, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 70e51c6aea8c31146901068407fbed70, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 048da4b545e946a45818091a7f0f36b8, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d31e6a0e0621144eb63865712a00237, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: e230987dc44be3845a6e359da8641ef9, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: a50228d6d84400849bfcf6239d657fe8, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 932a1aa8bc60a51468e2f2a97df10983, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: caa4f541c21d7d2448ff8dcb4d9ff037, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 1032997edb0355345b25b48a8e064622, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].voiceOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 1032997edb0355345b25b48a8e064622, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].extraImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].extraImage
+      value: 
+      objectReference: {fileID: 2386608320602151172, guid: 56bbaa6525463bb45937298735375b0d, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].extraImage
+      value: 
+      objectReference: {fileID: 8717212563717931936, guid: 6381b7134b1c7e9409491c5007585cdd, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].extraImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].extraImage
+      value: 
+      objectReference: {fileID: 5119651383826544746, guid: 2f1b672244588a046bb42f744d154a4c, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].extraImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].extraImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].extraImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].isLeftAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].isLeftAvatar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 3944874373148951102, guid: ada6e9c0e2d4b5742add1212cc62c39a, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 016610be2874ff74a9e319cbbe6a716f, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
+      value: 
+      objectReference: {fileID: 3944874373148951102, guid: ada6e9c0e2d4b5742add1212cc62c39a, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 2920ceeb08d83c740b953eb555bd00e0, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].character.icon
+      value: 
+      objectReference: {fileID: 3944874373148951102, guid: ada6e9c0e2d4b5742add1212cc62c39a, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 016610be2874ff74a9e319cbbe6a716f, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].character.icon
+      value: 
+      objectReference: {fileID: 3944874373148951102, guid: ada6e9c0e2d4b5742add1212cc62c39a, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].character.name
+      value: Segitiga Cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ddc3c05e7cd65a49b494e54bb8a7042, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].character.icon
+      value: 
+      objectReference: {fileID: 3944874373148951102, guid: ada6e9c0e2d4b5742add1212cc62c39a, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[8].character.name
+      value: Segitiga cerdas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9127fc0a9b0c06f40810bc914b742eef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[9].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9127fc0a9b0c06f40810bc914b742eef, type: 3}
+    - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[10].character.name
+      value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141372898731928169, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Name
+      value: NPC_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3871037
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3871037
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3871037
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069340537642092760, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
 --- !u!1 &420519133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,7 +5124,7 @@ Transform:
   m_GameObject: {fileID: 1370555013}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.01, y: 5.79, z: 0}
+  m_LocalPosition: {x: 71.86, y: 4.69, z: 0}
   m_LocalScale: {x: 0.3158918, y: 0.3158919, z: 0.3158919}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20523,7 +20927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1907851821
 Transform:
   m_ObjectHideFlags: 0
@@ -28085,6 +28489,7 @@ SceneRoots:
   - {fileID: 8397188355979413075}
   - {fileID: 4190030261425745568}
   - {fileID: 4703700}
+  - {fileID: 354473290}
   - {fileID: 1907851821}
   - {fileID: 791853266}
   - {fileID: 426438610}
