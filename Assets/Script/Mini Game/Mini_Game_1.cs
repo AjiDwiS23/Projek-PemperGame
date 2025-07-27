@@ -5,11 +5,11 @@ using TMPro;
 
 public class Mini_Game_1 : MonoBehaviour
 {
-    [SerializeField] public GameObject miniGame_Panel; // Assign di Inspector jika perlu
+    [SerializeField] public GameObject miniGame_Panel;
     public static Mini_Game_1 Instance;
-    public MiniGameQuestionData questionData; // Assign di Inspector
-    public Image[] questionImageUIs; // Assign UI Image untuk gambar soal
-    public DraggableAnswer[] answerButtons; // Assign button jawaban
+    public MiniGameQuestionData questionData;
+    public Image[] questionImageUIs;
+    public DraggableAnswer[] answerButtons; // Assign di Inspector
     public AnswerSlot[] answerSlots;
     public Button jawabButton;
     public float iconShowDuration = 1.5f;
@@ -19,15 +19,13 @@ public class Mini_Game_1 : MonoBehaviour
 
     public event System.Action OnMiniGameCompleted;
 
-    // Tambahkan AudioSource untuk voice over
     [Header("Audio")]
     public AudioSource audioSource;
 
-    // Tambahkan reference ke Dialogue_Materi
     [Header("Dialogue")]
     public Dialogue_Materi dialogueMateri;
-    public int dialogIndexCorrect = 1;   // Index dialog untuk jawaban benar
-    public int dialogIndexWrong = 2;     // Index dialog untuk jawaban salah
+    public int dialogIndexCorrect = 1;
+    public int dialogIndexWrong = 2;
 
     void Awake()
     {
@@ -48,17 +46,18 @@ public class Mini_Game_1 : MonoBehaviour
         for (int i = 0; i < questionImageUIs.Length; i++)
             questionImageUIs[i].sprite = questionData.questionImages[i];
 
-        // Set text jawaban pada button
+        // Set text jawaban pada button dan TMP_Text
         for (int i = 0; i < answerButtons.Length; i++)
+        {
             answerButtons[i].answerText = questionData.answerOptions[i];
-
-        // Set text jawaban pada TMP_Text
+            answerButtons[i].SetAnswerText(questionData.answerOptions[i]);
+        }
         for (int i = 0; i < answerOptionTexts.Length; i++)
         {
             answerOptionTexts[i].text = questionData.answerOptions[i];
         }
 
-        // Mainkan voice over soal (hanya satu, bukan array)
+        // Mainkan voice over soal
         if (audioSource != null)
         {
             audioSource.Stop();
@@ -68,8 +67,6 @@ public class Mini_Game_1 : MonoBehaviour
                 audioSource.Play();
             }
         }
-
-        // Kode dialogIndexSoal dihapus
     }
 
     public void SetQuestion(MiniGameQuestionData newData)
@@ -91,8 +88,8 @@ public class Mini_Game_1 : MonoBehaviour
             miniGame_Panel.SetActive(true);
         gameObject.SetActive(true);
 
-        ResetUI(); // <--- Tambahkan ini
-        SetQuestion(newData); // Set soal & reset UI
+        ResetUI();
+        SetQuestion(newData);
     }
 
     public void CheckAllSlotsFilled()
@@ -129,14 +126,11 @@ public class Mini_Game_1 : MonoBehaviour
         }
         Debug.Log("Score: " + score);
 
-        // Mainkan voice over benar/salah
         if (audioSource != null)
         {
             audioSource.Stop();
-            // Tidak ada voice over correct/wrong di data, hanya stop audio
         }
 
-        // Tampilkan dialog materi untuk benar/salah
         if (dialogueMateri != null)
         {
             if (correctCount == 3)
@@ -145,7 +139,6 @@ public class Mini_Game_1 : MonoBehaviour
                 dialogueMateri.ShowDialogByIndex(dialogIndexWrong);
         }
 
-        // Skor hanya bertambah jika semua benar
         if (correctCount == 3 && ScoreManager.Instance != null)
             ScoreManager.Instance.AddScore(score);
 
@@ -158,24 +151,38 @@ public class Mini_Game_1 : MonoBehaviour
 
     public void ResetUI()
     {
-        // Reset slot dan jawaban
+        // Kosongkan semua slot dan kembalikan jawaban ke AnswerPanel
         foreach (var slot in answerSlots)
         {
-            if (slot.currentAnswer != null)
+            // Kembalikan semua child DraggableAnswer ke AnswerPanel
+            for (int i = slot.transform.childCount - 1; i >= 0; i--)
             {
-                slot.currentAnswer.transform.SetParent(slot.currentAnswer.originalParent);
-                slot.currentAnswer.transform.localPosition = Vector3.zero;
-                slot.currentAnswer = null;
+                var child = slot.transform.GetChild(i);
+                var answer = child.GetComponent<DraggableAnswer>();
+                if (answer != null)
+                {
+                    answer.transform.SetParent(answer.originalParent, false);
+                    answer.transform.localPosition = Vector3.zero;
+                    answer.gameObject.SetActive(true);
+                }
             }
+            slot.currentAnswer = null;
             slot.HideResult();
         }
+
+        // Pastikan semua jawaban kembali ke AnswerPanel dan aktif
+        foreach (var answer in answerButtons)
+        {
+            answer.transform.SetParent(answer.originalParent, false);
+            answer.transform.localPosition = Vector3.zero;
+            answer.gameObject.SetActive(true);
+        }
+
         jawabButton.gameObject.SetActive(false);
 
-        // Sembunyikan nextUI jika ada
         if (nextUI != null)
             nextUI.SetActive(false);
 
-        // Reset score text jika perlu
         if (nextUIScoreText != null)
             nextUIScoreText.text = "";
     }
@@ -196,15 +203,15 @@ public class Mini_Game_1 : MonoBehaviour
             nextUI.SetActive(true);
             miniGame_Panel.SetActive(false);
 
-            // Tampilkan skor di Next UI
             if (nextUIScoreText != null)
                 nextUIScoreText.text = score.ToString();
         }
-        // Panggil event di sini
         OnMiniGameCompleted?.Invoke();
+
+        ResetUI();
 
         if (miniGame_Panel != null)
             miniGame_Panel.SetActive(false);
-        gameObject.SetActive(false); // jika panel utama
+        gameObject.SetActive(false);
     }
 }

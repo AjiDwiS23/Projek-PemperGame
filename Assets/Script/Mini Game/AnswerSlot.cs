@@ -17,13 +17,9 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
             DraggableAnswer answer = eventData.pointerDrag.GetComponent<DraggableAnswer>();
             if (answer != null)
             {
-                // Jika slot sudah terisi dan bukan jawaban yang sama, lakukan swap
                 if (currentAnswer != null && currentAnswer != answer)
                 {
-                    // Ambil slot asal jawaban baru
                     AnswerSlot originSlot = answer.originalSlot;
-
-                    // Pindahkan currentAnswer ke slot asal jawaban baru
                     if (originSlot != null)
                     {
                         currentAnswer.transform.SetParent(originSlot.transform);
@@ -32,13 +28,11 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
                     }
                     else
                     {
-                        // Jika asal bukan slot (misal panel jawaban), kembalikan ke parent asal
                         currentAnswer.transform.SetParent(currentAnswer.originalParent);
                         currentAnswer.transform.localPosition = Vector3.zero;
                     }
                 }
 
-                // Set jawaban baru ke slot ini
                 answer.transform.SetParent(transform);
                 answer.transform.localPosition = Vector3.zero;
                 currentAnswer = answer;
@@ -49,7 +43,13 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
 
     public void RemoveAnswer()
     {
-        currentAnswer = null;
+        if (currentAnswer != null)
+        {
+            currentAnswer.transform.SetParent(currentAnswer.originalParent, false);
+            currentAnswer.transform.localPosition = Vector3.zero;
+            currentAnswer.gameObject.SetActive(true);
+            currentAnswer = null;
+        }
     }
 
     public void ShowResult(bool isCorrect)
@@ -62,5 +62,22 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
     {
         if (iconCorrect != null) iconCorrect.SetActive(false);
         if (iconWrong != null) iconWrong.SetActive(false);
+    }
+
+    public void ResetSlot()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            var child = transform.GetChild(i);
+            var answer = child.GetComponent<DraggableAnswer>();
+            if (answer != null)
+            {
+                answer.transform.SetParent(answer.originalParent, false);
+                answer.transform.localPosition = Vector3.zero;
+                answer.gameObject.SetActive(true);
+            }
+        }
+        currentAnswer = null;
+        HideResult();
     }
 }
