@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Segitiga_orange_0: -9192304900086576783
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
