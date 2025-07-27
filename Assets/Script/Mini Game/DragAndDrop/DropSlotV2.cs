@@ -46,4 +46,16 @@ public class DropSlotV2 : MonoBehaviour, IDropHandler
         var draggable = currentAnswer.GetComponent<DraggableAnswerV2>();
         return draggable != null ? draggable.answerIndex : -1;
     }
+
+    public void ResetSlot()
+    {
+        if (currentAnswer != null)
+        {
+            var draggable = currentAnswer.GetComponent<DraggableAnswerV2>();
+            if (draggable != null)
+                draggable.ResetToOriginalParent();
+            currentAnswer = null;
+            OnAnswerRemoved?.Invoke();
+        }
+    }
 }

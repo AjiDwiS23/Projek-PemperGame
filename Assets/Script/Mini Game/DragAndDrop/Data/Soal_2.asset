@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57ffcb2783b0a8b42b8828e3e9ecf563, type: 3}
-  m_Name: DragDropQuestionDataV2
+  m_Name: Soal_2
   m_EditorClassIdentifier: 
-  questionText: SDSDSD
+  questionText: AAAAAAAAAAAAAA
   answerChoices:
-  - 12
-  - 13
-  - 14
+  - 15
+  - 51
+  - 11
   correctAnswerIndex: 0
-  questionImage: {fileID: 21300000, guid: fd00b29c3d9553d4c8e0ab3b572af409, type: 3}
-  voiceOverClip: {fileID: 8300000, guid: 2058dddd20446044d8dbcddb6e17c7c4, type: 3}
-  questionNumber: 1
+  questionImage: {fileID: -855298285791758126, guid: e2fa45449ff42d24b8c4991a474bae55, type: 3}
+  voiceOverClip: {fileID: 8300000, guid: 7aa62c9491df7654e94e6ed948a8d544, type: 3}
+  questionNumber: 2

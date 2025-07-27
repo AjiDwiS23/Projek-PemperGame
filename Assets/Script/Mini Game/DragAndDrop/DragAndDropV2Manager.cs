@@ -3,11 +3,13 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public class DragAndDropV2Manager : MonoBehaviour
 {
     [Header("ScriptableObject Question Data")]
-    [SerializeField] private DragDropQuestionDataV2 questionData;
+    [SerializeField] public DragDropQuestionDataV2 questionData;
+    [SerializeField] public List<DragDropQuestionDataV2> allQuestions;
 
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI questionTextUI;
@@ -29,13 +31,13 @@ public class DragAndDropV2Manager : MonoBehaviour
     [SerializeField] private int dialogIndexCorrect = 2;
     [SerializeField] private int dialogIndexWrong = 3;
 
+    public event Action<bool> OnMiniGameCompleted;
+
     private void Start()
     {
         submitButton.SetActive(false);
         dropSlot.OnAnswerDropped += ShowSubmitButton;
         dropSlot.OnAnswerRemoved += HideSubmitButton;
-
-        SetupQuestionUI();
 
         // Tambahkan event pada tombol submit
         var btn = submitButton.GetComponent<Button>();
@@ -46,6 +48,9 @@ public class DragAndDropV2Manager : MonoBehaviour
     private void SetupQuestionUI()
     {
         if (questionData == null) return;
+        if (dropSlot != null)
+            dropSlot.ResetSlot(); // Tambahkan ini untuk reset jawaban di slot
+
         if (questionTextUI != null)
             questionTextUI.text = questionData.questionText;
 
@@ -110,6 +115,7 @@ public class DragAndDropV2Manager : MonoBehaviour
         {
             Debug.Log("Jawaban benar!");
             ScoreManager.Instance.AddScore(500);
+            OnMiniGameCompleted?.Invoke(true);
             AudioManager.instance.Play("Quiz_Finish");
             if (dialogueMateri != null)
                 dialogueMateri.ShowDialogByIndex(dialogIndexCorrect);
@@ -120,6 +126,7 @@ public class DragAndDropV2Manager : MonoBehaviour
         else
         {
             Debug.Log("Jawaban salah!");
+            OnMiniGameCompleted?.Invoke(false);
             AudioManager.instance.Play("Wrong");
             if (dialogueMateri != null)
                 dialogueMateri.ShowDialogByIndex(dialogIndexWrong);
@@ -131,5 +138,12 @@ public class DragAndDropV2Manager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (questionPanel != null)
             questionPanel.SetActive(false);
+    }
+
+    public void ShowMiniGame()
+    {
+        if (questionPanel != null)
+            questionPanel.SetActive(true); // Tampilkan panel mini game
+        SetupQuestionUI();
     }
 }

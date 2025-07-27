@@ -19,6 +19,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int currentScore = 0;
 
+    public delegate void MiniGameCompleted(bool isCorrect);
+    public static event MiniGameCompleted OnMiniGameCompleted;
+
     private void Awake()
     {
         if (Instance == null)
@@ -75,6 +78,11 @@ public class ScoreManager : MonoBehaviour
         {
             AddScore(questions[currentQuestionIndex].scoreValue);
             questionResultIcons[currentQuestionIndex].sprite = correctSprite;
+            OnMiniGameCompleted?.Invoke(true); // jika benar
+        }
+        else
+        {
+            OnMiniGameCompleted?.Invoke(false); // jika salah
         }
     }
 }
