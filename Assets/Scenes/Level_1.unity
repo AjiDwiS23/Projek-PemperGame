@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7775147770192671128, guid: e16971e0675c13e42960da86d8d3df15, type: 3}
+    - target: {fileID: 3435004936074691791, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5398992059605800841, guid: fe3c5532cbbefea49a0b1f9af1065aa2, type: 3}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.x
       value: 1.89
@@ -2272,6 +2276,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3435004936074691791, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5398992059605800841, guid: fe3c5532cbbefea49a0b1f9af1065aa2, type: 3}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.x
       value: 2.2
@@ -25880,6 +25888,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3435004936074691791, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5398992059605800841, guid: fe3c5532cbbefea49a0b1f9af1065aa2, type: 3}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: audioSource
       value: 
