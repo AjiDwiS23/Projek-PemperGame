@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class DragAndDropV2Manager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class DragAndDropV2Manager : MonoBehaviour
 
     [SerializeField] private GameObject answerButtonPrefab; // Prefab button yang ada DraggableAnswerV2
     [SerializeField] private Transform answerPanel;         // Panel tempat spawn button
+
+    [SerializeField] private GameObject questionPanel; // Panel utama yang ingin ditutup
 
     [Header("Dialogue References")]
     [SerializeField] private Dialogue_Materi dialogueMateri;
@@ -107,14 +110,26 @@ public class DragAndDropV2Manager : MonoBehaviour
         {
             Debug.Log("Jawaban benar!");
             ScoreManager.Instance.AddScore(500);
+            AudioManager.instance.Play("Quiz_Finish");
             if (dialogueMateri != null)
                 dialogueMateri.ShowDialogByIndex(dialogIndexCorrect);
+
+            // Mulai coroutine untuk menutup panel setelah 2 detik
+            StartCoroutine(HidePanelAfterDelay(2f));
         }
         else
         {
             Debug.Log("Jawaban salah!");
+            AudioManager.instance.Play("Wrong");
             if (dialogueMateri != null)
                 dialogueMateri.ShowDialogByIndex(dialogIndexWrong);
         }
+    }
+
+    private IEnumerator HidePanelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (questionPanel != null)
+            questionPanel.SetActive(false);
     }
 }

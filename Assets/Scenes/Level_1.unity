@@ -26905,6 +26905,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1915654058895950249}
+    - target: {fileID: 1578170128884280691, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: dialogueMateri
+      value: 
+      objectReference: {fileID: 1996295662}
     - target: {fileID: 2188492515174785478, guid: 79145943054128c418f632931c014a80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

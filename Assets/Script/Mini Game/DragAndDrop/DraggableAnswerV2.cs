@@ -36,6 +36,10 @@ public class DraggableAnswerV2 : MonoBehaviour, IBeginDragHandler, IDragHandler,
         if (canvasGroup != null)
             canvasGroup.blocksRaycasts = false;
 
+        // Play SFX Click saat mulai drag
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Click");
+
         // Jika mulai drag dari DropSlotV2, panggil RemoveAnswer
         if (originalParent != null && originalParent.GetComponent<DropSlotV2>() != null)
         {
@@ -53,6 +57,10 @@ public class DraggableAnswerV2 : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         if (canvasGroup != null)
             canvasGroup.blocksRaycasts = true;
+
+        // Play SFX Click saat drop
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Click");
 
         // Jika parent masih root (belum di-drop ke slot), kembalikan ke panel jawaban
         if (transform.parent == transform.root)
