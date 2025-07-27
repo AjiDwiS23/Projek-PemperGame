@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tinggi segitiga_0: 8717212563717931936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
