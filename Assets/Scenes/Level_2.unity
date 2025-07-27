@@ -672,9 +672,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0c0b680b914548345b0e150f052e36b2, type: 3}
+    - target: {fileID: 3435004936074691791, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5398992059605800841, guid: fe3c5532cbbefea49a0b1f9af1065aa2, type: 3}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.x
-      value: 2.08
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.y
@@ -1854,7 +1858,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.9
+      value: 35.42
       objectReference: {fileID: 0}
     - target: {fileID: 28752097727153507, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1908,9 +1912,13 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3435004936074691791, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5398992059605800841, guid: fe3c5532cbbefea49a0b1f9af1065aa2, type: 3}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.x
-      value: 2.08
+      value: 2.62
       objectReference: {fileID: 0}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.y
@@ -14115,9 +14123,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8830766505284867167, guid: aed6966d6f3d16e43b7a02bdbb09ced2, type: 3}
+    - target: {fileID: 3435004936074691791, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5398992059605800841, guid: fe3c5532cbbefea49a0b1f9af1065aa2, type: 3}
     - target: {fileID: 5480998951147765333, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: m_Size.x
-      value: 1.86
+      value: 2.13
       objectReference: {fileID: 0}
     - target: {fileID: 6028228948312403265, guid: c7bae07db9411e74da7cdb2a4b648f5c, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
