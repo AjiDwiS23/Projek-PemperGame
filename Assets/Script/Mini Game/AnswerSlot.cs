@@ -17,23 +17,34 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
             DraggableAnswer answer = eventData.pointerDrag.GetComponent<DraggableAnswer>();
             if (answer != null)
             {
+                // Jika slot ini sudah ada jawaban, swap ke slot asal jawaban yang baru masuk
                 if (currentAnswer != null && currentAnswer != answer)
                 {
-                    AnswerSlot originSlot = answer.originalSlot;
+                    // Ambil slot asal dari jawaban yang baru masuk
+                    AnswerSlot originSlot = answer.currentParent != null
+                        ? answer.currentParent.GetComponent<AnswerSlot>()
+                        : null;
+
                     if (originSlot != null)
                     {
-                        currentAnswer.transform.SetParent(originSlot.transform);
+                        // Pindahkan jawaban lama ke slot asal jawaban baru
+                        currentAnswer.transform.SetParent(originSlot.transform, false);
+                        currentAnswer.currentParent = originSlot.transform;
                         currentAnswer.transform.localPosition = Vector3.zero;
                         originSlot.currentAnswer = currentAnswer;
                     }
                     else
                     {
-                        currentAnswer.transform.SetParent(currentAnswer.originalParent);
+                        // Jika slot asal tidak ada, kembalikan ke Answer Panel (originalParent)
+                        currentAnswer.transform.SetParent(currentAnswer.originalParent, false);
+                        currentAnswer.currentParent = currentAnswer.originalParent;
                         currentAnswer.transform.localPosition = Vector3.zero;
                     }
                 }
 
-                answer.transform.SetParent(transform);
+                // Pindahkan jawaban baru ke slot ini
+                answer.transform.SetParent(transform, false);
+                answer.currentParent = transform;
                 answer.transform.localPosition = Vector3.zero;
                 currentAnswer = answer;
                 Mini_Game_1.Instance.CheckAllSlotsFilled();
@@ -46,6 +57,7 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
         if (currentAnswer != null)
         {
             currentAnswer.transform.SetParent(currentAnswer.originalParent, false);
+            currentAnswer.currentParent = currentAnswer.originalParent;
             currentAnswer.transform.localPosition = Vector3.zero;
             currentAnswer.gameObject.SetActive(true);
             currentAnswer = null;
@@ -73,6 +85,7 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
             if (answer != null)
             {
                 answer.transform.SetParent(answer.originalParent, false);
+                answer.currentParent = answer.originalParent;
                 answer.transform.localPosition = Vector3.zero;
                 answer.gameObject.SetActive(true);
             }

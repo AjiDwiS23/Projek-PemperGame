@@ -154,17 +154,10 @@ public class Mini_Game_1 : MonoBehaviour
         // Kosongkan semua slot dan kembalikan jawaban ke AnswerPanel
         foreach (var slot in answerSlots)
         {
-            // Kembalikan semua child DraggableAnswer ke AnswerPanel
             for (int i = slot.transform.childCount - 1; i >= 0; i--)
             {
                 var child = slot.transform.GetChild(i);
                 var answer = child.GetComponent<DraggableAnswer>();
-                if (answer != null)
-                {
-                    answer.transform.SetParent(answer.originalParent, false);
-                    answer.transform.localPosition = Vector3.zero;
-                    answer.gameObject.SetActive(true);
-                }
             }
             slot.currentAnswer = null;
             slot.HideResult();

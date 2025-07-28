@@ -8,13 +8,15 @@ public class DraggableAnswer : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public string answerText;
     public TMP_Text answerTextUI;
     public Transform originalParent;
+    public Transform currentParent;
     public AnswerSlot originalSlot;
     private CanvasGroup canvasGroup;
 
     void Awake()
     {
         if (originalParent == null)
-            originalParent = transform.parent;
+            originalParent = transform.parent; // Menyimpan parent awal (Answer Panel)
+        currentParent = originalParent;
         canvasGroup = GetComponent<CanvasGroup>();
         if (answerTextUI == null)
             answerTextUI = GetComponentInChildren<TMP_Text>();
@@ -22,7 +24,6 @@ public class DraggableAnswer : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        originalParent = transform.parent;
         originalSlot = originalParent.GetComponent<AnswerSlot>();
         canvasGroup.blocksRaycasts = false;
     }
