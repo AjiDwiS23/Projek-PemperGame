@@ -27,20 +27,35 @@ public class GameOverUI : MonoBehaviour
 
     public void RestartGame()
     {
-        // Ambil nama scene sebagai key prefix (jika Anda menyimpan per scene)
-        string levelKey = SceneManager.GetActiveScene().name;
+        string sceneName = SceneManager.GetActiveScene().name;
+        string checkpointXKey = sceneName + "_CheckpointX";
+        string checkpointYKey = sceneName + "_CheckpointY";
+        string checkpointZKey = sceneName + "_CheckpointZ";
+        string checkpointIDKey = sceneName + "_LastCheckpointID";
 
-        // Ambil data dari PlayerPrefs
-        int score = PlayerPrefs.GetInt(levelKey + "_Score", 0);
-        int keys = PlayerPrefs.GetInt(levelKey + "_PlayerKeys", 0);
-        int coins = PlayerPrefs.GetInt(levelKey + "_Coins", 0);
-        string checkpoint = PlayerPrefs.GetString(levelKey + "_Checkpoint", "Belum Ada");
+        // Cek apakah checkpoint tersimpan
+        if (PlayerPrefs.HasKey(checkpointXKey) && PlayerPrefs.HasKey(checkpointYKey) && PlayerPrefs.HasKey(checkpointZKey))
+        {
+            float x = PlayerPrefs.GetFloat(checkpointXKey);
+            float y = PlayerPrefs.GetFloat(checkpointYKey);
+            float z = PlayerPrefs.GetFloat(checkpointZKey);
+            int checkpointID = PlayerPrefs.GetInt(checkpointIDKey, 0);
 
-        // Tampilkan di konsol
-        Debug.Log($"[RestartGame] Score: {score}, Kunci: {keys}, Coin: {coins}, Checkpoint: {checkpoint}");
+            Debug.Log($"[RestartGame] Checkpoint Pos: ({x}, {y}, {z}), ID: {checkpointID}");
 
-        Time.timeScale = 1; // Resume normal time scale
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Simpan data checkpoint ke static agar bisa diakses setelah reload scene (opsional)
+            // PermainanManager.Instance.SetCheckpoint(new Vector3(x, y, z), checkpointID);
+
+            PlayerPrefs.Save(); // Pastikan data tersimpan sebelum reload
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            PlayerPrefs.Save(); // Pastikan data tersimpan sebelum reload
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void ExitBtn(string sceneName)

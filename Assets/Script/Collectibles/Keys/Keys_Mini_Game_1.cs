@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Keys_Mini_Game_1 : MonoBehaviour
 {
@@ -7,6 +8,16 @@ public class Keys_Mini_Game_1 : MonoBehaviour
 
     [SerializeField] private DragAndDropV2Manager miniGameManager;
     [SerializeField] private int targetQuestionNumber = 1; // Nomor soal yang harus dijawab
+
+    private void Start()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        string miniGameKey = sceneName + "_MiniGameCompleted_" + targetQuestionNumber;
+        if (PlayerPrefs.HasKey(miniGameKey) && PlayerPrefs.GetInt(miniGameKey) == 1)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -66,6 +77,12 @@ public class Keys_Mini_Game_1 : MonoBehaviour
             // Tambahkan 1 kunci dan otomatis tersimpan di PlayerPrefs sesuai scene
             if (CurrencyManager.Instance != null)
                 CurrencyManager.Instance.AddKey(1);
+
+            // Simpan status mini game selesai di PlayerPrefs dengan key sesuai scene dan nomor soal
+            string sceneName = SceneManager.GetActiveScene().name;
+            string miniGameKey = sceneName + "_MiniGameCompleted_" + targetQuestionNumber;
+            PlayerPrefs.SetInt(miniGameKey, 1); // 1 = sudah selesai
+            PlayerPrefs.Save();
 
             gameObject.SetActive(false);
         }

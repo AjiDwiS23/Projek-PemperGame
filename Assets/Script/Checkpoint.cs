@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +9,6 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private Sprite activatedSprite;
 
     private SpriteRenderer spriteRenderer;
-    // private bool isActivated = false; // DIHAPUS karena tidak digunakan
-
-    // Static list untuk semua checkpoint di scene
     private static List<Checkpoint> allCheckpoints = new List<Checkpoint>();
 
     private void Awake()
@@ -41,13 +37,19 @@ public class Checkpoint : MonoBehaviour
         UpdateAllCheckpointSprites();
     }
 
+    private static string GetCheckpointKey()
+    {
+        return SceneManager.GetActiveScene().name + "_LastCheckpointID";
+    }
+
     public static void UpdateAllCheckpointSprites()
     {
         int lastCheckpointID = 0;
+        string checkpointKey = GetCheckpointKey();
         if (PermainanManager.Instance != null)
             lastCheckpointID = PermainanManager.Instance.GetLastCheckpointID();
-        else if (PlayerPrefs.HasKey("LastCheckpointID"))
-            lastCheckpointID = PlayerPrefs.GetInt("LastCheckpointID");
+        else if (PlayerPrefs.HasKey(checkpointKey))
+            lastCheckpointID = PlayerPrefs.GetInt(checkpointKey);
 
         foreach (var cp in allCheckpoints)
         {
@@ -55,20 +57,17 @@ public class Checkpoint : MonoBehaviour
             {
                 if (cp.spriteRenderer != null && cp.activatedSprite != null)
                     cp.spriteRenderer.sprite = cp.activatedSprite;
-                // cp.isActivated = true; // DIHAPUS karena tidak digunakan
             }
             else
             {
                 if (cp.spriteRenderer != null && cp.defaultSprite != null)
                     cp.spriteRenderer.sprite = cp.defaultSprite;
-                // cp.isActivated = false; // DIHAPUS karena tidak digunakan
             }
         }
     }
 
     private void Start()
     {
-        // Panggil update di Start juga untuk jaga-jaga
         UpdateAllCheckpointSprites();
     }
 
@@ -78,26 +77,28 @@ public class Checkpoint : MonoBehaviour
         {
             AudioManager.instance.Play("Checkpoint");
             int lastCheckpointID = 0;
+            string checkpointKey = GetCheckpointKey();
             if (PermainanManager.Instance != null)
                 lastCheckpointID = PermainanManager.Instance.GetLastCheckpointID();
-            else if (PlayerPrefs.HasKey("LastCheckpointID"))
-                lastCheckpointID = PlayerPrefs.GetInt("LastCheckpointID");
+            else if (PlayerPrefs.HasKey(checkpointKey))
+                lastCheckpointID = PlayerPrefs.GetInt(checkpointKey);
 
             if (PermainanManager.Instance != null && checkpointID > lastCheckpointID)
             {
                 PermainanManager.Instance.SetCheckpoint(transform.position, checkpointID);
 
-                // Update semua checkpoint setelah checkpoint baru diambil
+                // Simpan checkpoint ke PlayerPrefs dengan key sesuai scene
+                PlayerPrefs.SetInt(checkpointKey, checkpointID);
+                PlayerPrefs.Save();
+
                 UpdateAllCheckpointSprites();
 
-                // Tampilkan notifikasi checkpoint baru
                 var notif = Object.FindFirstObjectByType<CheckpointNotificationUI>();
                 if (notif != null)
                     notif.ShowNotification("Checkpoint tersimpan!");
             }
             else if (checkpointID < lastCheckpointID)
             {
-                // Tampilkan notifikasi checkpoint lama
                 var notif = Object.FindFirstObjectByType<CheckpointNotificationUI>();
                 if (notif != null)
                     notif.ShowNotification("Ini bukan checkpoint terakhirmu!");

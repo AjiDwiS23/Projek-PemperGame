@@ -33,6 +33,8 @@ public class DragAndDropV2Manager : MonoBehaviour
 
     public event Action<bool> OnMiniGameCompleted;
 
+    private bool hasAnswered = false;
+
     private void Start()
     {
         submitButton.SetActive(false);
@@ -43,6 +45,7 @@ public class DragAndDropV2Manager : MonoBehaviour
         var btn = submitButton.GetComponent<Button>();
         if (btn != null)
             btn.onClick.AddListener(CheckAnswer);
+        hasAnswered = false;
     }
 
     private void SetupQuestionUI()
@@ -50,6 +53,7 @@ public class DragAndDropV2Manager : MonoBehaviour
         if (questionData == null) return;
         if (dropSlot != null)
             dropSlot.ResetSlot(); // Tambahkan ini untuk reset jawaban di slot
+        hasAnswered = false;
 
         if (questionTextUI != null)
             questionTextUI.text = questionData.questionText;
@@ -104,10 +108,16 @@ public class DragAndDropV2Manager : MonoBehaviour
 
     private void CheckAnswer()
     {
+        if (hasAnswered) return;
+        hasAnswered = true;
+        submitButton.SetActive(false); // Nonaktifkan tombol segera setelah dijawab
+
         int droppedIndex = dropSlot.GetDroppedAnswerIndex();
         if (droppedIndex == -1)
         {
             Debug.Log("Tidak ada jawaban yang dijatuhkan.");
+            hasAnswered = false;
+            submitButton.SetActive(true); // Aktifkan lagi jika tidak ada jawaban
             return;
         }
 
@@ -132,9 +142,14 @@ public class DragAndDropV2Manager : MonoBehaviour
         {
             Debug.Log("Jawaban salah!");
             OnMiniGameCompleted?.Invoke(false);
+            // Stop audio voice over soal jika salah
+            if (questionAudio != null)
+                questionAudio.Stop();
             AudioManager.instance.Play("Wrong");
             if (dialogueMateri != null)
                 dialogueMateri.ShowDialogByIndex(dialogIndexWrong);
+            hasAnswered = false;
+            submitButton.SetActive(true); // Aktifkan lagi tombol submit agar bisa mencoba lagi
         }
     }
 

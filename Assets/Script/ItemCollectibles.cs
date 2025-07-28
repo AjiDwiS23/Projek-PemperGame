@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemCollectibles : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         string coinId = gameObject.name; // Pastikan nama unik, atau gunakan ID lain
         if (CurrencyManager.Instance != null && CurrencyManager.Instance.IsCoinCollected(coinId))

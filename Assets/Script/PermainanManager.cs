@@ -6,13 +6,13 @@ public class PermainanManager : MonoBehaviour
     public static PermainanManager Instance { get; private set; }
 
     private Vector3 checkpointPosition;
-    private const string CheckpointXKey = "CheckpointX";
-    private const string CheckpointYKey = "CheckpointY";
-    private const string CheckpointZKey = "CheckpointZ";
     private int lastCheckpointID = 0;
-    private const string LastCheckpointIDKey = "LastCheckpointID";
 
-    //ui
+    // Helper untuk key PlayerPrefs sesuai scene
+    private string CheckpointXKey => SceneManager.GetActiveScene().name + "_CheckpointX";
+    private string CheckpointYKey => SceneManager.GetActiveScene().name + "_CheckpointY";
+    private string CheckpointZKey => SceneManager.GetActiveScene().name + "_CheckpointZ";
+    private string LastCheckpointIDKey => SceneManager.GetActiveScene().name + "_LastCheckpointID";
 
     void Awake()
     {
@@ -34,7 +34,6 @@ public class PermainanManager : MonoBehaviour
         }
         else
         {
-            // Default: posisi player saat start
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
                 checkpointPosition = player.transform.position;
@@ -46,7 +45,6 @@ public class PermainanManager : MonoBehaviour
         else
             lastCheckpointID = 0;
     }
-
 
     public void SetCheckpoint(Vector3 pos, int id)
     {
@@ -77,20 +75,17 @@ public class PermainanManager : MonoBehaviour
         PlayerPrefs.DeleteKey(CheckpointXKey);
         PlayerPrefs.DeleteKey(CheckpointYKey);
         PlayerPrefs.DeleteKey(CheckpointZKey);
+        PlayerPrefs.DeleteKey(LastCheckpointIDKey);
     }
 
     public void OnFinishButtonClicked()
     {
-        // Simpan skor akhir ke PlayerPrefs (ScoreManager sudah menyimpan, tapi bisa dipastikan di sini)
         if (ScoreManager.Instance != null)
         {
             string stageKey = SceneManager.GetActiveScene().name + "_FinalScore";
             PlayerPrefs.SetInt(stageKey, ScoreManager.Instance.CurrentScore);
             PlayerPrefs.Save();
         }
-
-        // Lakukan aksi lain, misal kembali ke menu, lanjut ke scene berikutnya, dsb.
         Debug.Log("Score saved and finish button pressed!");
     }
-
 }

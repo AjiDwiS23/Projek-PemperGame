@@ -27739,11 +27739,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 207718972384195220, guid: ee73de80436c7954bab2d61201592fd1, type: 3}
       propertyPath: m_Name
-      value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 207718972384195220, guid: ee73de80436c7954bab2d61201592fd1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: GameOverUI
       objectReference: {fileID: 0}
     - target: {fileID: 5414063009987026788, guid: ee73de80436c7954bab2d61201592fd1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

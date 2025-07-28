@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Key_MiniGam_1 : MonoBehaviour
 {
@@ -8,6 +9,18 @@ public class Key_MiniGam_1 : MonoBehaviour
 
     private bool hasTriggered = false;
 
+    private void Start()
+    {
+        if (questionData != null)
+        {
+            string miniGameKey = SceneManager.GetActiveScene().name + "_MiniGameCompleted_" + questionData.miniGameID;
+            if (PlayerPrefs.HasKey(miniGameKey) && PlayerPrefs.GetInt(miniGameKey) == 1)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!hasTriggered && other.CompareTag("Player"))
@@ -16,7 +29,7 @@ public class Key_MiniGam_1 : MonoBehaviour
             if (miniGameUI != null && questionData != null)
             {
                 // Cek PlayerPrefs agar mini game hanya muncul sekali
-                string miniGameKey = "MiniGameCompleted_" + questionData.miniGameID;
+                string miniGameKey = SceneManager.GetActiveScene().name + "_MiniGameCompleted_" + questionData.miniGameID;
                 bool isMiniGameCompleted = PlayerPrefs.GetInt(miniGameKey, 0) == 1;
 
                 if (!isMiniGameCompleted)
@@ -35,7 +48,7 @@ public class Key_MiniGam_1 : MonoBehaviour
 
     private void HandleMiniGameCompleted()
     {
-        string miniGameKey = "MiniGameCompleted_" + questionData.miniGameID;
+        string miniGameKey = SceneManager.GetActiveScene().name + "_MiniGameCompleted_" + questionData.miniGameID;
         CurrencyManager.Instance.AddKey(1);
         PlayerPrefs.SetInt(miniGameKey, 1);
         PlayerPrefs.Save();
