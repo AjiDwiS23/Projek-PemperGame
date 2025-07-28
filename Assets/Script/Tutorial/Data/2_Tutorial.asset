@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9426ddc4785e2946bd378ae5d2ef486, type: 3}
   m_Name: 2_Tutorial
   m_EditorClassIdentifier: 
-  tutorialID: Tutorial_1
+  tutorialID: Tutorial_2
   tutorialSentences:
   - "Ah lihatlah disana ada Segitiga warna kuning!\t"
   - jika kamu ingin berinteraksi dengan Segitiga kamu bisa menekan tombol pada keyboard

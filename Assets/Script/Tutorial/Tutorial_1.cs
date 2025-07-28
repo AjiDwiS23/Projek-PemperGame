@@ -58,9 +58,13 @@ public class Tutorial_1 : MonoBehaviour
                 panelAnimator.Play(tutorialData.animationClipNames[currentAnimationIndex]);
         }
 
+        // Always stop previous audio if any
+        if (audioSource != null)
+            audioSource.Stop();
+
+        // Play new audio if available
         if (audioSource != null && tutorialData.voiceOvers != null && index < tutorialData.voiceOvers.Length && tutorialData.voiceOvers[index] != null)
         {
-            audioSource.Stop();
             audioSource.clip = tutorialData.voiceOvers[index];
             audioSource.Play();
         }
@@ -102,17 +106,18 @@ public class Tutorial_1 : MonoBehaviour
         }
         else
         {
+            // Stop audio langsung saat tutorial selesai
+            if (audioSource != null)
+                audioSource.Stop();
+
             if (panelAnimator != null)
                 panelAnimator.SetTrigger("Hide");
             nextButton.interactable = false;
-            if (audioSource != null)
-                audioSource.Stop();
 
             PlayerPrefs.SetInt(GetPlayerPrefKey(), 1);
             PlayerPrefs.Save();
 
-            // Hapus atau komentari baris di bawah ini:
-            // gameObject.SetActive(false);
+            // gameObject.SetActive(false); // opsional
             return;
         }
     }

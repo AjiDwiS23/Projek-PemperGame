@@ -6,6 +6,8 @@ public class TutorialTrigger : MonoBehaviour
     public int tutorialIndex = 0;         // Index TutorialData di array
     public int sentenceIndex = 0;         // Index kalimat/animasi yang ingin ditrigger
 
+    private bool tutorialAlreadyShown = false;
+
     private void Start()
     {
         // Cek jika tutorialController dan data valid
@@ -20,6 +22,7 @@ public class TutorialTrigger : MonoBehaviour
 
             if (PlayerPrefs.GetInt(playerPrefKey, 0) == 1)
             {
+                tutorialAlreadyShown = true;
                 Destroy(gameObject);
             }
         }
@@ -27,7 +30,7 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !tutorialAlreadyShown)
         {
             tutorialController.TriggerTutorialAtIndex(tutorialIndex, sentenceIndex);
             // Destroy(gameObject); // Hapus: destroy hanya di Start jika sudah pernah
