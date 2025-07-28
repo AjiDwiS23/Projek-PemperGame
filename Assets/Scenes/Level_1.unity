@@ -2670,7 +2670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &426438608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3800,7 +3800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &791853265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24657,10 +24657,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
-    - target: {fileID: 52408110125127473, guid: 59302e0703d0a2247806f52c2763b1fd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6460929471058720900, guid: 59302e0703d0a2247806f52c2763b1fd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24892,18 +24888,6 @@ PrefabInstance:
       propertyPath: finishUIScoreText
       value: 
       objectReference: {fileID: 1244300695}
-    - target: {fileID: 6774885899918474985, guid: a119566f81d02b1459273867eef88e91, type: 3}
-      propertyPath: questionDataArray.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6774885899918474985, guid: a119566f81d02b1459273867eef88e91, type: 3}
-      propertyPath: 'questionDataArray.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ca1da8512bfdc64bbe1f703030574a9, type: 2}
-    - target: {fileID: 6774885899918474985, guid: a119566f81d02b1459273867eef88e91, type: 3}
-      propertyPath: 'questionDataArray.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ca1da8512bfdc64bbe1f703030574a9, type: 2}
     - target: {fileID: 7139893422416646644, guid: a119566f81d02b1459273867eef88e91, type: 3}
       propertyPath: muteIcon
       value: 
