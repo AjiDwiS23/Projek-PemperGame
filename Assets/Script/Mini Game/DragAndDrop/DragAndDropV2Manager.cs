@@ -114,7 +114,7 @@ public class DragAndDropV2Manager : MonoBehaviour
         if (droppedIndex == questionData.correctAnswerIndex)
         {
             Debug.Log("Jawaban benar!");
-            ScoreManager.Instance.AddScore(500);
+            ScoreManager.Instance.AddScore(questionData.scoreReward);
             OnMiniGameCompleted?.Invoke(true);
 
             // Stop audio voice over soal

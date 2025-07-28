@@ -22,4 +22,8 @@ public class DragDropQuestionDataV2 : ScriptableObject
     [Header("Question Number")]
     [Tooltip("Number of this question.")]
     public int questionNumber;
+
+    [Header("Score Reward")]
+    [Tooltip("Score yang didapat jika menjawab benar.")]
+    public int scoreReward = 500;
 }

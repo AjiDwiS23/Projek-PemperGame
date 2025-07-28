@@ -23,3 +23,4 @@ MonoBehaviour:
   questionImage: {fileID: -7013810211001523151, guid: ae66562e5a4780544a9b487589751b37, type: 3}
   voiceOverClip: {fileID: 8300000, guid: e60c0d00a1be474459d95ed0a8f0b107, type: 3}
   questionNumber: 1
+  scoreReward: 1000

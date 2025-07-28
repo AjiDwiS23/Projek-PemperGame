@@ -22,3 +22,4 @@ MonoBehaviour:
   questionImage: {fileID: -5185306988061133033, guid: b1f1d30d85e59fb46a1290f2393cadea, type: 3}
   voiceOverClip: {fileID: 8300000, guid: 41d145c1a13c23741abe3fc967dd7f58, type: 3}
   questionNumber: 2
+  scoreReward: 1000

@@ -1,7 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI; // Added this namespace for Image type
-using UnityEngine.SceneManagement; // Tambahkan ini
+using UnityEngine.SceneManagement;
+using System.Collections; // Tambahkan ini
 
 [System.Serializable]
 public class Question
@@ -18,6 +19,8 @@ public class ScoreManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int currentScore = 0;
+    [SerializeField] private float scoreAnimationDuration = 0.5f; // Durasi animasi skor (detik)
+    private Coroutine scoreAnimationCoroutine;
 
     public delegate void MiniGameCompleted(bool isCorrect);
     public static event MiniGameCompleted OnMiniGameCompleted;
@@ -51,8 +54,15 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int value)
     {
+        int oldScore = currentScore;
         currentScore += value;
-        UpdateScoreText();
+        
+        // Jika ada animasi sebelumnya, hentikan
+        if (scoreAnimationCoroutine != null)
+        {
+            StopCoroutine(scoreAnimationCoroutine);
+        }
+        scoreAnimationCoroutine = StartCoroutine(AnimateScore(oldScore, currentScore));
 
         // Simpan skor akhir berdasarkan nama stage/scene
         string stageKey = SceneManager.GetActiveScene().name + "_FinalScore";
@@ -83,6 +93,26 @@ public class ScoreManager : MonoBehaviour
         else
         {
             OnMiniGameCompleted?.Invoke(false); // jika salah
+        }
+    }
+
+    private IEnumerator AnimateScore(int from, int to)
+    {
+        float elapsed = 0f;
+        while (elapsed < scoreAnimationDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / scoreAnimationDuration);
+            int displayScore = Mathf.RoundToInt(Mathf.Lerp(from, to, t));
+            if (scoreText != null)
+            {
+                scoreText.text = displayScore.ToString();
+            }
+            yield return null;
+        }
+        if (scoreText != null)
+        {
+            scoreText.text = to.ToString();
         }
     }
 }

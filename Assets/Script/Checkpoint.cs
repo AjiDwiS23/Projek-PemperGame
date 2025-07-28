@@ -10,7 +10,7 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private Sprite activatedSprite;
 
     private SpriteRenderer spriteRenderer;
-    private bool isActivated = false;
+    // private bool isActivated = false; // DIHAPUS karena tidak digunakan
 
     // Static list untuk semua checkpoint di scene
     private static List<Checkpoint> allCheckpoints = new List<Checkpoint>();
@@ -55,13 +55,13 @@ public class Checkpoint : MonoBehaviour
             {
                 if (cp.spriteRenderer != null && cp.activatedSprite != null)
                     cp.spriteRenderer.sprite = cp.activatedSprite;
-                cp.isActivated = true;
+                // cp.isActivated = true; // DIHAPUS karena tidak digunakan
             }
             else
             {
                 if (cp.spriteRenderer != null && cp.defaultSprite != null)
                     cp.spriteRenderer.sprite = cp.defaultSprite;
-                cp.isActivated = false;
+                // cp.isActivated = false; // DIHAPUS karena tidak digunakan
             }
         }
     }
