@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ItemCollectibles : MonoBehaviour
 {
-    [SerializeField] private int scoreValue = 1;
-
     private void Awake()
     {
         string coinId = gameObject.name; // Pastikan nama unik, atau gunakan ID lain

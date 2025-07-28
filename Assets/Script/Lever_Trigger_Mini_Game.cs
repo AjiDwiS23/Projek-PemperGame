@@ -15,9 +15,7 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
     [SerializeField] private Sprite defaultSprite;          // Assign di Inspector
     [SerializeField] private Sprite triggeredSprite;        // Assign di Inspector
 
-    private bool playerInTrigger = false;
     private bool hasTriggered = false;
-    private bool triggered = false;
 
     private void Start()
     {
@@ -42,7 +40,6 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasTriggered)
         {
-            playerInTrigger = true;
             if (interactIcon != null)
                 interactIcon.SetActive(true);
 
@@ -81,7 +78,6 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInTrigger = false;
             hasTriggered = false; // Reset agar lever bisa dipakai lagi
             if (interactIcon != null)
                 interactIcon.SetActive(false);
@@ -96,8 +92,6 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
 
         if (platformToActivate != null)
             platformToActivate.ActivatePlatform();
-
-        triggered = true;
 
         SetTriggeredSprite();
     }

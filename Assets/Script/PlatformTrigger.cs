@@ -12,8 +12,6 @@ public class PlatformTrigger : MonoBehaviour
     [SerializeField] private Mini_Game_1 miniGameUI; // Drag Mini_Game_1 di Inspector
     [SerializeField] private MiniGameQuestionData questionData; // Drag asset MiniGameQuestionData di Inspector
 
-    private bool triggered = false;
-
     private void Start()
     {
         if (spriteRenderer != null && defaultSprite != null)
@@ -86,7 +84,6 @@ public class PlatformTrigger : MonoBehaviour
         {
             AudioManager.instance.Play("Lever");
             platformToActivate.ActivatePlatform();
-            triggered = true;
 
             if (spriteRenderer != null && triggeredSprite != null)
                 spriteRenderer.sprite = triggeredSprite;

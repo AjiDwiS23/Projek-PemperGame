@@ -15,8 +15,6 @@ public class Tooltip : MonoBehaviour
     [Header("Default Tooltip Content")]
     [SerializeField] private string defaultLevelName = "Level 1";
     [SerializeField] [TextArea] private string defaultDescription = "Deskripsi level di sini...";
-    [SerializeField] private int defaultStars = 0;
-    [SerializeField] private int defaultScore = 0;
 
     [SerializeField] private Vector2 cursorOffset = new Vector2(40, -40);
     private bool isTooltipActive = false;
