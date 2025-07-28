@@ -15,6 +15,8 @@ public class FinishUI : MonoBehaviour
     [SerializeField] private Sprite starClosedSprite; // Sprite for closed star
     [SerializeField] private Sprite starOpenSprite;   // Sprite for open star
 
+    [SerializeField] private GameObject nextLevelButton; // Assign di Inspector
+
     private Coroutine scoreCoroutine;
     private int lastStarCount = 0;
 
@@ -44,7 +46,7 @@ public class FinishUI : MonoBehaviour
 
         // Set stars based on score
         int starCount = CalculateStars(finalScore);
-        lastStarCount = starCount; // <-- simpan di variabel
+        lastStarCount = starCount;
         SetStars(starCount);
 
         if (finalScoreText != null)
@@ -53,6 +55,12 @@ public class FinishUI : MonoBehaviour
                 StopCoroutine(scoreCoroutine);
             scoreCoroutine = StartCoroutine(AnimateScore(finalScore, 1f));
         }
+
+        // Cek apakah ada stage/scene selanjutnya
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        bool hasNextLevel = nextScene < SceneManager.sceneCountInBuildSettings;
+        if (nextLevelButton != null)
+            nextLevelButton.SetActive(hasNextLevel);
     }
 
     private int CalculateStars(int score)

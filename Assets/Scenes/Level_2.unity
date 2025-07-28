@@ -1039,6 +1039,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &149309434 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1578170128884280691, guid: 79145943054128c418f632931c014a80, type: 3}
+  m_PrefabInstance: {fileID: 1843826367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391b4d445766a0442b24854320395a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &202132208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4089,6 +4100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxName: Click
+--- !u!1 &1057461511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2139237720738408104, guid: 275fe0d77a486154cbd89b391c1fe034, type: 3}
+  m_PrefabInstance: {fileID: 724762395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1058992240
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4203,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4639974143827522454, guid: a29372feb9aaca94ab6c0218827741b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1606198063}
+      addedObject: {fileID: 1606198060}
   m_SourcePrefab: {fileID: 100100000, guid: a29372feb9aaca94ab6c0218827741b8, type: 3}
 --- !u!4 &1087045001 stripped
 Transform:
@@ -10665,7 +10681,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4639974143827522454, guid: a29372feb9aaca94ab6c0218827741b8, type: 3}
   m_PrefabInstance: {fileID: 1087045000}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1606198063
+--- !u!114 &1606198060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10674,11 +10690,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606198059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f2ab1c124ecac46a03251763e94483, type: 3}
+  m_Script: {fileID: 11500000, guid: a02a70eb792abb541bd58e27ed34a748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDropManager: {fileID: 898395844}
-  questionIndex: 1
+  miniGameManager: {fileID: 149309434}
+  targetQuestionNumber: 2
 --- !u!1 &1615886199
 GameObject:
   m_ObjectHideFlags: 0
@@ -12544,6 +12560,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6688469189229604292}
     m_Modifications:
+    - target: {fileID: 1578170128884280691, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: dialogueMateri
+      value: 
+      objectReference: {fileID: 815659855}
+    - target: {fileID: 1578170128884280691, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: allQuestions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578170128884280691, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: 'allQuestions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 41213bf3ebb59ab458d9df502950040b, type: 2}
+    - target: {fileID: 1578170128884280691, guid: 79145943054128c418f632931c014a80, type: 3}
+      propertyPath: 'allQuestions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a40f24f609e9e44e969677dd3bdbdca, type: 2}
     - target: {fileID: 2188492515174785478, guid: 79145943054128c418f632931c014a80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -14050,14 +14082,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4639974143827522454, guid: a29372feb9aaca94ab6c0218827741b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2066110138}
+      addedObject: {fileID: 2066110135}
   m_SourcePrefab: {fileID: 100100000, guid: a29372feb9aaca94ab6c0218827741b8, type: 3}
 --- !u!4 &2066110134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5344620588736557875, guid: a29372feb9aaca94ab6c0218827741b8, type: 3}
   m_PrefabInstance: {fileID: 2066110133}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2066110138
+--- !u!114 &2066110135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14066,11 +14098,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 309277959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f2ab1c124ecac46a03251763e94483, type: 3}
+  m_Script: {fileID: 11500000, guid: a02a70eb792abb541bd58e27ed34a748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDropManager: {fileID: 898395844}
-  questionIndex: 0
+  miniGameManager: {fileID: 149309434}
+  targetQuestionNumber: 1
 --- !u!1001 &2086392271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35574,6 +35606,7 @@ MonoBehaviour:
   - {fileID: 724762399}
   starClosedSprite: {fileID: 1349722673082453749, guid: 3c68552195c29f844b17dbe291dc14ab, type: 3}
   starOpenSprite: {fileID: -7549981471609538759, guid: a393d4fbcda4d8f4fa095d04f13ebc42, type: 3}
+  nextLevelButton: {fileID: 1057461511}
 --- !u!224 &6003521565787817131
 RectTransform:
   m_ObjectHideFlags: 0

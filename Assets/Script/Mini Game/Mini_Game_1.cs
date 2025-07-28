@@ -131,6 +131,15 @@ public class Mini_Game_1 : MonoBehaviour
             audioSource.Stop();
         }
 
+        // SFX untuk hasil jawaban
+        if (AudioManager.instance != null)
+        {
+            if (correctCount == answerSlots.Length)
+                AudioManager.instance.Play("Correct");
+            else
+                AudioManager.instance.Play("Wrong");
+        }
+
         if (dialogueMateri != null)
         {
             if (correctCount == 3)
@@ -158,6 +167,7 @@ public class Mini_Game_1 : MonoBehaviour
             {
                 var child = slot.transform.GetChild(i);
                 var answer = child.GetComponent<DraggableAnswer>();
+                // Tidak perlu set posisi di sini, cukup kembalikan ke parent
             }
             slot.currentAnswer = null;
             slot.HideResult();
@@ -167,7 +177,8 @@ public class Mini_Game_1 : MonoBehaviour
         foreach (var answer in answerButtons)
         {
             answer.transform.SetParent(answer.originalParent, false);
-            answer.transform.localPosition = Vector3.zero;
+            answer.currentParent = answer.originalParent;
+            answer.transform.localPosition = answer.originalLocalPosition; // Kembali ke posisi awal
             answer.gameObject.SetActive(true);
         }
 

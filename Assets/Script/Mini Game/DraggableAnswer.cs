@@ -11,12 +11,14 @@ public class DraggableAnswer : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public Transform currentParent;
     public AnswerSlot originalSlot;
     private CanvasGroup canvasGroup;
+    public Vector3 originalLocalPosition;
 
     void Awake()
     {
         if (originalParent == null)
             originalParent = transform.parent; // Menyimpan parent awal (Answer Panel)
         currentParent = originalParent;
+        originalLocalPosition = transform.localPosition; // Simpan posisi awal
         canvasGroup = GetComponent<CanvasGroup>();
         if (answerTextUI == null)
             answerTextUI = GetComponentInChildren<TMP_Text>();
@@ -26,6 +28,10 @@ public class DraggableAnswer : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         originalSlot = originalParent.GetComponent<AnswerSlot>();
         canvasGroup.blocksRaycasts = false;
+
+        // Mainkan SFX "Click" saat mulai drag
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Click");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,8 +42,17 @@ public class DraggableAnswer : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
-        if (transform.parent == originalParent)
+
+        // Jika parent-nya bukan AnswerSlot, kembalikan ke originalParent dan posisi awal
+        if (transform.parent.GetComponent<AnswerSlot>() == null)
         {
+            transform.SetParent(originalParent, false);
+            currentParent = originalParent;
+            transform.localPosition = originalLocalPosition; // Kembali ke posisi awal
+        }
+        else
+        {
+            // Jika di slot, biarkan di tengah slot
             transform.localPosition = Vector3.zero;
         }
     }

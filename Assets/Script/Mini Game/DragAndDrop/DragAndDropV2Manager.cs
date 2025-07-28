@@ -116,6 +116,11 @@ public class DragAndDropV2Manager : MonoBehaviour
             Debug.Log("Jawaban benar!");
             ScoreManager.Instance.AddScore(500);
             OnMiniGameCompleted?.Invoke(true);
+
+            // Stop audio voice over soal
+            if (questionAudio != null)
+                questionAudio.Stop();
+
             AudioManager.instance.Play("Quiz_Finish");
             if (dialogueMateri != null)
                 dialogueMateri.ShowDialogByIndex(dialogIndexCorrect);
