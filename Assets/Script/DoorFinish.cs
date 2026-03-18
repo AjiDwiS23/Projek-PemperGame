@@ -40,7 +40,7 @@ public class DoorFinish : MonoBehaviour
             hasShownOpenNotif = false;
 
         // Cek input E jika player di trigger
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.E))
+        if (playerInTrigger)
         {
             if (isUnlocked)
             {

@@ -18,8 +18,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f7ed2e17d08bc7499828961fe1ba0d7, type: 3}
   - {fileID: 21300000, guid: 178d534c0bb77d640884f25afb8aadc2, type: 3}
   answerOptions:
-  - Segitiga sama kaki
   - Segitiga sama sisi
+  - Segitiga sama kaki
   - Segitiga sembarang
   correctAnswerIndices: 000000000100000002000000
   scorePerCorrect: 300
