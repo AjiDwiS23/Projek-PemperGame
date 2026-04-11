@@ -4,6 +4,8 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private const float FLASH_DURATION = 0.4f;
+
     public float moveSpeed = 5f;
     public GameOverUI gameOverUI;
     public float jumpForce = 5f;
@@ -11,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.1f;
     public int maxHealth = 2;
-    private int currentHealth;
+    private int currentHealth;  
 
     [SerializeField] Image[] heartIcons;      // Assign di Inspector
     [SerializeField] Sprite heartActive;      // Sprite heart aktif
@@ -36,6 +38,14 @@ public class PlayerMovement : MonoBehaviour
 
     // Untuk moving platform
     private MovingPlatform currentPlatform;
+
+    // coroutine handle for temporary invincibility so we don't accidentally overlap timers
+    private Coroutine invincibleRoutine;
+
+    // flash management to avoid overlapping flashes leaving sprite red
+    private Coroutine flashRoutine;
+    private Color flashOriginalColor;
+    private bool flashActive;
 
     void Start()
     {
@@ -184,8 +194,9 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log($"Player took damage. Current health: {currentHealth}");
         UpdateHeartsUI();
 
-        StartCoroutine(FlashRed()); // Efek flash merah
-        StartCoroutine(Knockback());
+        // visual and physics feedback on hit
+        StartFlashRed();
+        StartCoroutine(Knockback(true));
 
         if (currentHealth <= 0)
         {
@@ -233,8 +244,7 @@ public class PlayerMovement : MonoBehaviour
             UpdateHeartsUI();
             canMove = true;
             isInvincible = false;
-            if (spriteRenderer != null)
-                spriteRenderer.enabled = true;
+            // removed spriteRenderer.enabled toggles per request
         }
     }
 
@@ -247,13 +257,11 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(new Vector2(direction * knockbackForce, 0f), ForceMode2D.Impulse);
 
-        if (spriteRenderer != null)
-            spriteRenderer.enabled = false;
+        // removed spriteRenderer.enabled toggles per request (no disabling to blink)
 
         yield return new WaitForSeconds(invisibleDuration);
 
-        if (spriteRenderer != null)
-            spriteRenderer.enabled = true;
+        // no re-enabling of spriteRenderer here
 
         canMove = true;
         isInvincible = false;
@@ -261,9 +269,11 @@ public class PlayerMovement : MonoBehaviour
         gameOverUI.ShowGameOverUI();
     }
 
-    private System.Collections.IEnumerator Knockback()
+    private System.Collections.IEnumerator Knockback(bool manageInvincibility)
     {
-        isInvincible = true;
+        if (manageInvincibility)
+            isInvincible = true;
+
         canMove = false;
 
         float direction = isFacingRight ? -1f : 1f;
@@ -273,18 +283,40 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(knockbackDuration); // Gunakan knockbackDuration
 
         canMove = true;
-        isInvincible = false;
+
+        if (manageInvincibility)
+            isInvincible = false;
     }
 
-    private System.Collections.IEnumerator FlashRed()
+    // Start flash in a controlled way (stops any previous flash to avoid capturing a red color as original)
+    private void StartFlashRed()
     {
-        if (spriteRenderer != null)
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+        flashRoutine = StartCoroutine(FlashRedRoutine());
+    }
+
+    private System.Collections.IEnumerator FlashRedRoutine()
+    {
+        if (spriteRenderer == null)
         {
-            Color originalColor = spriteRenderer.color;
-            spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(0.4f); // Durasi flash merah diperpanjang
-            spriteRenderer.color = originalColor;
+            flashRoutine = null;
+            yield break;
         }
+
+        if (!flashActive)
+        {
+            flashOriginalColor = spriteRenderer.color;
+            flashActive = true;
+        }
+
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(FLASH_DURATION);
+
+        // restore original color
+        spriteRenderer.color = flashOriginalColor;
+        flashActive = false;
+        flashRoutine = null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -301,5 +333,29 @@ public class PlayerMovement : MonoBehaviour
         {
             currentPlatform = null;
         }
+    }
+
+    public void SetTemporaryInvincible(float duration, bool invisible)
+    {
+        if (invincibleRoutine != null)
+            StopCoroutine(invincibleRoutine);
+        invincibleRoutine = StartCoroutine(TemporaryInvincibleCoroutine(duration, invisible));
+    }
+
+    private System.Collections.IEnumerator TemporaryInvincibleCoroutine(float duration, bool invisible)
+    {
+        // start invincibility window
+        isInvincible = true;
+
+        // immediate visual feedback + physics knockback
+        StartFlashRed();
+        StartCoroutine(Knockback(false));
+
+        // do not disable spriteRenderer to blink; only honor timing for invincibility
+        yield return new WaitForSeconds(duration);
+
+        // end invincibility
+        isInvincible = false;
+        invincibleRoutine = null;
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3518732351621299808}
   - component: {fileID: 7419872723022680926}
   - component: {fileID: 8524826462539958487}
-  - component: {fileID: 7793206534367321268}
   m_Layer: 0
   m_Name: Lever_Quiz
   m_TagString: Untagged
@@ -135,21 +134,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.34632874, y: 0.8534494}
   m_EdgeRadius: 0
---- !u!114 &7793206534367321268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5254881920941971933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc610987afed664eb1728f58c7911fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platformToActivate: {fileID: 0}
-  spriteRenderer: {fileID: 7419872723022680926}
-  defaultSprite: {fileID: 21300000, guid: 17abbed2537b05e47b84a59de375aec7, type: 3}
-  triggeredSprite: {fileID: 21300000, guid: 162fe1f3c3c20e94c9a398e1bc0eccf5, type: 3}
-  quizUI: {fileID: 0}
-  quizData: {fileID: 11400000, guid: 38fa3bc3db01e724b9690a6ff049343e, type: 2}

@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class Lever_Trigger_Mini_Game : MonoBehaviour
 {
-    [Header("Mini Game Integration")]
-    [SerializeField] private Mini_Game_1 miniGameUI; // Drag Mini_Game_1 di Inspector
-    [SerializeField] private MiniGameQuestionData miniGameData; // Drag data soal mini game di Inspector
+    [Header("Platform Integration")]
     [SerializeField] private MovingPlatform platformToActivate; // Drag platform yang ingin diaktifkan
 
     [Header("Interaction Icon")]
@@ -15,7 +13,12 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
     [SerializeField] private Sprite defaultSprite;          // Assign di Inspector
     [SerializeField] private Sprite triggeredSprite;        // Assign di Inspector
 
+    [Header("Input")]
+    [Tooltip("Key used to activate the lever when player is in range.")]
+    [SerializeField] private KeyCode activationKey = KeyCode.E;
+
     private bool hasTriggered = false;
+    private bool playerInRange = false;
 
     private void Start()
     {
@@ -36,56 +39,38 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
             platformToActivate.OnReachedPointB -= OnPlatformReachedPointB;
     }
 
+    private void Update()
+    {
+        // Listen for activation key while player is in range
+        if (playerInRange && !hasTriggered && Input.GetKeyDown(activationKey))
+        {
+            ActivateLever();
+            hasTriggered = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !hasTriggered)
-        {
-            if (interactIcon != null)
-                interactIcon.SetActive(true);
+        if (!other.CompareTag("Player")) return;
 
-            // Langsung tampilkan mini game saat player masuk trigger
-            if (miniGameUI != null && miniGameData != null)
-            {
-                string miniGameKey = "MiniGameCompleted_" + miniGameData.name;
-                bool isMiniGameCompleted = PlayerPrefs.GetInt(miniGameKey, 0) == 1;
+        playerInRange = true;
 
-                if (!isMiniGameCompleted)
-                {
-                    miniGameUI.ShowMiniGame(miniGameData);
-                    miniGameUI.OnMiniGameCompleted += () =>
-                    {
-                        PlayerPrefs.SetInt(miniGameKey, 1); // Tandai mini game ini sudah selesai
-                        PlayerPrefs.Save();
-                        ActivateLeverFromMiniGame();
-                        miniGameUI.OnMiniGameCompleted -= ActivateLeverFromMiniGame;
-                    };
-                    return;
-                }
-
-                // Jika mini game sudah benar, lever bisa diaktifkan terus
-                if (platformToActivate != null && isMiniGameCompleted)
-                {
-                    ActivateLeverFromMiniGame();
-                }
-            }
-            hasTriggered = true;
-            if (interactIcon != null)
-                interactIcon.SetActive(false);
-        }
+        // show interact icon only if lever not yet triggered
+        if (interactIcon != null && !hasTriggered)
+            interactIcon.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            hasTriggered = false; // Reset agar lever bisa dipakai lagi
-            if (interactIcon != null)
-                interactIcon.SetActive(false);
-        }
+        if (!other.CompareTag("Player")) return;
+
+        playerInRange = false;
+        if (interactIcon != null)
+            interactIcon.SetActive(false);
     }
 
     // Fungsi untuk mengaktifkan platform dan mengganti sprite ke triggered
-    public void ActivateLeverFromMiniGame()
+    public void ActivateLever()
     {
         if (AudioManager.instance != null)
             AudioManager.instance.Play("Lever");
@@ -94,6 +79,9 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
             platformToActivate.ActivatePlatform();
 
         SetTriggeredSprite();
+
+        if (interactIcon != null)
+            interactIcon.SetActive(false);
     }
 
     // Fungsi untuk mengatur sprite ke triggered
@@ -112,9 +100,14 @@ public class Lever_Trigger_Mini_Game : MonoBehaviour
 
     private void OnPlatformReachedPointB()
     {
-        // Jangan reset hasTriggered di sini!
-        AudioManager.instance.Play("Lever");
+        // ketika platform mencapai titik B, kembalikan sprite ke default
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Lever");
+
         if (spriteRenderer != null && defaultSprite != null)
             spriteRenderer.sprite = defaultSprite;
+
+        // allow re-triggering once platform completed if desired
+        hasTriggered = false;
     }
 }
